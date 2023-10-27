@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div>
+        <label for="startDatePicker">Start Date:</label>
+        <input type="date" id="startDatePicker" />
+    </div>
+    <div>
+        <label for="endDatePicker">End Date:</label>
+        <input type="date" id="endDatePicker" />
+    </div>
+    <div>
+        <button id="updateButton">Update Plot</button>
+    </div>
+    <div id="chartContainer">
+        <iframe src="plotly_plot.html" width="600" height="400"></iframe>
+        <!-- Plotly chart will be displayed here -->
+    </div>
+</body>
+</html>

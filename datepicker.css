@@ -1,0 +1,60 @@
+/* Style the datepicker container */
+#datepicker {
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+/* Style the date input field */
+.ui-datepicker {
+  font-size: 14px;
+}
+
+/* Style the datepicker header */
+.ui-datepicker-header {
+  background-color: #0078d4;
+  color: #fff;
+  border: 1px solid #0078d4;
+}
+
+/* Style the selected date */
+.ui-state-highlight, .ui-widget-content .ui-state-highlight {
+  background-color: #0078d4;
+  color: #fff;
+}
+
+/* Style the hover effect on date cells */
+.ui-state-hover, .ui-widget-content .ui-state-hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Style the previous and next buttons */
+.ui-datepicker-prev, .ui-datepicker-next {
+  background-color: #0078d4;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  padding: 5px;
+}
+
+/* Style the active state of previous and next buttons */
+.ui-datepicker-prev.ui-state-active, .ui-datepicker-next.ui-state-active {
+  background-color: #0057a3;
+}
+
+/* Style the close button */
+.ui-datepicker-close {
+  background-color: #0078d4;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  padding: 5px;
+}
+
+/* Style the close button on hover */
+.ui-datepicker-close.ui-state-hover {
+  background-color: #0057a3;
