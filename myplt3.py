@@ -98,9 +98,8 @@ def update_chart(start_date, end_date):
 
     fig = go.Figure(data=trace1.data + trace5.data)
     fig.update_layout(barmode='relative', font_size=20)
-
     return fig
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8054)
+    app.run_server(debug=False, host='0.0.0.0',  port=8054)
