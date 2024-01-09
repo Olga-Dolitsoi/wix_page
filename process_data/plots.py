@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from process_data.data_for_plot import ProcessDataForPlot
+from data_for_plot import ProcessDataForPlot
 import plotly.graph_objs as go
 import plotly.express as px
 import process_data.const as const
