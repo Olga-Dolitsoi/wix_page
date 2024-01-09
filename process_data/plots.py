@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from data_for_plot import ProcessDataForPlot
 import plotly.graph_objs as go
 import plotly.express as px
-import process_data.const as const
+import const as const
 import pandas as pd
 from plotly.subplots import make_subplots
 
