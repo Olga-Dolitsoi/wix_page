@@ -1,7 +1,7 @@
 import pandas as pd
 import psycopg2
 import Queries as Queries
-import process_data.const as const
+import const as const
 
 
 class ProcessDataForPlot:
