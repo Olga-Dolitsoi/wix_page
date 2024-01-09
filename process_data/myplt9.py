@@ -4,8 +4,8 @@ import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import dash_mantine_components as dmc
-import process_data.plots as pl
-import process_data.const as const
+import plots as pl
+import const as const
 
 
 date = pl.prepare_date_month_year(const.TABLE_NAME_PLOT13, const.TABLE_NAME_NAMES_PLOT13, const.LANG_LABELS_PLOT_13)

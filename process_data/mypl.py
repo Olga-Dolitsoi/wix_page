@@ -3,8 +3,8 @@ import os
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
-import process_data.plots as pl
-import process_data.const as const
+import plots as pl
+import const as const
 import pandas as pd
 
 

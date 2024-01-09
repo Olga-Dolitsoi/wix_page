@@ -4,11 +4,11 @@ import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import dash_mantine_components as dmc
-import process_data.plots as pl
-import process_data.const as const
+import plots as pl
+import const as const
 
 
-date = pl.prepare_date_month_year(const.TABLE_NAME_PLOT20, const.TABLE_NAME_NAMES_PLOT20, const.LANG_LABELS_PLOT_20)
+date = pl.prepare_date_month_year(const.TABLE_NAME_PLOT18, const.TABLE_NAME_NAMES_PLOT18, const.LANG_LABELS_PLOT_18)
 languages = ['ENG', 'UKR', 'RU']
 
 app = dash.Dash(__name__)
@@ -64,7 +64,7 @@ app.layout = html.Div([
      Input('language-dropdown', 'value')]
 )
 def update_chart(start_date, end_date, lang):
-    fig, name, source = pl.build_plot20(lang=lang, start_date=start_date, end_date=end_date)
+    fig, name, source = pl.build_plot18(lang=lang, start_date=start_date, end_date=end_date)
 
     return fig, name, source
 
@@ -74,7 +74,7 @@ try:
 except:
     ssh_con = None
 
-my_port = 8065
+my_port = 8063
 
 if __name__ == '__main__':
     if ssh_con is not None:

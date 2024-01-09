@@ -3,11 +3,12 @@ import os
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
-import process_data.plots as pl
-import process_data.const as const
+import plots as pl
+import const as const
 
 
-dates = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT9, const.TABLE_NAME_NAMES_PLOT9, const.LANG_LABELS_PLOT_9)
+dates = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT11, const.TABLE_NAME_NAMES_PLOT11,
+                                        const.LANG_LABELS_PLOT_11)
 languages = ['ENG', 'UKR', 'RU']
 
 # Sample data
@@ -20,16 +21,11 @@ app.layout = html.Div([
     # Date Range Picker
     html.Div([
         dcc.Dropdown(
-            id='year_dropdown',
-            options=[{'label': date, 'value': date} for date in dates],
-            value=2023,
-            style={"width": 200}
-        ),
-        dcc.Dropdown(
             id='language_dropdown',
             options=[{'label': lang, 'value': lang} for lang in languages],
             value='ENG',
             style={"width": 200}
+
         )
     ]),
 
@@ -43,11 +39,10 @@ app.layout = html.Div([
     [Output('stacked_bar_chart', 'figure'),
      Output('name', 'children'),
      Output('source', 'children')],
-    [Input('year_dropdown', 'value'),
-     Input('language_dropdown', 'value')]
+    [Input('language_dropdown', 'value')]
 )
-def update_chart(year, lang):
-    fig, name, source = pl.build_plot9(lang=lang, date=year)
+def update_chart(lang):
+    fig, name, source = pl.build_plot11(lang=lang)
     return fig, name, source
 
 
@@ -56,7 +51,7 @@ try:
 except:
     ssh_con = None
 
-my_port = 8055
+my_port = 8057
 
 if __name__ == '__main__':
     if ssh_con is not None:

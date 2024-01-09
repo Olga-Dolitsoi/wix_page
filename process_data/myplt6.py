@@ -3,8 +3,8 @@ import os
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
-import process_data.plots as pl
-import process_data.const as const
+import plots as pl
+import const as const
 
 
 dates = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT10, const.TABLE_NAME_NAMES_PLOT10, const.LANG_LABELS_PLOT_10)
