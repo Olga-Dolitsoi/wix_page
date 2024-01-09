@@ -7,10 +7,9 @@ import process_data.plots as pl
 import process_data.const as const
 
 
-dates = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT10, const.TABLE_NAME_NAMES_PLOT10, const.LANG_LABELS_PLOT_10)
+dates = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT17, const.TABLE_NAME_NAMES_PLOT17, const.LANG_LABELS_PLOT_17)
 languages = ['ENG', 'UKR', 'RU']
 
-# Sample data
 
 app = dash.Dash(__name__)
 
@@ -22,14 +21,14 @@ app.layout = html.Div([
         dcc.Dropdown(
             id='min_year_dropdown',
             options=[{'label': date, 'value': date} for date in dates],
-            value=dates.min(),  # Start from January 2023
+            value=dates.min(),
             style={"width": 200}
 
         ),
         dcc.Dropdown(
             id='max_year_dropdown',
             options=[{'label': date, 'value': date} for date in dates],
-            value=dates.max(),  # Start from January 2023
+            value=dates.max(),
             style={"width": 200}
 
         ),
@@ -38,6 +37,7 @@ app.layout = html.Div([
             options=[{'label': lang, 'value': lang} for lang in languages],
             value='ENG',
             style={"width": 200}
+
         )
     ]),
 
@@ -56,7 +56,7 @@ app.layout = html.Div([
      Input('language_dropdown', 'value')]
 )
 def update_chart(min_year, max_year, lang):
-    fig, name, source = pl.build_plot10(lang=lang, min_year=min_year, max_year=max_year)
+    fig, name, source = pl.build_plot17(lang=lang, min_year=min_year, max_year=max_year)
     return fig, name, source
 
 
@@ -65,8 +65,7 @@ try:
 except:
     ssh_con = None
 
-my_port = 8056
-
+my_port = 8062
 
 if __name__ == '__main__':
     if ssh_con is not None:

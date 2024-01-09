@@ -1,56 +1,69 @@
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
-import plotly.express as px
-import pandas as pd
+import process_data.plots as pl
+import process_data.const as const
+import os
 
-# Sample data
-data = pd.DataFrame({
-    'Date': pd.date_range(start='2023-01-01', end='2023-12-31', freq='D'),
-    'Value': [i % 20 for i in range(365)]
-})
+
+
+dates = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT2, const.TABLE_NAME_NAMES_PLOT2, const.LANG_LABELS_PLOT_2)
+languages = ['ENG', 'UKR', 'RU']
 
 app = dash.Dash(__name__)
 
 
 app.layout = html.Div([
-    html.H1("Stacked Bar Chart with Date Range Picker"),
+    html.H1(id='name'),
 
     # Date Range Picker
     html.Div([
-        dcc.DatePickerSingle(
-            id='start-date-picker',
-            display_format='MM/YYYY',  # Display format for Month and Year
-            date=data['Date'].min(),  # Start from January 2023
-            min_date_allowed=data['Date'].min(),
-            max_date_allowed=data['Date'].max()
+        dcc.Dropdown(
+            id='year_dropdown',
+            options=[{'label': date, 'value': date} for date in dates],
+            value=2023,
+            style={'width': 200}
         ),
-        dcc.DatePickerSingle(
-            id='end-date-picker',
-            display_format='MM/YYYY',  # Display format for Month and Year
-            date=data['Date'].max(),  # End at December 2023
-            min_date_allowed=data['Date'].min(),
-            max_date_allowed=data['Date'].max()
-        ),
+        dcc.Dropdown(
+            id='language_dropdown',
+            options=[{'label': lang, 'value': lang} for lang in languages],
+            value='ENG',
+            style={'width': 200}
+        )
     ]),
 
     # Plotly Chart
-    dcc.Graph(id='stacked-bar-chart')
+    dcc.Graph(id='my-pie-chart'),
+    html.Div(id='source', style={'font-style': 'italic'})
 ])
 
 
 @app.callback(
-    Output('stacked-bar-chart', 'figure'),
-    [Input('start-date-picker', 'date'),
-     Input('end-date-picker', 'date')]
+    [Output('my-pie-chart', 'figure'),
+     Output('name', 'children'),
+     Output('source', 'children')],
+    [Input('year_dropdown', 'value'),
+     Input('language_dropdown', 'value')]
 )
-def update_chart(start_date, end_date):
-    filtered_data = data[(data['Date'] >= start_date) & (data['Date'] <= end_date)]
+def update_chart(date, lang):
+    fig, name, source = pl.build_plot_2(lang=lang, date=date)
 
-    fig = px.line(filtered_data, x='Date', y='Value', title="Date Range Chart", color_discrete_sequence=px.colors.qualitative.T10)
+    return fig, name, source
 
-    return fig
 
+try:
+    ssh_con = os.getenv('SSH_CONNECTION').split(' ')[2]
+except:
+    ssh_con = None
+
+my_port = 8051
 
 if __name__ == '__main__':
-    app.run_server(debug=True, host='0.0.0.0', port=8051)
+
+    if ssh_con is not None:
+        app.run_server(host='0.0.0.0',
+                        port=my_port,
+                        ssl_context=('/etc/letsencrypt/live/ueo-charts.com/fullchain.pem',
+                                        '/etc/letsencrypt/live/ueo-charts.com/privkey.pem'))
+    else:
+        app.run_server(host='0.0.0.0', port=my_port)

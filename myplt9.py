@@ -8,7 +8,7 @@ import process_data.plots as pl
 import process_data.const as const
 
 
-date = pl.prepare_date_month_year(const.TABLE_NAME_PLOT8, const.TABLE_NAME_NAMES_PLOT8, const.LANG_LABELS_PLOT_8)
+date = pl.prepare_date_month_year(const.TABLE_NAME_PLOT13, const.TABLE_NAME_NAMES_PLOT13, const.LANG_LABELS_PLOT_13)
 languages = ['ENG', 'UKR', 'RU']
 
 app = dash.Dash(__name__)
@@ -63,16 +63,17 @@ app.layout = html.Div([
      Input('language-dropdown', 'value')]
 )
 def update_chart(start_date, end_date, lang):
-    fig, name, source = pl.build_plot8(lang=lang, start_date=start_date, end_date=end_date)
+    fig, name, source = pl.build_plot13(lang=lang, start_date=start_date, end_date=end_date)
 
     return fig, name, source
+
 
 try:
     ssh_con = os.getenv('SSH_CONNECTION').split(' ')[2]
 except:
     ssh_con = None
 
-my_port = 8054
+my_port = 8059
 
 if __name__ == '__main__':
     if ssh_con is not None:

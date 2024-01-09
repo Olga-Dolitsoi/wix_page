@@ -1,105 +1,67 @@
+import os
+
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
-import plotly.express as px
-import pandas as pd
-import plotly.graph_objects as go
-import dash_mantine_components as dmc
-import datetime
-excel_path = 'currency.xlsx'
-df = pd.read_excel(excel_path)
+import process_data.plots as pl
+import process_data.const as const
 
 
-def convert_to_datetime(date_str):
-    date_str = str(date_str)
-    # Split the string into month and year parts
-    month_str, year_str = date_str.split('.')
-    # Convert to integers
-    month = int(month_str)
-    year = int(year_str)
-    # Create a datetime object
-    return pd.to_datetime(f"{year}-{month:02d}-01")
-
-
-# Apply the function to the DataFrame column
-df['Date'] = df['Date'].apply(convert_to_datetime)
+dates = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT4, const.TABLE_NAME_NAMES_PLOT4, const.LANG_LABELS_PLOT_4)
+languages = ['ENG', 'UKR', 'RU']
 
 # Sample data
 
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
-    html.H1("Stacked Bar Chart with Date Range Picker"),
+    html.H1(id='name'),
 
     # Date Range Picker
     html.Div([
-        dmc.Group(
-            spacing="xl",
-            children=[
-                dmc.DatePicker(
-                    id='start-date-picker',
-                    label="Start Date",
-                    inputFormat='MM/YYYY',  # Display format for Month and Year
-                    value=df['Date'].min(),  # Start from January 2023
-                    minDate=df['Date'].min(),
-                    maxDate=df['Date'].max()+datetime.timedelta(hours=12),
-                    #allowLevelChange=False,
-                    initialLevel='month',
-                    style={"width": 200}
-                ),
-                dmc.DatePicker(
-                    id='end-date-picker',
-                    label="End Date",
-                    inputFormat='MM/YYYY',  # Display format for Month and Year
-                    value=df['Date'].max(),  # End at December 2023
-                    minDate=df['Date'].min(),
-                    maxDate=df['Date'].max()+datetime.timedelta(hours=12),
-                    #allowLevelChange=False,
-                    initialLevel='month',
-                    style={"width": 200}
-                ),
-            ]
+        dcc.Dropdown(
+            id='year_dropdown',
+            options=[{'label': date, 'value': date} for date in dates],
+            value=2023,
+            style={"width": 200}
+        ),
+        dcc.Dropdown(
+            id='language_dropdown',
+            options=[{'label': lang, 'value': lang} for lang in languages],
+            value='ENG',
+            style={"width": 200}
         )
     ]),
 
     # Plotly Chart
-    dcc.Graph(id='stacked-bar-chart',
-              style={'width': '190vh', 'height': '90vh'}
-              )
+    dcc.Graph(id='stacked_bar_chart'),
+    html.Div(id='source', style={'font-style': 'italic'})
 ])
 
+
 @app.callback(
-    Output('stacked-bar-chart', 'figure'),
-    [Input('start-date-picker', 'value'),
-     Input('end-date-picker', 'value')]
+    [Output('stacked_bar_chart', 'figure'),
+     Output('name', 'children'),
+     Output('source', 'children')],
+    [Input('year_dropdown', 'value'),
+     Input('language_dropdown', 'value')]
 )
-def update_chart(start_date, end_date):
-    filtered_data = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
-    colours = {'Buy of non-cash currency': "#B7D9E6",
-               'Buy of cash currency': "#94C7DA",
-               'Sell of cash currency': "#ADD38B",
-               'Sell of non-cash currency': "#C9E1B3"}
+def update_chart(year, lang):
+    fig, name, source = pl.build_plot_4(lang=lang, year=year)
+    return fig, name, source
 
-    trace1 = px.bar(filtered_data,
-                    x='Date',
-                    y=['Sell of cash currency',
-                       'Buy of cash currency',
-                       'Buy of non-cash currency',
-                       'Sell of non-cash currency'],
-                    color_discrete_map=colours
-                    )
+try:
+    ssh_con = os.getenv('SSH_CONNECTION').split(' ')[2]
+except:
+    ssh_con = None
 
-    trace5 = px.line(filtered_data, x='Date', y='Summary', markers=True)\
-        .update_traces(showlegend=True, line_color="#991C1F", name="Summary")
-
-    #data = [trace1, trace2, trace3, trace4, trace5]
-
-    #layout = go.Layout(barmode='stack', title="Stacked Bar Chart of Sales Data Over Time")
-
-    fig = go.Figure(data=trace1.data + trace5.data)
-    fig.update_layout(barmode='relative', font_size=20)
-    return fig
-
+my_port = 8053
 
 if __name__ == '__main__':
-    app.run_server(debug=False, host='0.0.0.0',  port=8054)
+    if ssh_con is not None:
+        app.run_server(host='0.0.0.0',
+                       port=my_port,
+                       ssl_context=('/etc/letsencrypt/live/ueo-charts.com/fullchain.pem',
+                                    '/etc/letsencrypt/live/ueo-charts.com/privkey.pem'))
+    else:
+        app.run_server(host='0.0.0.0', port=my_port)
