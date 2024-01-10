@@ -39,14 +39,20 @@ app.layout = html.Div([
                     maxDate=date.max(),
                     initialLevel='month',
                     style={"width": 200, 'fontFamily': 'Montserrat'}
-                )]
-        )
+                ),
+                dmc.Select(id='language-dropdown',
+                           data=[{'label': lang, 'value': lang} for lang in languages],
+                           value='ENG',
+                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
+                           label='Language')]
+        ),
+        # dcc.Dropdown(
+        #     id='language-dropdown',
+        #     options=[{'label': lang, 'value': lang} for lang in languages],
+        #     value='ENG',
+        #     style={'width': 200, 'fontFamily': 'Montserrat'}),
     ]),
-        dcc.Dropdown(
-            id='language-dropdown',
-            options=[{'label': lang, 'value': lang} for lang in languages],
-            value='ENG',
-            style={'width': 200, 'fontFamily': 'Montserrat'}),
+
 
     # Plotly Chart
     dcc.Graph(id='stacked-bar-chart'),
