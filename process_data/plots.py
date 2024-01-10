@@ -588,14 +588,14 @@ def build_plot8(lang, start_date, end_date):
         i += 1
     fig = go.Figure(layout=go.Layout(
         height=600,
-        width=1000,
+        width=800,
         barmode="relative"))
     for bar in bar_list:
         fig.add_trace(bar)
 
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[4]], name=my_names_list[4],
                   marker=dict(color=ueo_colors['ueo-navy'])))
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
 
     return fig, my_names['names'], my_names['sources']
 
@@ -629,7 +629,7 @@ def build_plot9(lang, date):
         i += 1
     fig = go.Figure(layout=go.Layout(
         height=600,
-        width=1000,
+        width=800,
         barmode="relative",
         font=dict(family="Montserrat", size=14)))
     for bar in bar_list:
@@ -637,7 +637,7 @@ def build_plot9(lang, date):
 
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                              marker=dict(color=ueo_colors['ueo-red'])))
-    fig.update_layout(width=1600, height=800)
+    fig.update_layout(width=800, height=600)
     return fig, my_names['names'], my_names['sources']
 
 
@@ -665,7 +665,7 @@ def build_plot10(lang, min_year, max_year):
                          marker=dict(color=ueo_colors_0[1])), row=2, col=1)
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[2]], name=my_names_list[2],
                          marker=dict(color=ueo_colors_0[2])), row=3, col=1)
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     return fig, my_names['names'], my_names['sources']
 
 
@@ -694,7 +694,7 @@ def build_plot11(lang='RU'):
                              marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode='group')
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     return fig, my_names['names'], my_names['sources']
 
 
@@ -728,7 +728,7 @@ def build_plot12(lang, year):
         font=dict(size=20),
     )
     fig.update_traces(textposition='inside', textinfo='percent+label')
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     return fig, my_names['names'], my_names['sources']
 
 
@@ -771,7 +771,7 @@ def build_plot13(lang, start_date, end_date):
                              fillcolor="rgba(128, 128, 128, 0.5)"))
     for bar in bar_list:
         fig.add_trace(bar)
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
 
     return fig, my_names['names'], my_names['sources']
 
@@ -806,7 +806,7 @@ def build_plot14(lang, start_date, end_date):
         fig.update_yaxes(range=[-55000, 55000], secondary_y=True)
         i += 1
     fig.update_layout(barmode='group')
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     return fig, my_names['names'], my_names['sources']
 
 
@@ -840,7 +840,7 @@ def build_plot15(lang, start_date, end_date):
         fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[name], name=name, marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode='group')
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     return fig, my_names['names'], my_names['sources']
 
 
@@ -867,7 +867,7 @@ def build_plot17(lang, min_year, max_year):
                              marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
     fig.add_trace(go.Bar(x=my_df['index_0'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     return fig, my_names['names'], my_names['sources']
 
 
@@ -896,7 +896,7 @@ def build_plot18(lang, start_date, end_date):
                              marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     return fig, my_names['names'], my_names['sources']
 
 
@@ -923,7 +923,7 @@ def build_plot19(lang, min_date, max_date):
                              marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
     fig.add_trace(go.Bar(x=my_df['index_0'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     return fig, my_names['names'], my_names['sources']
 
 
@@ -953,7 +953,7 @@ def build_plot20(lang, start_date, end_date):
                   secondary_y=True)
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     return fig, my_names['names'], my_names['sources']
 
 
@@ -982,7 +982,7 @@ def build_plot21(lang):
                              marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode='group')
-    fig.update_layout(width=1600, height=800, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     return fig, my_names['names'], my_names['sources']
 
 
@@ -1321,4 +1321,169 @@ def build_plot33(lang, start_date, end_date):
     bar2 = go.Bar(x=my_df['Date'], y=my_df[my_names_list[1]], name=my_names_list[1])
     fig.add_traces([bar1, bar2])
     return fig, my_names['names'], my_names['sources']
+
+
+def build_plot34(lang="ENG"):
+    data = ProcessDataForPlot(const.TABLE_NAME_PLOT34, const.TABLE_NAME_NAMES_PLOT34, const.LANG_LABELS_PLOT_34)
+    data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df(const.DATA_TABLE_COLUMNS_PLOT34,
+                                                                                    const.NAMES_TABLE_COLUMNS_PLOT34)
+    my_df = None
+    my_names = None
+    if lang == "UKR":
+        my_df = data_ua
+        my_names = ua_names
+    elif lang == "ENG":
+        my_df = data_eng
+        my_names = eng_names
+    elif lang == "RU":
+        my_df = data_ru
+        my_names = ru_names
+    my_names_list = list(my_names.iloc[0])[1:-3]
+    my_df.dropna(inplace=True, axis=0)
+    my_df = my_df[my_df['index_0'] != 0]
+    my_df['index_0'] = my_df['index_0'].astype(int)
+    my_df['Date'] = my_df['index_0'].apply(to_date)
+    my_df.sort_values(by='Date', inplace=True)
+    fig = go.Figure()
+    for col in my_names_list:
+        fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col],
+                              mode='lines', name=col))
+    fig.show()
+
+
+def build_plot35(lang="ENG"):
+    data = ProcessDataForPlot(const.TABLE_NAME_PLOT35, const.TABLE_NAME_NAMES_PLOT35, const.LANG_LABELS_PLOT_35)
+    data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df(const.DATA_TABLE_COLUMNS_PLOT35,
+                                                                                    const.NAMES_TABLE_COLUMNS_PLOT35)
+    my_df = None
+    my_names = None
+    if lang == "UKR":
+        my_df = data_ua
+        my_names = ua_names
+    elif lang == "ENG":
+        my_df = data_eng
+        my_names = eng_names
+    elif lang == "RU":
+        my_df = data_ru
+        my_names = ru_names
+    my_names_list = list(my_names.iloc[0])[1:-3]
+    my_df.dropna(inplace=True, axis=0)
+    my_df = my_df[my_df['index_0'] != 0]
+    my_df['index_0'] = my_df['index_0'].astype(int)
+    my_df['Date'] = my_df['index_0'].apply(to_date)
+    my_df.sort_values(by='Date', inplace=True)
+    fig = go.Figure()
+    for col in my_names_list:
+        fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col],
+                              mode='lines', name=col))
+    fig.show()
+
+
+def build_plot36(lang='ENG'):
+    data = ProcessDataForPlot(const.TABLE_NAME_PLOT36, const.TABLE_NAME_NAMES_PLOT36, const.LANG_LABELS_PLOT_36)
+    data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df(const.DATA_TABLE_COLUMNS_PLOT36,
+                                                                                    const.NAMES_TABLE_COLUMNS_PLOT36)
+    my_df = None
+    my_names = None
+    if lang == "UKR":
+        my_df = data_ua
+        my_names = ua_names
+    elif lang == "ENG":
+        my_df = data_eng
+        my_names = eng_names
+    elif lang == "RU":
+        my_df = data_ru
+        my_names = ru_names
+    my_names_list = list(my_names.iloc[0])[1:-3]
+    my_df.dropna(inplace=True, axis=0)
+    my_df = my_df[my_df['index_0'] != 0]
+    my_df['index_0'] = my_df['index_0'].astype(int)
+    my_df['Date'] = my_df['index_0'].apply(to_date)
+    my_df.sort_values(by='Date', inplace=True)
+    fig = go.Figure()
+    for col in my_names_list:
+        fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col],
+                              mode='lines', name=col))
+    fig.show()
+
+
+def build_plot37(lang='ENG'):
+    data = ProcessDataForPlot(const.TABLE_NAME_PLOT37, const.TABLE_NAME_NAMES_PLOT37, const.LANG_LABELS_PLOT_37)
+    data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df()
+    my_df = None
+    my_names = None
+    if lang == "UKR":
+        my_df = data_ua
+        my_names = ua_names
+    elif lang == "ENG":
+        my_df = data_eng
+        my_names = eng_names
+    elif lang == "RU":
+        my_df = data_ru
+        my_names = ru_names
+    my_names_list = list(my_names.iloc[0])[1:-2]
+    my_df.dropna(inplace=True, axis=0)
+    my_df = my_df[my_df['index_0'] != 0]
+    my_df['index_0'] = my_df['index_0'].astype(int)
+    my_df['Date'] = my_df['index_0'].apply(to_date)
+    my_df.sort_values(by='Date', inplace=True)
+    fig = go.Figure()
+    for col in my_names_list:
+        fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[col],
+                              mode='markers', name=col))
+    fig.show()
+
+
+def build_plot38(lang='ENG'):
+    data = ProcessDataForPlot(const.TABLE_NAME_PLOT38, const.TABLE_NAME_NAMES_PLOT38, const.LANG_LABELS_PLOT_38)
+    data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df(const.DATA_TABLE_COLUMNS_PLOT38,
+                                                                                    const.NAMES_TABLE_COLUMNS_PLOT38)
+    my_df = None
+    my_names = None
+    if lang == "UKR":
+        my_df = data_ua
+        my_names = ua_names
+    elif lang == "ENG":
+        my_df = data_eng
+        my_names = eng_names
+    elif lang == "RU":
+        my_df = data_ru
+        my_names = ru_names
+    my_df.dropna(inplace=True, axis=0)
+    my_df = my_df[my_df['index_0'] != 0]
+    my_df['index_0'] = my_df['index_0'].astype(int)
+    my_df['Date'] = my_df['index_0'].apply(to_date)
+    my_df.sort_values(by='Date', inplace=True)
+    fig = go.Figure()
+    for col in my_df.columns[2:-1]:
+        fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[col],
+                                 mode='markers', name=col))
+    fig.show()
+
+
+def build_plot39(lang='ENG'):
+    data = ProcessDataForPlot(const.TABLE_NAME_PLOT39, const.TABLE_NAME_NAMES_PLOT39, const.LANG_LABELS_PLOT_39)
+    data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df(const.DATA_TABLE_COLUMNS_PLOT39,
+                                                                                    const.NAMES_TABLE_COLUMNS_PLOT39)
+    my_df = None
+    my_names = None
+    if lang == "UKR":
+        my_df = data_ua
+        my_names = ua_names
+    elif lang == "ENG":
+        my_df = data_eng
+        my_names = eng_names
+    elif lang == "RU":
+        my_df = data_ru
+        my_names = ru_names
+    my_names_list = list(my_names.iloc[0])[1:-2]
+    my_df = my_df[my_df['index_0'] != 0]
+    my_df['index_0'] = my_df['index_0'].astype(int)
+    my_df['Date'] = my_df['index_0'].apply(to_date)
+    my_df.sort_values(by='Date', inplace=True)
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df['label_1'],
+                                 mode='markers', name=my_names_list[2]))
+    fig.show()
+
 
