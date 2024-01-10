@@ -14,7 +14,7 @@ languages = ['ENG', 'UKR', 'RU']
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
-    html.H1(id='name'),
+    html.H1(id='name', style={'fontSize': 26, 'fontFamily': 'Montserrat'}),
 
     # Date Range Picker
     html.Div([

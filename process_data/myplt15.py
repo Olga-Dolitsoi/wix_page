@@ -14,7 +14,7 @@ languages = ['ENG', 'UKR', 'RU']
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
-    html.H1(id='name'),
+    html.H1(id='name', style={'fontSize': 26, 'fontFamily': 'Montserrat'}),
 
 
 # Date Range Picker
@@ -29,7 +29,7 @@ app.layout = html.Div([
                     minDate=date.min(),
                     maxDate=date.max(),
                     initialLevel='month',
-                    style={"width": 200}
+                    style={"width": 200, 'fontFamily': 'Montserrat'}
                 ),
                 dmc.DatePicker(
                     id='end-date-picker',
@@ -39,7 +39,7 @@ app.layout = html.Div([
                     minDate=date.min(),
                     maxDate=date.max(),
                     initialLevel='month',
-                    style={"width": 200}
+                    style={"width": 200, 'fontFamily': 'Montserrat'}
                 )]
         )
     ]),
@@ -47,11 +47,11 @@ app.layout = html.Div([
             id='language-dropdown',
             options=[{'label': lang, 'value': lang} for lang in languages],
             value='ENG',
-            style={'width': 200}),
+            style={'width': 200, 'fontFamily': 'Montserrat'}),
 
     # Plotly Chart
     dcc.Graph(id='stacked-bar-chart'),
-    html.Div(id='source', style={'font-style': 'italic'})
+    html.Div(id='source', style={'font-style': 'italic', 'fontFamily': 'Montserrat'})
 ])
 
 

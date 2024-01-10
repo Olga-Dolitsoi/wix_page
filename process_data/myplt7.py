@@ -16,7 +16,7 @@ languages = ['ENG', 'UKR', 'RU']
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
-    html.H1(id='name'),
+    html.H1(id='name', style={'fontSize': 26, 'fontFamily': 'Montserrat'}),
 
     # Date Range Picker
     html.Div([
@@ -24,14 +24,14 @@ app.layout = html.Div([
             id='language_dropdown',
             options=[{'label': lang, 'value': lang} for lang in languages],
             value='ENG',
-            style={"width": 200}
+            style={"width": 200, 'fontFamily': 'Montserrat'}
 
         )
     ]),
 
     # Plotly Chart
     dcc.Graph(id='stacked_bar_chart'),
-    html.Div(id='source', style={'font-style': 'italic'})
+    html.Div(id='source', style={'font-style': 'italic', 'fontFamily': 'Montserrat'})
 ])
 
 
