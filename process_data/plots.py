@@ -597,7 +597,7 @@ def build_plot8(lang, start_date, end_date):
                   marker=dict(color=ueo_colors['ueo-navy'])))
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
 
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot9(lang, date):
@@ -638,7 +638,7 @@ def build_plot9(lang, date):
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                              marker=dict(color=ueo_colors['ueo-red'])))
     fig.update_layout(width=800, height=600)
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot10(lang, min_year, max_year):
@@ -666,7 +666,7 @@ def build_plot10(lang, min_year, max_year):
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[2]], name=my_names_list[2],
                          marker=dict(color=ueo_colors_0[2])), row=3, col=1)
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot11(lang='RU'):
@@ -695,7 +695,7 @@ def build_plot11(lang='RU'):
         i += 1
     fig.update_layout(barmode='group')
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot12(lang, year):
@@ -729,7 +729,7 @@ def build_plot12(lang, year):
     )
     fig.update_traces(textposition='inside', textinfo='percent+label')
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot13(lang, start_date, end_date):
@@ -773,7 +773,7 @@ def build_plot13(lang, start_date, end_date):
         fig.add_trace(bar)
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
 
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot14(lang, start_date, end_date):
@@ -807,7 +807,7 @@ def build_plot14(lang, start_date, end_date):
         i += 1
     fig.update_layout(barmode='group')
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot15(lang, start_date, end_date):
@@ -841,7 +841,7 @@ def build_plot15(lang, start_date, end_date):
         i += 1
     fig.update_layout(barmode='group')
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot17(lang, min_year, max_year):
@@ -868,7 +868,7 @@ def build_plot17(lang, min_year, max_year):
     fig.add_trace(go.Bar(x=my_df['index_0'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot18(lang, start_date, end_date):
@@ -897,7 +897,7 @@ def build_plot18(lang, start_date, end_date):
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot19(lang, min_date, max_date):
@@ -924,7 +924,7 @@ def build_plot19(lang, min_date, max_date):
     fig.add_trace(go.Bar(x=my_df['index_0'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot20(lang, start_date, end_date):
@@ -954,7 +954,7 @@ def build_plot20(lang, start_date, end_date):
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def build_plot21(lang):
@@ -983,7 +983,7 @@ def build_plot21(lang):
         i += 1
     fig.update_layout(barmode='group')
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-    return fig, my_names['names'], my_names['sources']
+    return fig, my_names['names'][0], my_names['sources'][0]
 
 
 def to_date(number):
@@ -1486,4 +1486,5 @@ def build_plot39(lang='ENG'):
                                  mode='markers', name=my_names_list[2]))
     fig.show()
 
+# def build_plot40(lang = ):
 
