@@ -970,6 +970,8 @@ LANG_COLUMN_NAMES_PLOT38 = ['index', 'label_1', 'label_2', 'label_3', 'label_4',
 LANG_LABELS_PLOT_38 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'label_7',
                        'label_8', 'label_9', 'label_10']
 INDEXES_PLOT_38 = ['index_0']
+DATA_TABLE_COLUMNS_PLOT38 = []
+NAMES_TABLE_COLUMNS_PLOT38 = []
 
 
 CREATE_TABLE_COL_NAMES_CHART39 = """
@@ -1202,6 +1204,8 @@ COLUMN_NAMES_PLOT46 = ['index_0', 'index_1', 'label_1']
 LANG_COLUMN_NAMES_PLOT46 = ['index', 'names', 'sources']
 LANG_LABELS_PLOT_46 = ['label_1']
 INDEXES_PLOT_46 = ['index_0', 'index_1']
+DATA_TABLE_COLUMNS_PLOT46 = []
+NAMES_TABLE_COLUMNS_PLOT46 = []
 
 
 CREATE_TABLE_COL_NAMES_CHART48 = """
@@ -1280,6 +1284,8 @@ COLUMN_NAMES_PLOT49 = ['index_0', 'index_1', 'label_1']
 LANG_COLUMN_NAMES_PLOT49 = ['index', 'names', 'sources']
 LANG_LABELS_PLOT_49 = ['label_1']
 INDEXES_PLOT_49 = ['index_0', 'index_1']
+DATA_TABLE_COLUMNS_PLOT49 = []
+NAMES_TABLE_COLUMNS_PLOT49 = []
 
 
 CREATE_TABLE_COL_NAMES_CHART50 = """
@@ -1304,6 +1310,8 @@ COLUMN_NAMES_PLOT50 = ['index_0', 'index_1', 'label_1']
 LANG_COLUMN_NAMES_PLOT50 = ['index', 'names', 'sources']
 LANG_LABELS_PLOT_50 = ['label_1']
 INDEXES_PLOT_50 = ['index_0', 'index_1']
+DATA_TABLE_COLUMNS_PLOT50 = []
+NAMES_TABLE_COLUMNS_PLOT50 = []
 
 
 CREATE_TABLE_COL_NAMES_CHART51 = """
@@ -1363,6 +1371,38 @@ COLUMN_NAMES_PLOT52 = ['index_0', 'label_1', 'label_2', 'label_3', 'label_4']
 LANG_COLUMN_NAMES_PLOT52 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'names', 'sources']
 LANG_LABELS_PLOT_52 = ['label_1', 'label_2', 'label_3', 'label_4']
 INDEXES_PLOT_52 = ['index_0']
+
+
+CREATE_TABLE_COL_NAMES_CHART54 = """
+                        id SERIAL PRIMARY KEY,
+                        index_0 NUMERIC,
+                        label_1 NUMERIC,
+                        label_2 NUMERIC,
+                        label_3 NUMERIC,
+                        label_4 NUMERIC
+                    """
+CREATE_TABLE_NAMES_COL_NAMES_CHART54 = """
+                        index VARCHAR(50),
+                        label_1 VARCHAR(100),
+                        label_2 VARCHAR(100),
+                        label_3 VARCHAR(100),
+                        label_4 VARCHAR(100),
+                        names VARCHAR(100),
+                        sources VARCHAR(100)
+                    """
+COL_NAMES_FOR_QUERY_PLOT54 = 'index_0, label_1, label_2, label_3, label_4'
+LANG_COL_NAMES_FOR_QUERY_PLOT54 = 'index, label_1, label_2, label_3, names, sources'
+VAL_QTY_PLOT54 = '%s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT54 = '%s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT54 = "monthly_grain_production_trend_in_ukraine_since_1999"
+TABLE_NAME_NAMES_PLOT54 = "names_grain_production_trend_in_ukraine_since_1999"
+FILE_PLOT54_NAME = "/home/olga/PycharmProjects/wix_page/process_data/Chart54.json"
+COLUMN_NAMES_PLOT54 = ['index_0', 'label_1', 'label_2', 'label_3', 'label_4']
+LANG_COLUMN_NAMES_PLOT54 = ['index', 'label_1', 'label_2', 'label_3', 'names', 'sources']
+LANG_LABELS_PLOT_54 = ['label_1', 'label_2', 'label_3', 'label_4']
+INDEXES_PLOT_54 = ['index_0']
+DATA_TABLE_COLUMNS_PLOT54 = ['label_1', 'label_2', 'label_3']
+NAMES_TABLE_COLUMNS_PLOT54 = ['label_1', 'label_2', 'label_3']
 
 
 CREATE_TABLE_COL_NAMES_CHART55 = """
