@@ -3,46 +3,45 @@ import os
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
+import dash_mantine_components as dmc
 import plots as pl
 import const as const
 
 
-dates = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT21, const.TABLE_NAME_NAMES_PLOT21,
-                                        const.LANG_LABELS_PLOT_21)
 languages = ['ENG', 'UKR', 'RU']
-
-# Sample data
 
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.H1(id='name', style={'fontSize': 26, 'fontFamily': 'Montserrat'}),
 
-    # Date Range Picker
-    html.Div([
-        dcc.Dropdown(
-            id='language_dropdown',
-            options=[{'label': lang, 'value': lang} for lang in languages],
-            value='ENG',
-            style={"width": 200, 'fontFamily': 'Montserrat'}
 
-        )
+    html.Div([
+        dmc.Group(
+            children=[
+                dmc.Select(id='language-dropdown',
+                           data=[{'label': lang, 'value': lang} for lang in languages],
+                           value='ENG',
+                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
+                           label='Language')]
+        ),
     ]),
 
     # Plotly Chart
-    dcc.Graph(id='stacked_bar_chart'),
+    dcc.Graph(id='stacked-bar-chart'),
     html.Div(id='source', style={'font-style': 'italic', 'fontFamily': 'Montserrat'})
 ])
 
 
 @app.callback(
-    [Output('stacked_bar_chart', 'figure'),
+    [Output('stacked-bar-chart', 'figure'),
      Output('name', 'children'),
      Output('source', 'children')],
-    [Input('language_dropdown', 'value')]
+    [Input('language-dropdown', 'value')]
 )
 def update_chart(lang):
-    fig, name, source = pl.build_plot21(lang=lang)
+    fig, name, source = pl.build_plot21(lang)
+
     return fig, name, source
 
 
@@ -61,3 +60,4 @@ if __name__ == '__main__':
                                     '/etc/letsencrypt/live/ueo-charts.com/privkey.pem'))
     else:
         app.run_server(host='0.0.0.0', port=my_port)
+

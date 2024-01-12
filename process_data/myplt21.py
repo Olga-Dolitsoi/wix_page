@@ -8,7 +8,10 @@ import plots as pl
 import const as const
 
 
-date = pl.prepare_date_month_year(const.TABLE_NAME_PLOT8, const.TABLE_NAME_NAMES_PLOT8, const.LANG_LABELS_PLOT_8)
+date = pl.convert_date(const.TABLE_NAME_PLOT26, const.TABLE_NAME_NAMES_PLOT26, const.LANG_LABELS_PLOT_26,
+                                  const.DATA_TABLE_COLUMNS_PLOT26,
+                                  const.NAMES_TABLE_COLUMNS_PLOT26
+                                  )
 languages = ['ENG', 'UKR', 'RU']
 
 app = dash.Dash(__name__)
@@ -46,6 +49,11 @@ app.layout = html.Div([
                            style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
                            label='Language')]
         ),
+        # dcc.Dropdown(
+        #     id='language-dropdown',
+        #     options=[{'label': lang, 'value': lang} for lang in languages],
+        #     value='ENG',
+        #     style={'width': 200, 'fontFamily': 'Montserrat'}),
     ]),
 
 
@@ -64,7 +72,7 @@ app.layout = html.Div([
      Input('language-dropdown', 'value')]
 )
 def update_chart(start_date, end_date, lang):
-    fig, name, source = pl.build_plot8(lang=lang, start_date=start_date, end_date=end_date)
+    fig, name, source = pl.build_plot26(lang=lang, start_date=start_date, end_date=end_date)
 
     return fig, name, source
 
@@ -73,7 +81,7 @@ try:
 except:
     ssh_con = None
 
-my_port = 8054
+my_port = 8071
 
 if __name__ == '__main__':
     if ssh_con is not None:
@@ -83,3 +91,4 @@ if __name__ == '__main__':
                                     '/etc/letsencrypt/live/ueo-charts.com/privkey.pem'))
     else:
         app.run_server(host='0.0.0.0', port=my_port)
+

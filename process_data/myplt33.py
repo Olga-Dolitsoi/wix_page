@@ -7,7 +7,7 @@ import dash_mantine_components as dmc
 import plots as pl
 import const as const
 
-date = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT2, const.TABLE_NAME_NAMES_PLOT2, const.LANG_LABELS_PLOT_2)
+date = pl.convert_text_date(const.TABLE_NAME_PLOT40, const.TABLE_NAME_NAMES_PLOT40, const.LANG_LABELS_PLOT_40)
 
 languages = ['ENG', 'UKR', 'RU']
 
@@ -22,9 +22,9 @@ app.layout = html.Div([
             children=[
                 dmc.Select(id='year',
                            data=[{'label': dt, 'value': dt} for dt in date],
-                           value=date.min(),
+                           value='2023-11-01 00:00:00',
                            style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 0},
-                           label='Language'),
+                           label='Date'),
                 dmc.Select(id='language-dropdown',
                            data=[{'label': lang, 'value': lang} for lang in languages],
                            value='ENG',
@@ -48,7 +48,7 @@ app.layout = html.Div([
      ]
 )
 def update_chart(year, lang):
-    fig, name, source = pl.build_plot_2(lang=lang, date=year)
+    fig, name, source = pl.build_plot40(lang=lang, date=year)
 
     return fig, name, source
 
@@ -58,7 +58,7 @@ try:
 except:
     ssh_con = None
 
-my_port = 8051
+my_port = 8084
 
 if __name__ == '__main__':
     if ssh_con is not None:
@@ -68,4 +68,3 @@ if __name__ == '__main__':
                                     '/etc/letsencrypt/live/ueo-charts.com/privkey.pem'))
     else:
         app.run_server(host='0.0.0.0', port=my_port)
-

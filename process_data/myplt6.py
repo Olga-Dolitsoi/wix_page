@@ -3,60 +3,60 @@ import os
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
+import dash_mantine_components as dmc
 import plots as pl
 import const as const
 
+date = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT10, const.TABLE_NAME_NAMES_PLOT10,
+                                       const.LANG_LABELS_PLOT_10)
 
-dates = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT10, const.TABLE_NAME_NAMES_PLOT10, const.LANG_LABELS_PLOT_10)
 languages = ['ENG', 'UKR', 'RU']
-
-# Sample data
 
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.H1(id='name', style={'fontSize': 26, 'fontFamily': 'Montserrat'}),
 
-    # Date Range Picker
+
     html.Div([
-        dcc.Dropdown(
-            id='min_year_dropdown',
-            options=[{'label': date, 'value': date} for date in dates],
-            value=dates.min(),  # Start from January 2023
-            style={"width": 200, 'fontFamily': 'Montserrat'}
-
+        dmc.Group(
+            children=[
+                dmc.Select(id='min_year',
+                           data=[{'label': dt, 'value': dt} for dt in date],
+                           value=date.min(),
+                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 0},
+                           label='Language'),
+                dmc.Select(id='max_year',
+                           data=[{'label': dt, 'value': dt} for dt in date],
+                           value=date.max(),
+                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 0},
+                           label='Language'),
+                dmc.Select(id='language-dropdown',
+                           data=[{'label': lang, 'value': lang} for lang in languages],
+                           value='ENG',
+                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
+                           label='Language')]
         ),
-        dcc.Dropdown(
-            id='max_year_dropdown',
-            options=[{'label': date, 'value': date} for date in dates],
-            value=dates.max(),  # Start from January 2023
-            style={"width": 200, 'fontFamily': 'Montserrat'}
-
-        ),
-        dcc.Dropdown(
-            id='language_dropdown',
-            options=[{'label': lang, 'value': lang} for lang in languages],
-            value='ENG',
-            style={"width": 200, 'fontFamily': 'Montserrat'}
-        )
     ]),
 
     # Plotly Chart
-    dcc.Graph(id='stacked_bar_chart'),
+    dcc.Graph(id='stacked-bar-chart'),
     html.Div(id='source', style={'font-style': 'italic', 'fontFamily': 'Montserrat'})
 ])
 
 
 @app.callback(
-    [Output('stacked_bar_chart', 'figure'),
+    [Output('stacked-bar-chart', 'figure'),
      Output('name', 'children'),
      Output('source', 'children')],
-    [Input('min_year_dropdown', 'value'),
-     Input('max_year_dropdown', 'value'),
-     Input('language_dropdown', 'value')]
+    [Input('min_year', 'value'),
+     Input('max_year', 'value'),
+     Input('language-dropdown', 'value')
+     ]
 )
-def update_chart(min_year, max_year, lang):
-    fig, name, source = pl.build_plot10(lang=lang, min_year=min_year, max_year=max_year)
+def update_chart(start_date, end_date, lang):
+    fig, name, source = pl.build_plot10(lang=lang, min_year=start_date, max_year=end_date)
+
     return fig, name, source
 
 
@@ -67,7 +67,6 @@ except:
 
 my_port = 8056
 
-
 if __name__ == '__main__':
     if ssh_con is not None:
         app.run_server(host='0.0.0.0',
@@ -76,3 +75,4 @@ if __name__ == '__main__':
                                     '/etc/letsencrypt/live/ueo-charts.com/privkey.pem'))
     else:
         app.run_server(host='0.0.0.0', port=my_port)
+

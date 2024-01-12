@@ -8,7 +8,10 @@ import plots as pl
 import const as const
 
 
-date = pl.prepare_date_month_year(const.TABLE_NAME_PLOT8, const.TABLE_NAME_NAMES_PLOT8, const.LANG_LABELS_PLOT_8)
+date = pl.convert_date(const.TABLE_NAME_PLOT23, const.TABLE_NAME_NAMES_PLOT23, const.LANG_LABELS_PLOT_23,
+                                  const.DATA_TABLE_COLUMNS_PLOT23,
+                                  const.NAMES_TABLE_COLUMNS_PLOT23
+                                  )
 languages = ['ENG', 'UKR', 'RU']
 
 app = dash.Dash(__name__)
@@ -46,6 +49,11 @@ app.layout = html.Div([
                            style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
                            label='Language')]
         ),
+        # dcc.Dropdown(
+        #     id='language-dropdown',
+        #     options=[{'label': lang, 'value': lang} for lang in languages],
+        #     value='ENG',
+        #     style={'width': 200, 'fontFamily': 'Montserrat'}),
     ]),
 
 
@@ -64,7 +72,7 @@ app.layout = html.Div([
      Input('language-dropdown', 'value')]
 )
 def update_chart(start_date, end_date, lang):
-    fig, name, source = pl.build_plot8(lang=lang, start_date=start_date, end_date=end_date)
+    fig, name, source = pl.build_plot23(lang=lang, start_date=start_date, end_date=end_date)
 
     return fig, name, source
 
@@ -73,7 +81,7 @@ try:
 except:
     ssh_con = None
 
-my_port = 8054
+my_port = 8068
 
 if __name__ == '__main__':
     if ssh_con is not None:

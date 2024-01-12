@@ -39,14 +39,20 @@ app.layout = html.Div([
                     maxDate=date.max(),
                     initialLevel='month',
                     style={"width": 200, 'fontFamily': 'Montserrat'}
-                )]
-        )
+                ),
+                dmc.Select(id='language-dropdown',
+                           data=[{'label': lang, 'value': lang} for lang in languages],
+                           value='ENG',
+                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
+                           label='Language')]
+        ),
+        # dcc.Dropdown(
+        #     id='language-dropdown',
+        #     options=[{'label': lang, 'value': lang} for lang in languages],
+        #     value='ENG',
+        #     style={'width': 200, 'fontFamily': 'Montserrat'}),
     ]),
-        dcc.Dropdown(
-            id='language-dropdown',
-            options=[{'label': lang, 'value': lang} for lang in languages],
-            value='ENG',
-            style={'width': 200, 'fontFamily': 'Montserrat'}),
+
 
     # Plotly Chart
     dcc.Graph(id='stacked-bar-chart'),
@@ -66,7 +72,6 @@ def update_chart(start_date, end_date, lang):
     fig, name, source = pl.build_plot15(lang=lang, start_date=start_date, end_date=end_date)
 
     return fig, name, source
-
 
 try:
     ssh_con = os.getenv('SSH_CONNECTION').split(' ')[2]

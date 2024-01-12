@@ -3,51 +3,53 @@ import os
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
+import dash_mantine_components as dmc
 import plots as pl
 import const as const
 
+date = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT9, const.TABLE_NAME_NAMES_PLOT9, const.LANG_LABELS_PLOT_9)
 
-dates = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT9, const.TABLE_NAME_NAMES_PLOT9, const.LANG_LABELS_PLOT_9)
 languages = ['ENG', 'UKR', 'RU']
-
-# Sample data
 
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.H1(id='name', style={'fontSize': 26, 'fontFamily': 'Montserrat'}),
 
-    # Date Range Picker
+
     html.Div([
-        dcc.Dropdown(
-            id='year_dropdown',
-            options=[{'label': date, 'value': date} for date in dates],
-            value=2023,
-            style={"width": 200, 'fontFamily': 'Montserrat'}
+        dmc.Group(
+            children=[
+                dmc.Select(id='year',
+                           data=[{'label': dt, 'value': dt} for dt in date],
+                           value=date.min(),
+                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 0},
+                           label='Language'),
+                dmc.Select(id='language-dropdown',
+                           data=[{'label': lang, 'value': lang} for lang in languages],
+                           value='ENG',
+                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
+                           label='Language')]
         ),
-        dcc.Dropdown(
-            id='language_dropdown',
-            options=[{'label': lang, 'value': lang} for lang in languages],
-            value='ENG',
-            style={"width": 200, 'fontFamily': 'Montserrat'}
-        )
     ]),
 
     # Plotly Chart
-    dcc.Graph(id='stacked_bar_chart'),
+    dcc.Graph(id='stacked-bar-chart'),
     html.Div(id='source', style={'font-style': 'italic', 'fontFamily': 'Montserrat'})
 ])
 
 
 @app.callback(
-    [Output('stacked_bar_chart', 'figure'),
+    [Output('stacked-bar-chart', 'figure'),
      Output('name', 'children'),
      Output('source', 'children')],
-    [Input('year_dropdown', 'value'),
-     Input('language_dropdown', 'value')]
+    [Input('year', 'value'),
+     Input('language-dropdown', 'value')
+     ]
 )
 def update_chart(year, lang):
     fig, name, source = pl.build_plot9(lang=lang, date=year)
+
     return fig, name, source
 
 

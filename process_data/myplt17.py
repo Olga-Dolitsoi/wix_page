@@ -7,7 +7,6 @@ import dash_mantine_components as dmc
 import plots as pl
 import const as const
 
-date = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT2, const.TABLE_NAME_NAMES_PLOT2, const.LANG_LABELS_PLOT_2)
 
 languages = ['ENG', 'UKR', 'RU']
 
@@ -20,11 +19,6 @@ app.layout = html.Div([
     html.Div([
         dmc.Group(
             children=[
-                dmc.Select(id='year',
-                           data=[{'label': dt, 'value': dt} for dt in date],
-                           value=date.min(),
-                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 0},
-                           label='Language'),
                 dmc.Select(id='language-dropdown',
                            data=[{'label': lang, 'value': lang} for lang in languages],
                            value='ENG',
@@ -43,12 +37,10 @@ app.layout = html.Div([
     [Output('stacked-bar-chart', 'figure'),
      Output('name', 'children'),
      Output('source', 'children')],
-    [Input('year', 'value'),
-     Input('language-dropdown', 'value')
-     ]
+    [Input('language-dropdown', 'value')]
 )
-def update_chart(year, lang):
-    fig, name, source = pl.build_plot_2(lang=lang, date=year)
+def update_chart(lang):
+    fig, name, source = pl.build_plot22(lang)
 
     return fig, name, source
 
@@ -58,7 +50,7 @@ try:
 except:
     ssh_con = None
 
-my_port = 8051
+my_port = 8067
 
 if __name__ == '__main__':
     if ssh_con is not None:

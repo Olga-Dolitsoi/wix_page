@@ -16,7 +16,6 @@ app = dash.Dash(__name__)
 app.layout = html.Div([
     html.H1(id='name', style={'fontSize': 26, 'fontFamily': 'Montserrat'}),
 
-
 # Date Range Picker
     html.Div([
         dmc.Group(
@@ -40,14 +39,20 @@ app.layout = html.Div([
                     maxDate=date.max(),
                     initialLevel='month',
                     style={"width": 200, 'fontFamily': 'Montserrat'}
-                )]
-        )
+                ),
+                dmc.Select(id='language-dropdown',
+                           data=[{'label': lang, 'value': lang} for lang in languages],
+                           value='ENG',
+                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
+                           label='Language')]
+        ),
+        # dcc.Dropdown(
+        #     id='language-dropdown',
+        #     options=[{'label': lang, 'value': lang} for lang in languages],
+        #     value='ENG',
+        #     style={'width': 200, 'fontFamily': 'Montserrat'}),
     ]),
-        dcc.Dropdown(
-            id='language-dropdown',
-            options=[{'label': lang, 'value': lang} for lang in languages],
-            value='ENG',
-            style={'width': 200, 'fontFamily': 'Montserrat'}),
+
 
     # Plotly Chart
     dcc.Graph(id='stacked-bar-chart'),
@@ -68,7 +73,6 @@ def update_chart(start_date, end_date, lang):
 
     return fig, name, source
 
-
 try:
     ssh_con = os.getenv('SSH_CONNECTION').split(' ')[2]
 except:
@@ -84,3 +88,4 @@ if __name__ == '__main__':
                                     '/etc/letsencrypt/live/ueo-charts.com/privkey.pem'))
     else:
         app.run_server(host='0.0.0.0', port=my_port)
+
