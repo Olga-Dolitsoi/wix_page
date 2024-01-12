@@ -1477,6 +1477,45 @@ LANG_LABELS_PLOT_56 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'l
 INDEXES_PLOT_56 = ['index_0']
 
 
+CREATE_TABLE_COL_NAMES_CHART57 = """
+                        id SERIAL PRIMARY KEY,
+                        index_0 VARCHAR(100),
+                        label_1 NUMERIC,
+                        label_2 NUMERIC,
+                        label_3 NUMERIC,
+                        label_4 NUMERIC,
+                        label_5 NUMERIC,
+                        label_6 NUMERIC,
+                        label_7 NUMERIC,
+                        label_8 NUMERIC
+                    """
+CREATE_TABLE_NAMES_COL_NAMES_CHART57 = """
+                        index VARCHAR(50),
+                        label_1 VARCHAR(100),
+                        label_2 VARCHAR(100),
+                        label_3 VARCHAR(100),
+                        label_4 VARCHAR(100),
+                        label_5 VARCHAR(100),
+                        label_6 VARCHAR(100),
+                        label_7 VARCHAR(100),
+                        label_8 VARCHAR(100),
+                        names VARCHAR(100),
+                        sources VARCHAR(100)
+                    """
+COL_NAMES_FOR_QUERY_PLOT57 = 'index_0, label_1, label_2, label_3, label_4, label_5, label_6, label_7, label_8'
+LANG_COL_NAMES_FOR_QUERY_PLOT57 = 'index, label_1, label_2, label_3, label_4, label_5, label_6, label_7, label_8, names, sources'
+VAL_QTY_PLOT57 = '%s, %s, %s, %s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT57 = '%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT57 = "monthly_productivity_of_main_crops_in_2022_23"
+TABLE_NAME_NAMES_PLOT57 = "names_productivity_of_main_crops_in_2022_23"
+FILE_PLOT57_NAME = "/home/olga/PycharmProjects/wix_page/process_data/Chart57.json"
+COLUMN_NAMES_PLOT57 = ['index_0', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'label_7', 'label_8']
+LANG_COLUMN_NAMES_PLOT57 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'label_7',
+                            'label_8', 'names', 'sources']
+LANG_LABELS_PLOT_57 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'label_7', 'label_8']
+INDEXES_PLOT_57 = ['index_0']
+
+
 CREATE_TABLE_COL_NAMES_CHART58 = """
                         id SERIAL PRIMARY KEY,
                         index_0 NUMERIC,
@@ -1507,4 +1546,246 @@ COLUMN_NAMES_PLOT58 = ['index_0', 'label_1', 'label_2', 'label_3', 'label_4', 'l
 LANG_COLUMN_NAMES_PLOT58 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'names', 'sources']
 LANG_LABELS_PLOT_58 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5']
 INDEXES_PLOT_58 = ['index_0']
+
+
+CREATE_TABLE_COL_NAMES_CHART5 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    index_1 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC,
+                    label_5 NUMERIC,
+                    label_6 NUMERIC
+
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART5 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    label_5 VARCHAR(100),
+                    label_6 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT5 = 'index_0, index_1, label_1, label_2, label_3, label_4, label_5, label_6'
+LANG_COL_NAMES_FOR_QUERY_PLOT5 = 'index, label_1, label_2, label_3, label_4, label_5, label_6, names, sources'
+VAL_QTY_PLOT5 = '%s, %s, %s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT5 = '%s, %s, %s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT5 = 'monthly_execution_of_the_state_budget_from_the_beginning'
+TABLE_NAME_NAMES_PLOT5 = 'name_execution_of_the_state_budget_from_the_beginning'
+FILE_PLOT5_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart5.json'
+COLUMN_NAMES_PLOT5 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
+LANG_COLUMN_NAMES_PLOT5 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'names', 'sources']
+LANG_LABELS_PLOT_5 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
+INDEXES_PLOT_5 = ['index_0', 'index_1']
+
+
+CREATE_TABLE_COL_NAMES_CHART6 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    label_1_1 NUMERIC,
+                    label_1_2 NUMERIC,
+                    label_1_3 NUMERIC,
+                    label_1_4 NUMERIC,
+                    label_2_1 NUMERIC,
+                    label_2_2 NUMERIC,
+                    label_2_3 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART6 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1_1 VARCHAR(100),
+                    label_1_2 VARCHAR(100),
+                    label_1_3 VARCHAR(100),
+                    label_1_4 VARCHAR(100),
+                    label_2_1 VARCHAR(100),
+                    label_2_2 VARCHAR(100),
+                    label_2_3 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT6 = """index_0, label_1_1, label_1_2, label_1_3, label_1_4,  label_2_1, label_2_2, label_2_3"""
+LANG_COL_NAMES_FOR_QUERY_PLOT6 = """index, label_1_1, label_1_2, label_1_3, label_1_4,  label_2_1, label_2_2, label_2_3, names, sources"""
+VAL_QTY_PLOT6 = """%s, %s, %s, %s, %s, %s, %s, %s """
+VAL_QTY_NAMES_PLOT6 = """%s, %s, %s, %s, %s, %s, %s, %s, %s, %s """
+TABLE_NAME_PLOT6 = 'monthly_state_budget_2024'
+TABLE_NAME_NAMES_PLOT6 = 'names_state_budget_2024'
+FILE_PLOT6_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart6.json'
+COLUMN_NAMES_PLOT6 = ['index_0', 'label_1_1', 'label_1_2', 'label_1_3', 'label_1_4', 'label_2_1', 'label_2_2',
+                      'label_2_3', ]
+LANG_COLUMN_NAMES_PLOT6 = ['index', 'label_1_1', 'label_1_2', 'label_1_3', 'label_1_4', 'label_2_1', 'label_2_2',
+                           'label_2_3',  'names', 'sources']
+LANG_LABELS_PLOT_6 = ['label_1_1', 'label_1_2', 'label_1_3', 'label_1_4', 'label_2_1', 'label_2_2', 'label_2_3']
+INDEXES_PLOT_6 = ['index_0']
+
+
+CREATE_TABLE_COL_NAMES_CHART59 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    label_1_1 NUMERIC,
+                    label_1_2 NUMERIC,
+                    label_1_3 NUMERIC,
+                    label_1_4 NUMERIC,
+                    label_1_5 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART59 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1_1 VARCHAR(100),
+                    label_1_2 VARCHAR(100),
+                    label_1_3 VARCHAR(100),
+                    label_1_4 VARCHAR(100),
+                    label_1_5 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT59 = """index_0, label_1_1, label_1_2, label_1_3, label_1_4, label_1_5"""
+LANG_COL_NAMES_FOR_QUERY_PLOT59 = """index, label_1_1, label_1_2, label_1_3, label_1_4, label_1_5, names, sources"""
+VAL_QTY_PLOT59 = """%s, %s, %s, %s, %s, %s"""
+VAL_QTY_NAMES_PLOT59 = """%s, %s, %s, %s, %s, %s, %s, %s"""
+TABLE_NAME_PLOT59 = 'monthly_law_on_budget_2023'
+TABLE_NAME_NAMES_PLOT59 = 'names_law_on_budget_2023'
+FILE_PLOT59_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart59.json'
+COLUMN_NAMES_PLOT59 = ['index_0', 'label_1_1', 'label_1_2', 'label_1_3', 'label_1_4', 'label_1_5']
+LANG_COLUMN_NAMES_PLOT59 = ['index', 'label_1_1', 'label_1_2', 'label_1_3', 'label_1_4', 'label_1_5',
+                            'names', 'sources']
+LANG_LABELS_PLOT_59 = ['label_1_1', 'label_1_2', 'label_1_3', 'label_1_4', 'label_1_5']
+INDEXES_PLOT_59 = ['index_0']
+
+
+
+CREATE_TABLE_COL_NAMES_CHART60 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    index_1 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC,
+                    label_5 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART60 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    label_5 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT60 = 'index_0, index_1, label_1, label_2, label_3, label_4, label_5'
+LANG_COL_NAMES_FOR_QUERY_PLOT60 = 'index, label_1, label_2, label_3, label_4, label_5, names, sources'
+VAL_QTY_PLOT60 = '%s, %s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT60 = '%s, %s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT60 = 'monthly_expected_dynamics_of_local_budgets_in_2023'
+TABLE_NAME_NAMES_PLOT60 = 'name_expected_dynamics_of_local_budgets_in_2023'
+FILE_PLOT60_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart60.json'
+COLUMN_NAMES_PLOT60 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5']
+LANG_COLUMN_NAMES_PLOT60 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'names', 'sources']
+LANG_LABELS_PLOT_60 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5']
+INDEXES_PLOT_60 = ['index_0', 'index_1']
+
+CREATE_TABLE_COL_NAMES_CHART61 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC,
+                    label_5 NUMERIC,
+                    label_6 NUMERIC
+
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART61 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    label_5 VARCHAR(100),
+                    label_6 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT61 = 'index_0, label_1, label_2, label_3, label_4, label_5, label_6'
+LANG_COL_NAMES_FOR_QUERY_PLOT61 = 'index, label_1, label_2, label_3, label_4, label_5, label_6, names, sources'
+VAL_QTY_PLOT61 = '%s, %s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT61 = '%s, %s, %s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT61 = 'monthly_structure_of_expected_financing_in_2024'
+TABLE_NAME_NAMES_PLOT61 = 'name_structure_of_expected_financing_in_2024'
+FILE_PLOT61_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart61.json'
+COLUMN_NAMES_PLOT61 = ['index_0', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
+LANG_COLUMN_NAMES_PLOT61 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'names', 'sources']
+LANG_LABELS_PLOT_61 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
+INDEXES_PLOT_61 = ['index_0']
+
+
+CREATE_TABLE_COL_NAMES_CHART62 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    index_1 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC
+
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART62 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT62 = 'index_0, index_1, label_1, label_2, label_3, label_4'
+LANG_COL_NAMES_FOR_QUERY_PLOT62 = 'index, label_1, label_2, label_3, label_4, names, sources'
+VAL_QTY_PLOT62 = '%s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT62 = '%s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT62 = 'monthly_structure_of_state_budget_revenues'
+TABLE_NAME_NAMES_PLOT62 = 'name_structure_of_state_budget_revenues'
+FILE_PLOT62_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart62.json'
+COLUMN_NAMES_PLOT62 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_3', 'label_4']
+LANG_COLUMN_NAMES_PLOT62 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'names', 'sources']
+LANG_LABELS_PLOT_62 = ['label_1', 'label_2', 'label_3', 'label_4']
+INDEXES_PLOT_62 = ['index_0', 'index_1']
+
+CREATE_TABLE_COL_NAMES_CHART63 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    index_1 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC,
+                    label_5 NUMERIC,
+                    label_6 NUMERIC
+
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART63 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    label_5 VARCHAR(100),
+                    label_6 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT63 = 'index_0, index_1, label_1, label_2, label_3, label_4, label_5, label_6'
+LANG_COL_NAMES_FOR_QUERY_PLOT63 = 'index, label_1, label_2, label_3, label_4, label_5, label_6, names, sources'
+VAL_QTY_PLOT63 = '%s, %s, %s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT63 = '%s, %s, %s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT63 = 'monthly_dynamics_of_financing_of_defense_and_security_expenditures'
+TABLE_NAME_NAMES_PLOT63 = 'name_dynamics_of_financing_of_defense_and_security_expenditures'
+FILE_PLOT63_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart63.json'
+COLUMN_NAMES_PLOT63 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
+LANG_COLUMN_NAMES_PLOT63 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'names', 'sources']
+LANG_LABELS_PLOT_63 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
+INDEXES_PLOT_63 = ['index_0', 'index_1']
 
