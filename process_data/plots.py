@@ -24,6 +24,16 @@ def prepare_date_month_year(table, table_names, labels, index=None, lab=None):
     return data_eng['Date']
 
 
+def prepare_date_month_year_nan(table, table_names, labels, index=None, lab=None):
+    data = ProcessDataForPlot(table, table_names, labels)
+    data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df(index,lab)
+    data_eng.dropna(inplace=True)
+    data_eng['Date'] = pd.to_datetime(
+        (data_eng['index_0'].astype(int)).astype(str) + '-' + (data_eng['index_1'].astype(int)).astype(str),
+        format='%Y-%m')
+    return data_eng['Date']
+
+
 def split_quoter(quoter):
     letter = [*quoter]
     try:
@@ -46,9 +56,9 @@ def get_quoter(table, table_names, label):
     return res
 
 
-def prepare_date_year_select_one(table, table_names, label):
+def prepare_date_year_select_one(table, table_names, label, index=None, lab=None):
     data = ProcessDataForPlot(table, table_names, label)
-    data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df()
+    data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df(index, lab)
     data_eng['Date'] = data_eng['index_0'].astype(int)
     date = data_eng['Date'].unique()
     return date
@@ -1858,6 +1868,15 @@ def convert_text_date(table, table_names, label):
     data_eng['Date'] = data_eng['Date'].astype(str)
     return data_eng['Date']
 
+def convert_text_date_nan(table, table_names, label):
+    data = ProcessDataForPlot(table, table_names, label)
+    data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df()
+    data_eng.dropna(inplace=True)
+    data_eng['index_0'] = data_eng['index_0'].astype(int)
+    data_eng['Date'] = data_eng['index_0'].apply(to_date)
+    data_eng['Date'] = data_eng['Date'].astype(str)
+    return data_eng['Date']
+
 
 def build_plot40(lang="ENG", date='2023-11-01 00:00:00'):
     data = ProcessDataForPlot(const.TABLE_NAME_PLOT40, const.TABLE_NAME_NAMES_PLOT40, const.LANG_LABELS_PLOT_40)
@@ -2112,7 +2131,7 @@ def build_plot48(lang, start_date, end_date):
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[1]], name=my_names_list[1], mode='markers+lines',
-                             marker=dict(color=ueo_colors['ueo-blue'])), secondary_y=True)
+                             marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
         orientation="h",
@@ -2142,6 +2161,7 @@ def build_plot49(lang,  min_year, max_year):
     my_names_list = list(my_names.iloc[0])[1:-2]
     fig = go.Figure()
     my_df['index_1'] = my_df['index_1'].apply(split_quoter)
+    my_df['index_0'] = my_df['index_0'].astype(int)
     my_df = my_df[(my_df['index_0'] >= min_year) & (my_df['index_0'] <= max_year)]
                   # (my_df['index_1'] >= min_quoter) & (my_df['index_1'] <= max_quoter)]
     scatter = go.Scatter(x=[my_df['index_0'], my_df['index_1']], y=my_df['label_1'],
@@ -2177,6 +2197,7 @@ def build_plot50(lang, min_year, max_year):
     my_names_list = list(my_names.iloc[0])[1:-2]
     fig = go.Figure()
     my_df['index_1'] = my_df['index_1'].apply(split_quoter)
+    my_df['index_0'] = my_df['index_0'].astype(int)
     my_df = my_df[(my_df['index_0'] >= min_year) & (my_df['index_0'] <= max_year)]
                   # (my_df['index_1'] >= min_quoter) & (my_df['index_1'] <= max_quoter)]
     scatter = go.Scatter(x=[my_df['index_0'], my_df['index_1']], y=my_df['label_1'],
@@ -2209,14 +2230,17 @@ def build_plot51(lang, start_date, end_date):
         my_df = data_ru
         my_names = ru_names
     my_names_list = list(my_names.iloc[0])[1:-2]
+    my_df.dropna(inplace=True, axis=0)
+
     my_df['Date'] = pd.to_datetime(
-        (data_ru['index_0'].astype(int)).astype(str) + '-' + (data_ru['index_1'].astype(int)).astype(str),
+        (my_df['index_0'].astype(int)).astype(str) + '-' + (my_df['index_1'].astype(int)).astype(str),
         format='%Y-%m')
+    my_df.sort_values(by='Date', inplace=True)
     my_df = my_df[(my_df['Date'] >= start_date) & (my_df['Date'] <= end_date)]
     fig = go.Figure()
     i = 0
     for col in my_names_list:
-        fig.add_trace(go.Bar(x=[my_df['index_0'], my_df['index_1']], y=my_df[col], name=col,
+        fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col], name=col,
                              marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode="group")
@@ -2294,7 +2318,7 @@ def build_plot54(lang, start_date, end_date):
         my_names = ru_names
     my_names_list = list(my_names.iloc[0])[1:-2]
     my_df['index_0'] = my_df['index_0'].astype(int)
-    my_df = my_df[(my_df['Date'] >= start_date) & (my_df['Date'] <= end_date)]
+    my_df = my_df[(my_df['index_0'] >= start_date) & (my_df['index_0'] <= end_date)]
     my_df[my_names_list[2]] = my_df[my_names_list[2]].apply(lambda x: x * 100)
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     i = 0
@@ -2356,7 +2380,7 @@ def build_plot55(lang):
 
 
 def build_plot56(lang, year):
-    data = ProcessDataForPlot(const.TABLE_NAME_PLOT56, const.TABLE_NAME_NAMES_PLOT57, const.LANG_LABELS_PLOT_57)
+    data = ProcessDataForPlot(const.TABLE_NAME_PLOT56, const.TABLE_NAME_NAMES_PLOT56, const.LANG_LABELS_PLOT_56)
     data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df()
     my_df = None
     my_names = None
@@ -2404,7 +2428,7 @@ def convert_str_date(str_date):
 
 
 def build_plot57(lang):
-    data = ProcessDataForPlot(const.TABLE_NAME_PLOT57, const.TABLE_NAME_NAMES_PLOT56, const.LANG_LABELS_PLOT_56)
+    data = ProcessDataForPlot(const.TABLE_NAME_PLOT57, const.TABLE_NAME_NAMES_PLOT57, const.LANG_LABELS_PLOT_57)
     data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df()
     my_df = None
     my_names = None
@@ -2550,8 +2574,8 @@ def build_plot6(lang, year):
                        "ENG": "Expenses"
                    }}
 
-    my_df['Дата'] = data_ua['index_0'].astype(int)
-    my_df = data_ua[data_ua['index_0'] == year]
+    my_df['index_0'] = my_df['index_0'].astype(int)
+    my_df = my_df[my_df['index_0'] == year]
 
     i = 0
     bar1 = go.Figure()
@@ -2852,8 +2876,10 @@ def build_plot63(lang, start_date, end_date):
     my_df.drop_duplicates(subset='Date', inplace=True, keep='first')
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     new_col_list = [my_names_list[0], my_names_list[1], my_names_list[2], my_names_list[-2], my_names_list[-3], my_names_list[-1]]
+    i = 0
     for col in my_df.columns.values[3:-2]:
-        fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col], name=col))
+        fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col], name=col,  marker=dict(color=ueo_colors_0[i])))
+        i += 1
     fig.update_layout(barmode='group')
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_df.columns.values[-3]],
                              name=new_col_list[-2], mode='lines+markers',
