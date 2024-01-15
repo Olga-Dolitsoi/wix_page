@@ -82,7 +82,7 @@ try:
 except:
     ssh_con = None
 
-my_port = 8076
+my_port = 8086
 
 if __name__ == '__main__':
     if ssh_con is not None:
