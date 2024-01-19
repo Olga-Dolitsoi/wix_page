@@ -1642,7 +1642,8 @@ def build_plot34(lang, start_date, end_date):
     i = 0
     for col in my_names_list:
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col],
-                              mode='lines', name=col, marker=dict(color=ueo_colors_0[i])))
+                              mode='lines', name=col, marker=dict(color=ueo_colors_0[i]), legendgroup='group1',
+                              showlegend=False))
         i += 1
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14), title=my_names['label_3'].iloc[0])
     fig.update_layout(legend=dict(
@@ -1682,7 +1683,8 @@ def build_plot35(lang, start_date, end_date):
     i = 0
     for col in my_names_list:
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col],
-                              mode='lines', name=col, marker=dict(color=ueo_colors_0[i])))
+                              mode='lines', name=col, marker=dict(color=ueo_colors_0[i]), legendgroup='group1',
+                              showlegend=False))
         i += 1
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14), title=my_names['label_3'].iloc[0])
     fig.update_layout(legend=dict(
@@ -1721,7 +1723,7 @@ def build_plot36(lang, start_date, end_date):
     i = 0
     for col in my_names_list:
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col],
-                              mode='lines', name=col, marker=dict(color=ueo_colors_0[i])))
+                              mode='lines', name=col, marker=dict(color=ueo_colors_0[i]), legendgroup='group1'))
         i += 1
     fig.update_layout(title=my_names['label_3'].iloc[0], width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
@@ -1735,15 +1737,17 @@ def build_plot36(lang, start_date, end_date):
 
 
 def build_plot_34_35_36(lang, start_date, end_date):
-    fig = make_subplots(cols=3, rows=1)
+    fig = make_subplots(cols=2, rows=2)
     fig1, name, source = build_plot34(lang, start_date, end_date)
     fig2, name, source = build_plot35(lang, start_date, end_date)
-    # fig3 = build_plot36(lang, start_date, end_date)
+    fig3, name, source = build_plot36(lang, start_date, end_date)
     for trace in fig1.data:
         fig.add_trace(trace, col=1, row=1)
     for trace in fig2.data:
         fig.add_trace(trace, col=2, row=1)
-    # fig.add_trace(fig3, col=1, row=1)
+    for trace in fig3.data:
+        fig.add_trace(trace, col=1, row=2)
+    fig.update_layout(width=800, height=600)
     return fig, name, source
 
 
