@@ -12,6 +12,8 @@ UPDATE_DATA_BY_YEAR_MONTH_DATE = """DELETE FROM {table}
 UPDATE_DATA_BY_YEAR = """DELETE FROM {table}
     WHERE index_0 >= {year}"""
 
+UPDATE_TEXT = """DELETE FROM {table}
+    WHERE index_0 = '{text}'"""
 
 ADD_DATA_TO_DB = """INSERT INTO {table}({label_list}) VALUES ({val_qty});"""
 ADD_DATA_TO_DB_LANG = """INSERT INTO {table}({label_list}) VALUES ({val_qty});"""

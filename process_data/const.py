@@ -1,3 +1,8 @@
+import os
+
+current_dir = os.getcwd()
+
+
 CREATE_TABLE_COL_NAMES_CHART1 = """
                         id SERIAL PRIMARY KEY,
                         index_0 NUMERIC,
@@ -20,6 +25,36 @@ LANG_COLUMN_NAMES_PLOT1 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 
 LANG_LABELS_PLOT_1 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5']
 INDEXES_PLOT_1 = ['index_0', 'index_1']
 
+
+CREATE_TABLE_COL_NAMES_CHART2 = """
+                        id SERIAL PRIMARY KEY,
+                        index_0 NUMERIC,
+                        label_1 NUMERIC,
+                        label_2 NUMERIC,
+                        label_3 NUMERIC,
+                        label_4 NUMERIC,
+                        label_5 NUMERIC,
+                        label_6 NUMERIC,
+                        label_7 NUMERIC,
+                        label_8 NUMERIC,
+                        label_9 NUMERIC,
+                        label_10 NUMERIC
+                    """
+CREATE_TABLE_NAMES_COL_NAMES_CHART2 = """
+                        index VARCHAR(50),
+                        label_1 VARCHAR(100),
+                        label_2 VARCHAR(100),
+                        label_3 VARCHAR(100),
+                        label_4 VARCHAR(100),
+                        label_5 VARCHAR(100),
+                        label_6 VARCHAR(100),
+                        label_7 VARCHAR(100),
+                        label_8 VARCHAR(100),
+                        label_9 VARCHAR(100),
+                        label_10 VARCHAR(100),
+                        names VARCHAR(100),
+                        sources VARCHAR(100)
+                    """
 COL_NAMES_FOR_QUERY_PLOT2 = 'index_0, label_1, label_2, label_3, label_4, label_5, label_6, label_7, label_8, label_9, label_10'
 LANG_COL_NAMES_FOR_QUERY_PLOT2 = 'index, label_1, label_2, label_3, label_4, label_5, label_6, label_7, label_8, label_9, label_10, names, sources'
 VAL_QTY_PLOT2 = '%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s'
@@ -35,6 +70,28 @@ LANG_LABELS_PLOT_2 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'la
                       'label_10']
 INDEXES_PLOT_2 = ['index_0']
 
+
+CREATE_TABLE_COL_NAMES_CHART3 = """
+                        id SERIAL PRIMARY KEY,
+                        index_0 NUMERIC,
+                        index_1 NUMERIC,
+                        label_1 NUMERIC,
+                        label_2 NUMERIC,
+                        label_3 NUMERIC,
+                        label_4 NUMERIC,
+                        label_5 NUMERIC,
+                        label_6 NUMERIC"""
+CREATE_TABLE_NAMES_COL_NAMES_CHART3 = """
+                        index VARCHAR(50),
+                        label_1 VARCHAR(100),
+                        label_2 VARCHAR(100),
+                        label_3 VARCHAR(100),
+                        label_4 VARCHAR(100),
+                        label_5 VARCHAR(100),
+                        label_6 VARCHAR(100),
+                        names VARCHAR(100),
+                        sources VARCHAR(100)
+                        """
 COL_NAMES_FOR_QUERY_PLOT3 = 'index_0, index_1, label_1, label_2, label_3, label_4, label_5, label_6'
 LANG_COL_NAMES_FOR_QUERY_PLOT3 = 'index, label_1, label_2, label_3, label_4, label_5, label_6, names, sources'
 VAL_QTY_PLOT3 = '%s, %s, %s, %s, %s, %s, %s, %s'
@@ -48,6 +105,19 @@ LANG_COLUMN_NAMES_PLOT3 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 
 LANG_LABELS_PLOT_3 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
 INDEXES_PLOT_3 = ['index_0', 'index_1']
 
+
+CREATE_TABLE_COL_NAMES_CHART7 = """
+                        id SERIAL PRIMARY KEY,
+                        index_0 NUMERIC,
+                        label_1 NUMERIC,
+                        label_2 NUMERIC"""
+CREATE_TABLE_NAMES_COL_NAMES_CHART7 = """
+                        index VARCHAR(50),
+                        label_1 VARCHAR(100),
+                        label_2 VARCHAR(100),
+                        names VARCHAR(100),
+                        sources VARCHAR(100)
+                        """
 COL_NAMES_FOR_QUERY_PLOT7 = 'index_0, label_1, label_2'
 LANG_COL_NAMES_FOR_QUERY_PLOT7 = 'index, label_1, label_2, names, sources'
 VAL_QTY_PLOT7 = '%s, %s, %s'
@@ -109,7 +179,7 @@ LANG_COLUMN_NAMES_PLOT4 = ['index', 'label_1_1', 'label_1_2', 'label_1_3', 'labe
                            'label_2_5', 'label_1', 'label_2', 'names', 'sources']
 LANG_LABELS_PLOT_4 = ['label_1_1', 'label_1_2', 'label_1_3', 'label_1_4', 'label_1_5', 'label_1_6',
                       'label_1_7', 'label_1_8', 'label_2_1', 'label_2_2', 'label_2_3', 'label_2_4',
-                      'label_2_5', 'label_1', 'label_2']
+                      'label_2_5']
 INDEXES_PLOT_4 = ['index_0']
 # META_LABELS_LABELS_PLOT4 = 'meta_labels'
 # META_LABELS_VAL_QTY_PLOT4 = '%s'
@@ -199,7 +269,7 @@ VAL_QTY_PLOT10 = '%s, %s, %s, %s'
 VAL_QTY_NAMES_PLOT10 = '%s, %s, %s, %s, %s, %s'
 TABLE_NAME_PLOT10 = 'monthly_individual_items'
 TABLE_NAME_NAMES_PLOT10 = 'names_individual_items'
-FILE_PLOT10_NAME = "/home/olga/PycharmProjects/wix_page/process_data/Chart10.json"
+FILE_PLOT10_NAME = f"{current_dir}/Chart10.json"
 COLUMN_NAMES_PLOT10 = ['index_0', 'label_1', 'label_2', 'label_3']
 LANG_COLUMN_NAMES_PLOT10 = ['index', 'label_1', 'label_2', 'label_3', 'names', 'sources']
 LANG_LABELS_PLOT_10 = ['label_1', 'label_2', 'label_3']
@@ -1789,3 +1859,482 @@ LANG_COLUMN_NAMES_PLOT63 = ['index', 'label_1', 'label_2', 'label_3', 'label_4',
 LANG_LABELS_PLOT_63 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
 INDEXES_PLOT_63 = ['index_0', 'index_1']
 
+
+CREATE_TABLE_COL_NAMES_CHART64 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    index_1 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART64 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT64 = 'index_0, index_1, label_1, label_2, label_3, label_4'
+LANG_COL_NAMES_FOR_QUERY_PLOT64 = 'index, label_1, label_2, label_3, label_4, names, sources'
+VAL_QTY_PLOT64 = '%s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT64 = '%s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT64 = 'monthly_dynamics_of_vat_refunds_since_the_beginning_of_2023'
+TABLE_NAME_NAMES_PLOT64 = 'name_dynamics_of_vat_refunds_since_the_beginning_of_2023'
+FILE_PLOT64_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart64.json'
+COLUMN_NAMES_PLOT64 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_3', 'label_4']
+LANG_COLUMN_NAMES_PLOT64 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'names', 'sources']
+LANG_LABELS_PLOT_64 = ['label_1', 'label_2', 'label_3', 'label_4']
+INDEXES_PLOT_64 = ['index_0', 'index_1']
+
+
+CREATE_TABLE_COL_NAMES_CHART65 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC,
+                    label_5 NUMERIC,
+                    label_6 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART65 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    label_5 VARCHAR(100),
+                    label_6 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT65 = 'index_0, label_1, label_2, label_3, label_4, label_5, label_6'
+LANG_COL_NAMES_FOR_QUERY_PLOT65 = 'index, label_1, label_2, label_3, label_4, label_5, label_6, names, sources'
+VAL_QTY_PLOT65 = '%s, %s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT65 = '%s, %s, %s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT65 = 'monthly_gdp_distribution_in_2022_2024_between_the_state_sector_and_business'
+TABLE_NAME_NAMES_PLOT65 = 'name_gdp_distribution_in_2022_2024_between_the_state_sector_and_business'
+FILE_PLOT65_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart65.json'
+COLUMN_NAMES_PLOT65 = ['index_0', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
+LANG_COLUMN_NAMES_PLOT65 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'names', 'sources']
+LANG_LABELS_PLOT_65 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
+INDEXES_PLOT_65 = ['index_0']
+
+
+CREATE_TABLE_COL_NAMES_CHART66 = """
+                        id SERIAL PRIMARY KEY,
+                        index_0 VARCHAR(100),
+                        label_1 NUMERIC,
+                        label_2 NUMERIC,
+                        label_3 NUMERIC,
+                        label_4 NUMERIC,
+                        label_5 NUMERIC,
+                        label_6 NUMERIC,
+                        label_7 NUMERIC,
+                        label_8 NUMERIC,
+                        label_9 NUMERIC,
+                        label_10 NUMERIC
+                    """
+CREATE_TABLE_NAMES_COL_NAMES_CHART66 = """
+                        index VARCHAR(50),
+                        label_1 VARCHAR(100),
+                        label_2 VARCHAR(100),
+                        label_3 VARCHAR(100),
+                        label_4 VARCHAR(100),
+                        label_5 VARCHAR(100),
+                        label_6 VARCHAR(100),
+                        label_7 VARCHAR(100),
+                        label_8 VARCHAR(100),
+                        label_9 VARCHAR(100),
+                        label_10 VARCHAR(100),
+                        names VARCHAR(100),
+                        sources VARCHAR(100)
+                    """
+COL_NAMES_FOR_QUERY_PLOT66 = 'index_0, label_1, label_2, label_3, label_4, label_5, label_6, label_7, label_8, label_9, label_10'
+LANG_COL_NAMES_FOR_QUERY_PLOT66 = 'index, label_1, label_2, label_3, label_4, label_5, label_6, label_7, label_8, label_9, label_10, names, sources'
+VAL_QTY_PLOT66 = '%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT66 = '%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT66 = "monthly_financing_of_the_state_budget_of_ukraine_from_partner_countries"
+TABLE_NAME_NAMES_PLOT66 = "names_financing_of_the_state_budget_of_ukraine_from_partner_countries"
+FILE_PLOT66_NAME = "/home/olga/PycharmProjects/wix_page/process_data/Chart66.json"
+COLUMN_NAMES_PLOT66 = ['index_0', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'label_7', 'label_8',
+                       'label_9', 'label_10']
+LANG_COLUMN_NAMES_PLOT66 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'label_7',
+                            'label_8', 'label_9', 'label_10', 'names', 'sources']
+LANG_LABELS_PLOT_66 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'label_7', 'label_8',
+                       'label_9', 'label_10']
+INDEXES_PLOT_66 = ['index_0']
+
+
+
+CREATE_TABLE_COL_NAMES_CHART67 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    label_1 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART67 = """
+                    index VARCHAR(50) UNIQUE,
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT67 = 'index_0, label_1'
+LANG_COL_NAMES_FOR_QUERY_PLOT67 = 'index, names, sources'
+VAL_QTY_PLOT67 = '%s, %s'
+VAL_QTY_NAMES_PLOT67 = '%s, %s, %s'
+TABLE_NAME_PLOT67 = 'monthly_price_of_eurobond_maturing_in_2026'
+TABLE_NAME_NAMES_PLOT67 = 'name_price_of_eurobond_maturing_in_2026'
+FILE_PLOT67_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart67.json'
+COLUMN_NAMES_PLOT67 = ['index_0', 'label_1']
+LANG_COLUMN_NAMES_PLOT67 = ['index', 'names', 'sources']
+LANG_LABELS_PLOT_67 = ['label_1']
+INDEXES_PLOT_67 = ['index_0']
+DATA_TABLE_COLUMNS_PLOT67 = []
+NAMES_TABLE_COLUMNS_PLOT67 = []
+
+
+CREATE_TABLE_COL_NAMES_CHART68 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART68 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT68 = 'index_0, label_1, label_2, label_3, label_4'
+LANG_COL_NAMES_FOR_QUERY_PLOT68 = 'index, label_1, label_2, label_3, label_4, names, sources'
+VAL_QTY_PLOT68 = '%s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT68 = '%s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT68 = 'monthly_commited_foreign_financing_of_ukraine_in_2023_2027'
+TABLE_NAME_NAMES_PLOT68 = 'name_commited_foreign_financing_of_ukraine_in_2023_2027'
+FILE_PLOT68_NAME = f'{current_dir}/Chart68.json'
+COLUMN_NAMES_PLOT68 = ['index_0', 'label_1', 'label_2', 'label_3', 'label_4']
+LANG_COLUMN_NAMES_PLOT68 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'names', 'sources']
+LANG_LABELS_PLOT_68 = ['label_1', 'label_2', 'label_3', 'label_4']
+INDEXES_PLOT_68 = ['index_0']
+
+
+CREATE_TABLE_COL_NAMES_CHART69 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 VARCHAR(100),
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART69 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT69 = 'index_0, label_1, label_2, label_3'
+LANG_COL_NAMES_FOR_QUERY_PLOT69 = 'index, label_1, label_2, label_3, names, sources'
+VAL_QTY_PLOT69 = '%s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT69 = '%s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT69 = 'monthly_commited_foreign_support_by_type_of_assistance'
+TABLE_NAME_NAMES_PLOT69 = 'name_commited_foreign_support_by_type_of_assistance'
+FILE_PLOT69_NAME = f'{current_dir}/Chart69.json'
+COLUMN_NAMES_PLOT69 = ['index_0', 'label_1', 'label_2', 'label_3']
+LANG_COLUMN_NAMES_PLOT69 = ['index', 'label_1', 'label_2', 'label_3', 'names', 'sources']
+LANG_LABELS_PLOT_69 = ['label_1', 'label_2', 'label_3']
+INDEXES_PLOT_69 = ['index_0']
+
+
+CREATE_TABLE_COL_NAMES_CHART70 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    index_1 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC,
+                    label_5 NUMERIC,
+                    label_6 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART70 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    label_5 VARCHAR(100),
+                    label_6 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT70 = 'index_0, index_1, label_1, label_2, label_3, label_4, label_5, label_6'
+LANG_COL_NAMES_FOR_QUERY_PLOT70 = 'index, label_1, label_2, label_3, label_4, label_5, label_6, names, sources'
+VAL_QTY_PLOT70 = '%s, %s, %s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT70 = '%s, %s, %s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT70 = 'monthly_payments_on_foreign_state_on_external_debt'
+TABLE_NAME_NAMES_PLOT70 = 'name_payments_on_foreign_state_on_external_debt'
+FILE_PLOT70_NAME = f'{current_dir}/Chart70.json'
+COLUMN_NAMES_PLOT70 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
+LANG_COLUMN_NAMES_PLOT70 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'names',
+                            'sources']
+LANG_LABELS_PLOT_70 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6']
+INDEXES_PLOT_70 = ['index_0', 'index_1']
+
+
+
+CREATE_TABLE_COL_NAMES_CHART71 = """
+                        id SERIAL PRIMARY KEY,
+                        index_0 NUMERIC,
+                        label_1 NUMERIC,
+                        label_2 NUMERIC,
+                        label_1_1 NUMERIC,
+                        label_2_1 NUMERIC
+                    """
+CREATE_TABLE_NAMES_COL_NAMES_CHART71 = """
+                        index VARCHAR(50),
+                        label_1 VARCHAR(100),
+                        label_2 VARCHAR(100),
+                        names VARCHAR(100),
+                        sources VARCHAR(100)
+                    """
+COL_NAMES_FOR_QUERY_PLOT71 = 'index_0, label_1, label_2, label_1_1, label_2_1'
+LANG_COL_NAMES_FOR_QUERY_PLOT71 = 'index, label_1, label_2, names, sources'
+VAL_QTY_PLOT71 = '%s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT71 = '%s, %s, %s, %s, %s'
+TABLE_NAME_PLOT71 = 'monthly_ukraine_world_commodity_price_index'
+TABLE_NAME_NAMES_PLOT71 = 'name_ukraine_world_commodity_price_index'
+FILE_PLOT71_NAME = f'{current_dir}/Chart71.json'
+COLUMN_NAMES_PLOT71 = ['index_0', 'label_1', 'label_2', 'label_1.1', 'label_2.1']
+LANG_COLUMN_NAMES_PLOT71 = ['index', 'label_1', 'label_2', 'names', 'sources']
+LANG_LABELS_PLOT_71 = ['label_1', 'label_2', 'label_1_1', 'label_2_1']
+LANG_LABELS_PLOT_71_TO_ADD = ['label_1', 'label_2', 'label_1.1', 'label_2.1']
+INDEXES_PLOT_71 = ['index_0']
+DATA_TABLE_COLUMNS_PLOT71 = ['label_1', 'label_2']
+DATA_TABLE_COLUMNS_PLOT71_1 = ['label_1_1', 'label_2_1']
+NAMES_TABLE_COLUMNS_PLOT71 = ['label_1', 'label_2']
+
+
+CREATE_TABLE_COL_NAMES_CHART72 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    index_1 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART72 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT72 = 'index_0, index_1, label_1, label_2, label_3, label_4'
+LANG_COL_NAMES_FOR_QUERY_PLOT72 = 'index, label_1, label_2, label_3, label_4, names, sources'
+VAL_QTY_PLOT72 = '%s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT72 = '%s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT72 = 'monthly_export_trend_structure'
+TABLE_NAME_NAMES_PLOT72 = 'name_export_trend_structure'
+FILE_PLOT72_NAME = f'{current_dir}/Chart72.json'
+COLUMN_NAMES_PLOT72 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_3', 'label_4']
+LANG_COLUMN_NAMES_PLOT72 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'names', 'sources']
+LANG_LABELS_PLOT_72 = ['label_1', 'label_2', 'label_3', 'label_4']
+INDEXES_PLOT_72 = ['index_0', 'index_1']
+
+
+CREATE_TABLE_COL_NAMES_CHART73 = """
+                        id SERIAL PRIMARY KEY,
+                        index_0 NUMERIC,
+                        index_1 NUMERIC,
+                        label_1 NUMERIC,
+                        label_2 NUMERIC,
+                        label_3 NUMERIC,
+                        label_4 NUMERIC,
+                        label_1_1 NUMERIC,
+                        label_2_1 NUMERIC,
+                        label_3_1 NUMERIC,
+                        label_4_1 NUMERIC
+                    """
+CREATE_TABLE_NAMES_COL_NAMES_CHART73 = """
+                        index VARCHAR(50),
+                        label_1 VARCHAR(100),
+                        label_2 VARCHAR(100),
+                        label_3 VARCHAR(100),
+                        label_4 VARCHAR(100),
+                        names VARCHAR(100),
+                        sources VARCHAR(100)
+                    """
+COL_NAMES_FOR_QUERY_PLOT73 = 'index_0, index_1, label_1, label_2, label_3, label_4, label_1_1, label_2_1, label_3_1, label_4_1'
+LANG_COL_NAMES_FOR_QUERY_PLOT73 = 'index, label_1, label_2, label_3, label_4, names, sources'
+VAL_QTY_PLOT73 = '%s, %s, %s, %s, %s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT73 = '%s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT73 = "monthly_forecast_of_ukrainian_exports"
+TABLE_NAME_NAMES_PLOT73 = "names_forecast_of_ukrainian_exports"
+FILE_PLOT73_NAME = f"{current_dir}/Chart73.json"
+COLUMN_NAMES_PLOT73 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_3', 'label_4', 'label_1.1', 'label_2.1',
+                       'label_3.1', 'label_4.1']
+LANG_COLUMN_NAMES_PLOT73 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'names', 'sources']
+LANG_LABELS_PLOT_73 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_1_1', 'label_2_1', 'label_3_1', 'label_4_1']
+LANG_LABELS_PLOT_73_TO_ADD = ['label_1', 'label_2', 'label_3', 'label_4',
+                              'label_1.1', 'label_2.1', 'label_3.1', 'label_4.1']
+INDEXES_PLOT_73 = ['index_0', 'index_1']
+DATA_TABLE_COLUMNS_PLOT73 = ['label_1', 'label_2', 'label_3', 'label_4']
+DATA_TABLE_COLUMNS_PLOT73_1 = ['label_1_1', 'label_2_1', 'label_3_1', 'label_4_1']
+NAMES_TABLE_COLUMNS_PLOT73 = ['label_1', 'label_2', 'label_3', 'label_4']
+
+
+CREATE_TABLE_COL_NAMES_CHART74 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART74 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT74 = 'index_0, label_1, label_2, label_3, label_4'
+LANG_COL_NAMES_FOR_QUERY_PLOT74 = 'index, label_1, label_2, label_3, label_4, names, sources'
+VAL_QTY_PLOT74 = '%s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT74 = '%s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT74 = 'monthly_export_of_the_main_groups_of_agricultural_products_by_type_of_transport'
+TABLE_NAME_NAMES_PLOT74 = 'name_export_of_the_main_groups_of_agricultural_products_by_type_of_transport'
+FILE_PLOT74_NAME = f'{current_dir}/Chart74.json'
+COLUMN_NAMES_PLOT74 = ['index_0', 'label_1', 'label_2', 'label_3', 'label_4']
+LANG_COLUMN_NAMES_PLOT74 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'names', 'sources']
+LANG_LABELS_PLOT_74 = ['label_1', 'label_2', 'label_3', 'label_4']
+INDEXES_PLOT_74 = ['index_0']
+
+
+CREATE_TABLE_COL_NAMES_CHART75 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    label_1_1 NUMERIC,
+                    label_1_2 NUMERIC,
+                    label_1_3 NUMERIC,
+                    label_1_4 NUMERIC,
+                    label_2_1 NUMERIC,
+                    label_2_2 NUMERIC,
+                    label_2_3 NUMERIC,
+                    label_2_4 NUMERIC,
+                    label_2_5 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART75 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1_1 VARCHAR(100),
+                    label_1_2 VARCHAR(100),
+                    label_1_3 VARCHAR(100),
+                    label_1_4 VARCHAR(100),
+                    label_2_1 VARCHAR(100),
+                    label_2_2 VARCHAR(100),
+                    label_2_3 VARCHAR(100),
+                    label_2_4 VARCHAR(100),
+                    label_2_5 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT75 = """index_0, label_1_1, label_1_2, label_1_3, label_1_4,  label_2_1, label_2_2, label_2_3, label_2_4, label_2_5"""
+LANG_COL_NAMES_FOR_QUERY_PLOT75 = """index, label_1_1, label_1_2, label_1_3, label_1_4,  label_2_1, label_2_2, label_2_3, label_2_4, label_2_5, names, sources"""
+VAL_QTY_PLOT75 = """%s, %s, %s, %s, %s, %s, %s, %s, %s, %s """
+VAL_QTY_NAMES_PLOT75 = """%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s """
+TABLE_NAME_PLOT75 = 'monthly_forecast_of_export_and_import'
+TABLE_NAME_NAMES_PLOT75 = 'names_forecast_of_export_and_import'
+FILE_PLOT75_NAME = '/home/olga/PycharmProjects/wix_page/process_data/Chart75.json'
+COLUMN_NAMES_PLOT75 = ['index_0', 'label_1_1', 'label_1_2', 'label_1_3', 'label_1_4', 'label_2_1', 'label_2_2',
+                      'label_2_3', 'label_2_4', 'label_2_5']
+LANG_COLUMN_NAMES_PLOT75 = ['index', 'label_1_1', 'label_1_2', 'label_1_3', 'label_1_4', 'label_2_1', 'label_2_2',
+                           'label_2_3', 'label_2_4', 'label_2_5', 'names', 'sources']
+LANG_LABELS_PLOT_75 = ['label_1_1', 'label_1_2', 'label_1_3', 'label_1_4', 'label_2_1', 'label_2_2', 'label_2_3',
+                       'label_2_4', 'label_2_5']
+INDEXES_PLOT_75 = ['index_0']
+
+
+CREATE_TABLE_COL_NAMES_CHART76 = """
+                    id SERIAL PRIMARY KEY,
+                    index_0 NUMERIC,
+                    index_1 NUMERIC,
+                    label_1 NUMERIC,
+                    label_2 NUMERIC,
+                    label_3 NUMERIC,
+                    label_4 NUMERIC
+                """
+CREATE_TABLE_NAMES_COL_NAMES_CHART76 = """
+                    index VARCHAR(50) UNIQUE,
+                    label_1 VARCHAR(100),
+                    label_2 VARCHAR(100),
+                    label_3 VARCHAR(100),
+                    label_4 VARCHAR(100),
+                    names VARCHAR(300),
+                    sources VARCHAR(200)
+                """
+COL_NAMES_FOR_QUERY_PLOT76 = 'index_0, index_1, label_1, label_2, label_3, label_4'
+LANG_COL_NAMES_FOR_QUERY_PLOT76 = 'index, label_1, label_2, label_3, label_4, names, sources'
+VAL_QTY_PLOT76 = '%s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT76 = '%s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT76 = 'monthly_import_trend'
+TABLE_NAME_NAMES_PLOT76 = 'name_import_trend'
+FILE_PLOT76_NAME = f'{current_dir}/Chart76.json'
+COLUMN_NAMES_PLOT76 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_3', 'label_4']
+LANG_COLUMN_NAMES_PLOT76 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'names', 'sources']
+LANG_LABELS_PLOT_76 = ['label_1', 'label_2', 'label_3', 'label_4']
+INDEXES_PLOT_76 = ['index_0', 'index_1']
+
+
+CREATE_TABLE_COL_NAMES_CHART77 = """
+                        id SERIAL PRIMARY KEY,
+                        index_0 NUMERIC,
+                        index_1 NUMERIC,
+                        label_1 NUMERIC,
+                        label_2 NUMERIC,
+                        label_3 NUMERIC,
+                        label_4 NUMERIC,
+                        label_1_1 NUMERIC,
+                        label_2_1 NUMERIC,
+                        label_3_1 NUMERIC,
+                        label_4_1 NUMERIC
+                    """
+CREATE_TABLE_NAMES_COL_NAMES_CHART77 = """
+                        index VARCHAR(50),
+                        label_1 VARCHAR(100),
+                        label_2 VARCHAR(100),
+                        label_3 VARCHAR(100),
+                        label_4 VARCHAR(100),
+                        names VARCHAR(100),
+                        sources VARCHAR(100)
+                    """
+COL_NAMES_FOR_QUERY_PLOT77 = 'index_0, index_1, label_1, label_2, label_3, label_4, label_1_1, label_2_1, label_3_1, label_4_1'
+LANG_COL_NAMES_FOR_QUERY_PLOT77 = 'index, label_1, label_2, label_3, label_4, names, sources'
+VAL_QTY_PLOT77 = '%s, %s, %s, %s, %s, %s, %s, %s, %s, %s'
+VAL_QTY_NAMES_PLOT77 = '%s, %s, %s, %s, %s, %s, %s'
+TABLE_NAME_PLOT77 = "monthly_import_structure_by_goods_type_in_2021_24"
+TABLE_NAME_NAMES_PLOT77 = "names_import_structure_by_goods_type_in_2021_24"
+FILE_PLOT77_NAME = f"{current_dir}/Chart77.json"
+COLUMN_NAMES_PLOT77 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_3', 'label_4', 'label_1.1', 'label_2.1',
+                       'label_3.1', 'label_4.1']
+LANG_COLUMN_NAMES_PLOT77 = ['index', 'label_1', 'label_2', 'label_3', 'label_4', 'names', 'sources']
+LANG_LABELS_PLOT_77 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_1_1', 'label_2_1', 'label_3_1', 'label_4_1']
+LANG_LABELS_PLOT_77_TO_ADD = ['label_1', 'label_2', 'label_3', 'label_4',
+                              'label_1.1', 'label_2.1', 'label_3.1', 'label_4.1']
+INDEXES_PLOT_77 = ['index_0', 'index_1']
+DATA_TABLE_COLUMNS_PLOT77 = ['label_1', 'label_2', 'label_3', 'label_4']
+DATA_TABLE_COLUMNS_PLOT77_1 = ['label_1_1', 'label_2_1', 'label_3_1', 'label_4_1']
+NAMES_TABLE_COLUMNS_PLOT77 = ['label_1', 'label_2', 'label_3', 'label_4']

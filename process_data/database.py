@@ -6,7 +6,8 @@ import const
 
 class ProcessToDB:
     def __init__(self, labels, vals_qty, value_list, table, table_names, min_new_date=None,
-                 min_new_year=None, min_new_quoter=None, min_new_month=None, is_new=False, meta_labels=False):
+                 min_new_year=None, min_new_quoter=None, min_new_month=None, is_new=False, meta_labels=False,
+                 update_text=None):
         self.is_new = is_new
         self.labels = labels
         self.vals_qty = vals_qty
@@ -18,6 +19,7 @@ class ProcessToDB:
         self.min_new_year = min_new_year
         self.min_new_quoter = min_new_quoter
         self.meta_labels = meta_labels
+        self.update_text = update_text
 
     @staticmethod
     def connect_to_db():
@@ -71,8 +73,19 @@ class ProcessToDB:
         elif self.min_new_year is not None and self.min_new_month is None and self.min_new_quoter is None and self.min_new_date is None:
             my_query = Queries.UPDATE_DATA_BY_YEAR.format(year=str(self.min_new_year),
                                                                      table=self.table)
+        elif self.min_new_year is None and self.min_new_month is None and self.min_new_quoter is None and self.min_new_date is None:
+            i = 0
+            queries = []
+            for text in self.update_text:
+                my_query = Queries.UPDATE_TEXT.format(table=self.table, text=text)
+                queries.append(my_query)
+
         conn, cursor = self.connect_to_db()
-        cursor.execute(my_query)
+        if self.min_new_year is None and self.min_new_month is None and self.min_new_quoter is None and self.min_new_date is None:
+            for query in queries:
+                cursor.execute(query)
+        else:
+            cursor.execute(my_query)
         conn.commit()
         conn.close()
 
