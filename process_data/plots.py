@@ -3474,5 +3474,3 @@ def build_plot77(lang, start_date, end_date):
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
 
     return fig, my_names['names'][0], my_names['sources'][0]
-
-
