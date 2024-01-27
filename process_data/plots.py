@@ -2227,6 +2227,18 @@ def build_plot50(lang, min_year, max_year):
     elif lang == "RU":
         my_df = data_ru
         my_names = ru_names
+    translations = {
+        'label_1': {
+            'RU': 'Прогноз',
+            'ENG': 'Forecast',
+            'UKR': 'Прогноз',
+        },
+        'label_2': {
+            'RU': 'Факт',
+            'ENG': 'Fact',
+            'UKR': 'Факт'
+        },
+    }
     fig = go.Figure()
     my_df = my_df[my_df['index_1'] != 'NaN']
     my_df['index_1'] = my_df['index_1'].apply(split_quoter)
@@ -2238,11 +2250,11 @@ def build_plot50(lang, min_year, max_year):
     my_df = my_df[(my_df['Date'] >= min_year) & (my_df['Date'] <= max_year)]
     scatter = go.Scatter(x=[my_df['Date'], my_df['index_1']], y=my_df['label_1'],
                          mode='lines+markers',
-                         marker=dict(color=ueo_colors['ueo-red']))
+                         marker=dict(color=ueo_colors['ueo-red']), name=translations['label_1'][lang])
 
     scatter1 = go.Scatter(x=[my_df['Date'], my_df['index_1']], y=my_df['label_2'],
                          mode='lines+markers',
-                         marker=dict(color=ueo_colors['ueo-grey']))
+                         marker=dict(color=ueo_colors['ueo-grey']), name=translations['label_2'][lang])
     fig.add_trace(scatter)
     fig.add_trace(scatter1)
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
