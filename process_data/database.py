@@ -1,7 +1,5 @@
-import pandas as pd
 import psycopg2
-import Queries
-import const
+import process_data.Queries as Queries
 
 
 class ProcessToDB:

@@ -1,6 +1,7 @@
 import os
 
 current_dir = os.getcwd()
+current_dir = f"{current_dir}/process_data"
 
 
 CREATE_TABLE_COL_NAMES_CHART1 = """
@@ -1362,23 +1363,24 @@ CREATE_TABLE_COL_NAMES_CHART50 = """
                         id SERIAL PRIMARY KEY,
                         index_0 VARCHAR(50),
                         index_1 VARCHAR(50),
-                        label_1 NUMERIC
+                        label_1 NUMERIC,
+                        label_2 NUMERIC
                     """
 CREATE_TABLE_NAMES_COL_NAMES_CHART50 = """
                         index VARCHAR(50),
                         names VARCHAR(100),
                         sources VARCHAR(100)
                     """
-COL_NAMES_FOR_QUERY_PLOT50 = 'index_0, index_1, label_1'
+COL_NAMES_FOR_QUERY_PLOT50 = 'index_0, index_1, label_1, label_2'
 LANG_COL_NAMES_FOR_QUERY_PLOT50 = 'index, names, sources'
-VAL_QTY_PLOT50 = '%s, %s, %s'
+VAL_QTY_PLOT50 = '%s, %s, %s, %s'
 VAL_QTY_NAMES_PLOT50 = '%s, %s, %s'
 TABLE_NAME_PLOT50 = "monthly_real_gdp_trend"
 TABLE_NAME_NAMES_PLOT50 = "names_real_gdp_trend"
 FILE_PLOT50_NAME = f"{current_dir}/Chart50.json"
-COLUMN_NAMES_PLOT50 = ['index_0', 'index_1', 'label_1']
+COLUMN_NAMES_PLOT50 = ['index_0', 'index_1', 'label_1', 'label_2']
 LANG_COLUMN_NAMES_PLOT50 = ['index', 'names', 'sources']
-LANG_LABELS_PLOT_50 = ['label_1']
+LANG_LABELS_PLOT_50 = ['label_1', 'label_2']
 INDEXES_PLOT_50 = ['index_0', 'index_1']
 DATA_TABLE_COLUMNS_PLOT50 = []
 NAMES_TABLE_COLUMNS_PLOT50 = []
@@ -1967,7 +1969,6 @@ LANG_COLUMN_NAMES_PLOT66 = ['index', 'label_1', 'label_2', 'label_3', 'label_4',
 LANG_LABELS_PLOT_66 = ['label_1', 'label_2', 'label_3', 'label_4', 'label_5', 'label_6', 'label_7', 'label_8',
                        'label_9', 'label_10']
 INDEXES_PLOT_66 = ['index_0']
-
 
 
 CREATE_TABLE_COL_NAMES_CHART67 = """

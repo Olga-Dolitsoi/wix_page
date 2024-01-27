@@ -8,10 +8,7 @@ import plots as pl
 import const as const
 
 
-date = pl.convert_date(const.TABLE_NAME_PLOT30, const.TABLE_NAME_NAMES_PLOT30, const.LANG_LABELS_PLOT_30,
-                                  const.DATA_TABLE_COLUMNS_PLOT30,
-                                  const.NAMES_TABLE_COLUMNS_PLOT30
-                                  )
+date = pl.convert_date(const.TABLE_NAME_PLOT42, const.TABLE_NAME_NAMES_PLOT42, const.LANG_LABELS_PLOT_42)
 languages = ['ENG', 'UKR', 'RU']
 
 app = dash.Dash(__name__)
@@ -90,9 +87,10 @@ def update_chart(start_date, end_date, lang, url_search):
 
     if url_end_date:
         end_date = url_end_date
-    fig, name, source = pl.build_plot30(lang=lang, start_date=start_date, end_date=end_date)
+    fig, name, source = pl.build_plot42(lang=lang, start_date=start_date, end_date=end_date)
 
     return fig, name, source
+
 
 @app.callback(
     Output('url', 'search'),
@@ -117,7 +115,7 @@ try:
 except:
     ssh_con = None
 
-my_port = 8075
+my_port = 8122
 
 if __name__ == '__main__':
     if ssh_con is not None:
@@ -126,5 +124,4 @@ if __name__ == '__main__':
                        ssl_context=('/etc/letsencrypt/live/ueo-charts.com/fullchain.pem',
                                     '/etc/letsencrypt/live/ueo-charts.com/privkey.pem'))
     else:
-        app.run_server(host='0.0.0.0', port=my_port)
-
+        app.run_server(host='127.0.0.1', port=my_port)

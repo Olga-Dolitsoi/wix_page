@@ -50,7 +50,7 @@ def update_chart(lang, url_search):
 
     if url_lang and url_lang != lang:
         lang = url_lang
-    fig, name, source = pl.build_plot57(lang)
+    fig, name, source = pl.build_plot43(lang)
 
     return fig, name, source
 
@@ -68,7 +68,7 @@ try:
 except:
     ssh_con = None
 
-my_port = 8098
+my_port = 8124
 
 if __name__ == '__main__':
     if ssh_con is not None:
