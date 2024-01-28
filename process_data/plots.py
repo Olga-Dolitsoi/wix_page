@@ -99,7 +99,7 @@ def build_plot_1(lang, start_date, end_date):
         data_ua['Date'] = pd.to_datetime(
             (data_ua['index_0'].astype(int)).astype(str) + '-' + (data_ua['index_1'].astype(int)).astype(str),
             format='%Y-%m')
-        data_ua = data_ua[(data_ua['Дата'] >= start_date) & (data_ua['Дата'] <= end_date)]
+        data_ua = data_ua[(data_ua['Date'] >= start_date) & (data_ua['Date'] <= end_date)]
         data_ua['summ'] = data_ua[list(ua_names.iloc[0])[1:-2]].sum(axis=1)
         ua_names_list = list(ua_names.iloc[0])[1:-2]
         fig = go.Figure()
@@ -168,7 +168,7 @@ def build_plot_1(lang, start_date, end_date):
         data_ru['Date'] = pd.to_datetime(
             (data_ru['index_0'].astype(int)).astype(str) + '-' + (data_ru['index_1'].astype(int)).astype(str),
             format='%Y-%m')
-        data_ru = data_ru[(data_ru['Дата'] >= start_date) & (data_ru['Дата'] <= end_date)]
+        data_ru = data_ru[(data_ru['Date'] >= start_date) & (data_ru['Date'] <= end_date)]
         data_ru['summ'] = data_ru[list(ru_names.iloc[0])[1:-2]].sum(axis=1)
         ru_names_list = list(ru_names.iloc[0])[1:-2]
         fig = go.Figure()
