@@ -2341,7 +2341,7 @@ def build_plot51(lang, start_date, end_date):
         xanchor="center",
         x=0.5
     ))
-    return fig, my_names['names'][0], my_names['sources'][0]
+    return fig, my_names['names'][0].replace('_x000D_',''), my_names['sources'][0]
 
 
 def build_plot52(lang):
