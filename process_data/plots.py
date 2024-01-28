@@ -211,7 +211,7 @@ def build_plot_2(lang, date):
         data_ua_y = data_ua[ua_names_list[:-1]].values.flatten()
         summ = data_ua['Всього'].values
 
-        fig = px.pie(data_ua, values=data_ua_y, labels=ua_names_list[:-1], names=ua_names_list[:-1],
+        fig = px.pie(data_ua, values=data_ua_y,  names=ua_names_list[:-1],
                      hover_data=[ua_names_list[:-1], data_ua_y],
                      hole=0.5, color_discrete_sequence=ueo_colors_0)
         fig.add_annotation(
@@ -221,9 +221,7 @@ def build_plot_2(lang, date):
             showarrow=False,
             font=dict(size=20, family='Montserrat'),
         )
-        fig.update_traces(textposition='outside', textinfo='percent+label',
-                          hovertemplate=None, textfont=dict(family="Montserrat", size=20),
-                          insidetextorientation='horizontal', showlegend=True)
+
         fig.update_layout(width=800, height=600, font=dict(
             family="Montserrat", size=14))
         return fig, ua_names['names'], ua_names['sources']
@@ -234,7 +232,7 @@ def build_plot_2(lang, date):
         data_eng_y = data_eng[eng_names_list[:-1]].values.flatten()
         summ = data_eng['Total'].values
 
-        fig = px.pie(data_ua, values=data_eng_y, labels=eng_names_list[:-1], names=eng_names_list[:-1],
+        fig = px.pie(data_ua, values=data_eng_y,  names=eng_names_list[:-1],
                      hover_data=[eng_names_list[:-1], data_eng_y],
                      hole=0.5, color_discrete_sequence=ueo_colors_0)
         fig.add_annotation(
@@ -244,9 +242,7 @@ def build_plot_2(lang, date):
             showarrow=False,
             font=dict(size=20, family='Montserrat'),
         )
-        fig.update_traces(textposition='outside', textinfo='percent+label',
-                          hovertemplate=None, textfont=dict(family="Montserrat", size=20),
-                          insidetextorientation='horizontal', showlegend=True)
+
         fig.update_layout(width=800, height=600, font=dict(
             family="Montserrat", size=14))
         return fig, eng_names['names'], eng_names['sources']
@@ -257,7 +253,7 @@ def build_plot_2(lang, date):
         data_ru_y = data_ru[ru_names_list[:-1]].values.flatten()
         summ = data_ru['Всего'].values
 
-        fig = px.pie(data_ru, values=data_ru_y, labels=ru_names_list[:-1], names=ru_names_list[:-1],
+        fig = px.pie(data_ru, values=data_ru_y, names=ru_names_list[:-1],
                      hover_data=[ru_names_list[:-1], data_ru_y],
                      hole=0.5, color_discrete_sequence=ueo_colors_0)
         fig.add_annotation(
@@ -267,9 +263,7 @@ def build_plot_2(lang, date):
             showarrow=False,
             font=dict(size=20, family='Montserrat'),
         )
-        fig.update_traces(textposition='outside', textinfo='percent+label',
-                          hovertemplate=None, textfont=dict(family="Montserrat", size=20),
-                          insidetextorientation='horizontal', showlegend=True)
+
         fig.update_layout(width=800, height=600, font=dict(
             family="Montserrat", size=14))
         return fig, ru_names['names'][0], ru_names['sources'][0]
