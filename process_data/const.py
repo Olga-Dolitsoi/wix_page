@@ -1311,7 +1311,9 @@ CREATE_TABLE_COL_NAMES_CHART47 = """
                         index_0 NUMERIC,
                         index_1 NUMERIC,
                         label_1 NUMERIC,
-                        label_2 NUMERIC
+                        label_2 NUMERIC,
+                        label_1_1 NUMERIC,
+                        label_2_1 NUMERIC
                     """
 CREATE_TABLE_NAMES_COL_NAMES_CHART47 = """
                         index VARCHAR(50),
@@ -1320,40 +1322,42 @@ CREATE_TABLE_NAMES_COL_NAMES_CHART47 = """
                         names VARCHAR(100),
                         sources VARCHAR(100)
                     """
-COL_NAMES_FOR_QUERY_PLOT47 = 'index_0, index_1, label_1, label_2'
+COL_NAMES_FOR_QUERY_PLOT47 = 'index_0, index_1, label_1, label_2, label_1_1, label_2_1'
 LANG_COL_NAMES_FOR_QUERY_PLOT47 = 'index, label_1, label_2, names, sources'
-VAL_QTY_PLOT47 = '%s, %s, %s, %s'
+VAL_QTY_PLOT47 = '%s, %s, %s, %s, %s, %s'
 VAL_QTY_NAMES_PLOT47 = '%s, %s, %s, %s, %s'
 TABLE_NAME_PLOT47 = "monthly_the_dynamics_of_the_ppi_and_ua_cpi "
 TABLE_NAME_NAMES_PLOT47 = "names_the_dynamics_of_the_ppi_and_ua_cpi"
 FILE_PLOT47_NAME = f"{current_dir}/Chart47.json"
-COLUMN_NAMES_PLOT47 = ['index_0', 'index_1', 'label_1', 'label_2']
+COLUMN_NAMES_PLOT47 = ['index_0', 'index_1', 'label_1', 'label_2', 'label_1_1', 'label_2_1']
 LANG_COLUMN_NAMES_PLOT47 = ['index', 'label_1', 'label_2', 'names', 'sources']
-LANG_LABELS_PLOT_47 = ['label_1', 'label_2']
+LANG_LABELS_PLOT_47 = ['label_1', 'label_2', 'label_1_1', 'label_2_1']
 INDEXES_PLOT_47 = ['index_0', 'index_1']
-
+DATA_TABLE_COLUMNS_PLOT47 = ['label_1', 'label_2']
+NAMES_TABLE_COLUMNS_PLOT47 = ['label_1', 'label_2']
 
 CREATE_TABLE_COL_NAMES_CHART49 = """
                         id SERIAL PRIMARY KEY,
                         index_0 VARCHAR(50),
                         index_1 VARCHAR(50),
-                        label_1 NUMERIC
+                        label_1 NUMERIC,
+                        label_2 NUMERIC
                     """
 CREATE_TABLE_NAMES_COL_NAMES_CHART49 = """
                         index VARCHAR(50),
                         names VARCHAR(100),
                         sources VARCHAR(100)
                     """
-COL_NAMES_FOR_QUERY_PLOT49 = 'index_0, index_1, label_1'
+COL_NAMES_FOR_QUERY_PLOT49 = 'index_0, index_1, label_1, label_2'
 LANG_COL_NAMES_FOR_QUERY_PLOT49 = 'index, names, sources'
-VAL_QTY_PLOT49 = '%s, %s, %s'
+VAL_QTY_PLOT49 = '%s, %s, %s, %s'
 VAL_QTY_NAMES_PLOT49 = '%s, %s, %s'
 TABLE_NAME_PLOT49 = "monthly_dollar_gdp_trend"
 TABLE_NAME_NAMES_PLOT49 = "names_dollar_gdp_trend"
 FILE_PLOT49_NAME = f"{current_dir}/Chart49.json"
-COLUMN_NAMES_PLOT49 = ['index_0', 'index_1', 'label_1']
+COLUMN_NAMES_PLOT49 = ['index_0', 'index_1', 'label_1', 'label_2']
 LANG_COLUMN_NAMES_PLOT49 = ['index', 'names', 'sources']
-LANG_LABELS_PLOT_49 = ['label_1']
+LANG_LABELS_PLOT_49 = ['label_1', 'label_2']
 INDEXES_PLOT_49 = ['index_0', 'index_1']
 DATA_TABLE_COLUMNS_PLOT49 = []
 NAMES_TABLE_COLUMNS_PLOT49 = []
