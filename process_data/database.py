@@ -1,5 +1,5 @@
 import psycopg2
-import process_data.Queries as Queries
+import Queries as Queries
 
 
 class ProcessToDB:
