@@ -128,7 +128,7 @@ def build_plot_1(lang, start_date, end_date):
             x=0.5
         ), title=None
         )
-        fig.update_layout(width=1600, height=800)
+        fig.update_layout(width=800, height=600)
         return fig, ua_names['names'], ua_names['sources']
     elif lang == 'ENG':
         data_eng['Date'] = pd.to_datetime(
@@ -197,7 +197,7 @@ def build_plot_1(lang, start_date, end_date):
             x=0.5
         ), title=None
         )
-        fig.update_layout(width=1600, height=800)
+        fig.update_layout(width=800, height=600)
         return fig, ru_names['names'][0], ru_names['sources'][0]
 
 
