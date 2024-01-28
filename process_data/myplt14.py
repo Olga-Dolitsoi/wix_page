@@ -6,6 +6,8 @@ from dash.dependencies import Input, Output, State
 import dash_mantine_components as dmc
 import plots as pl
 import const as const
+min_year = 2010
+max_year = 2024
 
 date = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT19, const.TABLE_NAME_NAMES_PLOT19, const.LANG_LABELS_PLOT_19)
 
@@ -17,22 +19,19 @@ app.layout = html.Div([
     dcc.Location(id='url', refresh=False),  # Add dcc.Location to capture URL
     html.H1(id='name', style={'fontSize': 26, 'fontFamily': 'Montserrat'}),
 
-
     html.Div([
         dmc.Group(
             children=[
                 dmc.Select(id='min_year',
                            data=[{'label': dt, 'value': dt} for dt in date],
+                           value=min_year,
                            style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 0},
-                           label='Language'),
+                           label='Start Date'),
                 dmc.Select(id='max_year',
                            data=[{'label': dt, 'value': dt} for dt in date],
+                           value=max_year,
                            style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 0},
-                           label='Language'),
-                dmc.Select(id='language-dropdown',
-                           data=[{'label': lang, 'value': lang} for lang in languages],
-                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
-                           label='Language')]
+                           label='End Date')]
         ),
     ]),
 
@@ -47,59 +46,22 @@ app.layout = html.Div([
      Output('name', 'children'),
      Output('source', 'children')],
     [Input('min_year', 'value'),
-     Input('max_year', 'value'),
-     Input('language-dropdown', 'value')
-     ],
+     Input('max_year', 'value')],
     [State('url', 'search')]
 
 )
-def update_chart(start_date, end_date, lang, url_search):
-    url_start_date = None
-    url_end_date = None
-    url_lang = None
+def update_chart(start_date, end_date, url_search):
+    lang = None
 
     if url_search:
         params = [param.split('=') for param in url_search[1:].split('&')]
         for param, value in params:
-            if param == 'min-year':
-                url_start_date = int(value)
-            elif param == 'max-year':
-                url_end_date = int(value)
-            elif param == 'language-dropdown':
-                url_lang = value
-
-    # If the URL parameters are present, update the dropdowns
-    if url_start_date and url_start_date != start_date:
-        start_date = url_start_date
-
-    if url_end_date and url_end_date != end_date:
-        end_date = url_end_date
-
-    if url_lang and url_lang != lang:
-        lang = url_lang
+            if param == 'language-dropdown':
+                lang = value
 
     fig, name, source = pl.build_plot19(lang=lang, min_date=start_date, max_date=end_date)
 
     return fig, name, source
-
-
-@app.callback(
-    Output('url', 'search'),
-    [Input('min-year', 'value'),
-     Input('max-year', 'value'),
-     Input('language-dropdown', 'value')]
-)
-def update_url(min_year, max_year, lang):
-    # Update the URL with the selected values
-    url_params = []
-    if min_year:
-        url_params.append(f'min-year={min_year}')
-    if max_year:
-        url_params.append(f'max-year={max_year}')
-    if lang:
-        url_params.append(f'language-dropdown={lang}')
-
-    return '?' + '&'.join(url_params)
 
 
 try:

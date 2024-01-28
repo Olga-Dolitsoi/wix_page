@@ -8,6 +8,7 @@ import plots as pl
 import const as const
 
 date = pl.convert_text_date(const.TABLE_NAME_PLOT40, const.TABLE_NAME_NAMES_PLOT40, const.LANG_LABELS_PLOT_40)
+one_year = date.max()
 
 languages = ['ENG', 'UKR', 'RU']
 
@@ -23,15 +24,11 @@ app.layout = html.Div([
             children=[
                 dmc.Select(id='year',
                            data=[{'label': dt, 'value': dt} for dt in date],
+                           value=one_year,
                            style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 0},
-                           label='Date'),
-                dmc.Select(id='language-dropdown',
-                           data=[{'label': lang, 'value': lang} for lang in languages],
-                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
-                           label='Language')]
+                           label='Year')]
         ),
     ]),
-
     # Plotly Chart
     dcc.Graph(id='stacked-bar-chart'),
     html.Div(id='source', style={'font-style': 'italic', 'fontFamily': 'Montserrat'})
@@ -42,48 +39,21 @@ app.layout = html.Div([
     [Output('stacked-bar-chart', 'figure'),
      Output('name', 'children'),
      Output('source', 'children')],
-    [Input('year', 'value'),
-     Input('language-dropdown', 'value')
-     ],
+    [Input('year', 'value')],
     [State('url', 'search')]
 
 )
-def update_chart(year, lang, url_search):
-    url_year = None
-    url_lang = None
+def update_chart(year, url_search):
+    lang = None
 
     if url_search:
         params = [param.split('=') for param in url_search[1:].split('&')]
         for param, value in params:
-            if param == 'one-year':
-                url_year = int(value)
-            elif param == 'language-dropdown':
-                url_lang = value
-
-    # If the URL parameter is present, update the year and language dropdowns
-    if url_year and url_year != year:
-        year = url_year
-
-    if url_lang and url_lang != lang:
-        lang = url_lang
+            if param == 'language-dropdown':
+                lang = value
     fig, name, source = pl.build_plot40(lang=lang, date=year)
 
     return fig, name, source
-
-@app.callback(
-    Output('url', 'search'),
-    [Input('one-year', 'value'),
-     Input('language-dropdown', 'value')]
-)
-def update_url(year, lang):
-    # Update the URL with the selected year and language
-    url_params = []
-    if year:
-        url_params.append(f'one-year={year}')
-    if lang:
-        url_params.append(f'language-dropdown={lang}')
-
-    return '?' + '&'.join(url_params)
 
 
 try:

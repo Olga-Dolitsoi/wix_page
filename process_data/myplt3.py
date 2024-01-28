@@ -6,6 +6,7 @@ from dash.dependencies import Input, Output, State
 import dash_mantine_components as dmc
 import plots as pl
 import const as const
+one_year = 2023
 
 date = pl.prepare_date_year_select_one(const.TABLE_NAME_PLOT4, const.TABLE_NAME_NAMES_PLOT4, const.LANG_LABELS_PLOT_4)
 
@@ -17,18 +18,14 @@ app.layout = html.Div([
     dcc.Location(id='url', refresh=False),  # Add dcc.Location to capture URL
     html.H1(id='name', style={'fontSize': 26, 'fontFamily': 'Montserrat'}),
 
-
     html.Div([
         dmc.Group(
             children=[
                 dmc.Select(id='year',
                            data=[{'label': dt, 'value': dt} for dt in date],
+                           value=one_year,
                            style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 0},
-                           label='Language'),
-                dmc.Select(id='language-dropdown',
-                           data=[{'label': lang, 'value': lang} for lang in languages],
-                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
-                           label='Language')]
+                           label='Year')]
         ),
     ]),
 
@@ -42,48 +39,21 @@ app.layout = html.Div([
     [Output('stacked-bar-chart', 'figure'),
      Output('name', 'children'),
      Output('source', 'children')],
-    [Input('year', 'value'),
-     Input('language-dropdown', 'value')
-     ],
+    [Input('year', 'value')],
     [State('url', 'search')]
-
 )
-def update_chart(year, lang, url_search):
-    url_year = None
-    url_lang = None
+def update_chart(year, url_search):
+    lang = None
 
     if url_search:
         params = [param.split('=') for param in url_search[1:].split('&')]
         for param, value in params:
-            if param == 'one-year':
-                url_year = int(value)
-            elif param == 'language-dropdown':
-                url_lang = value
+            if param == 'language-dropdown':
+                lang = value
 
-    # If the URL parameter is present, update the year and language dropdowns
-    if url_year and url_year != year:
-        year = url_year
-
-    if url_lang and url_lang != lang:
-        lang = url_lang
     fig, name, source = pl.build_plot_4(lang=lang, year=year)
 
     return fig, name, source
-
-@app.callback(
-    Output('url', 'search'),
-    [Input('one-year', 'value'),
-     Input('language-dropdown', 'value')]
-)
-def update_url(year, lang):
-    # Update the URL with the selected year and language
-    url_params = []
-    if year:
-        url_params.append(f'one-year={year}')
-    if lang:
-        url_params.append(f'language-dropdown={lang}')
-
-    return '?' + '&'.join(url_params)
 
 
 try:

@@ -6,7 +6,8 @@ from dash.dependencies import Input, Output, State
 import dash_mantine_components as dmc
 import plots as pl
 import const as const
-
+date_start = '2023-01-01'
+date_end = '2023-12-31'
 
 date = pl.convert_text_date_nan(const.TABLE_NAME_PLOT58, const.TABLE_NAME_NAMES_PLOT58, const.LANG_LABELS_PLOT_58)
 languages = ['ENG', 'UKR', 'RU']
@@ -24,6 +25,7 @@ app.layout = html.Div([
                 dmc.DatePicker(
                     id='start-date-picker',
                     label="Start Date",
+                    value=date_start,
                     inputFormat='MM/YYYY',  # Display format for Month and Year
                     minDate=date.min(),
                     maxDate=date.max(),
@@ -33,16 +35,13 @@ app.layout = html.Div([
                 dmc.DatePicker(
                     id='end-date-picker',
                     label="End Date",
+                    value=date_end,
                     inputFormat='MM/YYYY',  # Display format for Month and Year
                     minDate=date.min(),
                     maxDate=date.max(),
                     initialLevel='month',
                     style={"width": 200, 'fontFamily': 'Montserrat'}
-                ),
-                dmc.Select(id='language-dropdown',
-                           data=[{'label': lang, 'value': lang} for lang in languages],
-                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
-                           label='Language')]
+                )]
         ),
 
     ]),
@@ -59,55 +58,22 @@ app.layout = html.Div([
      Output('name', 'children'),
      Output('source', 'children')],
     [Input('start-date-picker', 'value'),
-     Input('end-date-picker', 'value'),
-     Input('language-dropdown', 'value')],
+     Input('end-date-picker', 'value')],
     [State('url', 'search')]
 
 )
-def update_chart(start_date, end_date, lang, url_search):
-    url_lang = None
-    url_start_date = None
-    url_end_date = None
+def update_chart(start_date, end_date, url_search):
+    lang = None
+
     if url_search:
         params = [param.split('=') for param in url_search[1:].split('&')]
         for param, value in params:
             if param == 'language-dropdown':
-                url_lang = value
-            elif param == 'start-date-picker':
-                url_start_date = value
-            elif param == 'end-date-picker':
-                url_end_date = value
+                lang = value
 
-    # If the URL parameter is present, update the language dropdown and date pickers
-    if url_lang and url_lang != lang:
-        lang = url_lang
-
-    if url_start_date:
-        start_date = url_start_date
-
-    if url_end_date:
-        end_date = url_end_date
     fig, name, source = pl.build_plot58(lang=lang, start_date=start_date, end_date=end_date)
 
     return fig, name, source
-
-@app.callback(
-    Output('url', 'search'),
-    [Input('start-date-picker', 'value'),
-     Input('end-date-picker', 'value'),
-     Input('language-dropdown', 'value')]
-)
-def update_url(start_date, end_date, lang):
-    # Update the URL with the selected values
-    url_params = []
-    if start_date:
-        url_params.append(f'start-date-picker={start_date}')
-    if end_date:
-        url_params.append(f'end-date-picker={end_date}')
-    if lang:
-        url_params.append(f'language-dropdown={lang}')
-
-    return '?' + '&'.join(url_params)
 
 try:
     ssh_con = os.getenv('SSH_CONNECTION').split(' ')[2]

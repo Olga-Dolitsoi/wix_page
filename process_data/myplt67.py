@@ -17,16 +17,6 @@ app.layout = html.Div([
     html.H1(id='name', style={'fontSize': 26, 'fontFamily': 'Montserrat'}),
 
 
-    html.Div([
-        dmc.Group(
-            children=[
-                dmc.Select(id='language-dropdown',
-                           data=[{'label': lang, 'value': lang} for lang in languages],
-                           style={'width': 200, 'fontFamily': 'Montserrat', 'margin-left': 50},
-                           label='Language')]
-        ),
-    ]),
-
     # Plotly Chart
     dcc.Graph(id='stacked-bar-chart'),
     html.Div(id='source', style={'font-style': 'italic', 'fontFamily': 'Montserrat'})
@@ -37,30 +27,20 @@ app.layout = html.Div([
     [Output('stacked-bar-chart', 'figure'),
      Output('name', 'children'),
      Output('source', 'children')],
-    [Input('language-dropdown', 'value')],
-    [State('url', 'search')]
+    [Input('url', 'search')]
 )
-def update_chart(lang, url_search):
-    url_lang = None
-    if url_search:
-        url_lang_param = [param.split('=') for param in url_search[1:].split('&') if 'lang' in param]
-        if url_lang_param:
-            url_lang = url_lang_param[0][1]
+def update_chart(url_search):
+    lang = None
 
-    if url_lang and url_lang != lang:
-        lang = url_lang
+    if url_search:
+        params = [param.split('=') for param in url_search[1:].split('&')]
+        for param, value in params:
+            if param == 'language-dropdown':
+                lang = value
+
     fig, name, source = pl.build_plot74(lang)
 
     return fig, name, source
-
-
-@app.callback(
-    Output('url', 'search'),
-    [Input('language-dropdown', 'value')]
-)
-def update_url(lang):
-    # Update the URL with the selected language
-    return f'?language-dropdown={lang}'
 
 
 try:
