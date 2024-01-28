@@ -96,7 +96,7 @@ def build_plot_1(lang, start_date, end_date):
     data = ProcessDataForPlot(const.TABLE_NAME_PLOT1, const.TABLE_NAME_NAMES_PLOT1, const.LANG_LABELS_PLOT_1)
     data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df()
     if lang == 'UKR':
-        data_ua['Дата'] = pd.to_datetime(
+        data_ua['Date'] = pd.to_datetime(
             (data_ua['index_0'].astype(int)).astype(str) + '-' + (data_ua['index_1'].astype(int)).astype(str),
             format='%Y-%m')
         data_ua = data_ua[(data_ua['Дата'] >= start_date) & (data_ua['Дата'] <= end_date)]
@@ -165,7 +165,7 @@ def build_plot_1(lang, start_date, end_date):
         )
         return fig, eng_names['names'], eng_names['sources']
     elif lang == 'RU':
-        data_ru['Дата'] = pd.to_datetime(
+        data_ru['Date'] = pd.to_datetime(
             (data_ru['index_0'].astype(int)).astype(str) + '-' + (data_ru['index_1'].astype(int)).astype(str),
             format='%Y-%m')
         data_ru = data_ru[(data_ru['Дата'] >= start_date) & (data_ru['Дата'] <= end_date)]
