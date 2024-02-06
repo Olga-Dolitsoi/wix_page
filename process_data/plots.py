@@ -1832,13 +1832,22 @@ def build_plot38(lang, start_date, end_date):
     my_df['Date'] = my_df['index_0'].apply(to_date)
     my_df.sort_values(by='Date', inplace=True)
     my_df = my_df[(my_df['Date'] >= start_date) & (my_df['Date'] <= end_date)]
-    fig = go.Figure()
-    i = 0
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
     colors = expenses_colors + income_colors
+    i = 0
     for col in my_df.columns[2:-1]:
-        fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[col],
-                                 mode='markers', name=my_names[col].iloc[0], marker=dict(color=colors[i])))
-        i += 1
+        if i < 5:
+            fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[col], mode='markers',
+                                name=my_names[col].iloc[0], marker=dict(color=expenses_colors[i])),  secondary_y=True)
+            i += 1
+        else:
+            fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col],
+                                    name=my_names[col].iloc[0],
+                                     marker=dict(color=expenses_colors[i - 6])))
+            i += 1
+    fig.update_yaxes(range=[0, 35], secondary_y=False)
+    fig.update_yaxes(range=[15, 20], secondary_y=True)
+    fig.update_layout(barmode='stack')
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
         orientation="h",
@@ -1945,6 +1954,11 @@ def convert_label_to_date(label):
     label = to_date(label)
     return str(label)
 
+def convert_label_to_date_1(label):
+    label = int(label)
+    label = to_date(label)
+    return label
+
 
 def build_plot41(lang):
     data = ProcessDataForPlot(const.TABLE_NAME_PLOT41, const.TABLE_NAME_NAMES_PLOT41, const.LANG_LABELS_PLOT_41)
@@ -1964,7 +1978,7 @@ def build_plot41(lang):
     i = 0
     fig = go.Figure()
     colors = income_colors + expenses_colors
-    bar_1 = go.Bar(x=[my_names_list[0]], y=[my_df[my_names_list[0]].iloc[0]], base=0,
+    bar_1 = go.Bar(x=[(convert_label_to_date_1(my_names_list[0])).strftime('%d %B %Y')], y=[my_df[my_names_list[0]].iloc[0]], base=0,
                    marker=dict(color=colors[i]))
     i += 1
     fig.add_trace(bar_1)
@@ -1973,7 +1987,8 @@ def build_plot41(lang):
         fig.add_trace(go.Bar(x=[col], y=[my_df[col].iloc[0]], base=baseline, marker=dict(color=colors[i]), name=col))
         baseline = baseline + my_df[col].iloc[0]
         i += 1
-    bar_7 = go.Bar(x=[my_names_list[6]], y=[my_df[my_names_list[6]].iloc[0]], marker=dict(color=colors[0]))
+    bar_7 = go.Bar(x=[(convert_label_to_date_1(my_names_list[6])).strftime('%d %B %Y')],
+                   y=[my_df[my_names_list[6]].iloc[0]], marker=dict(color=colors[0]))
     fig.add_trace(bar_7)
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
@@ -1983,7 +1998,7 @@ def build_plot41(lang):
         xanchor="center",
         x=0.5
     ))  # Adjust width and height as needed
-
+    fig.update_yaxes(range=[1350, 1450])
     return fig, my_names['names'][0], my_names['sources'][0]
 
 
