@@ -987,6 +987,8 @@ def build_plot15(lang, start_date, end_date):
         fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[name], name=name, marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode='group')
+    fig.update_yaxes(range=[24, 44], secondary_y=True)
+    fig.update_yaxes(range=[-6000, 6000], secondary_y=False)
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
         orientation="h",
@@ -1057,6 +1059,9 @@ def build_plot18(lang, start_date, end_date):
                              marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
+    fig.update_yaxes(range=[-200, 100], secondary_y=True)
+    fig.update_yaxes(range=[400, 1000], secondary_y=False)
+
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
         orientation="h",
@@ -2062,11 +2067,14 @@ def build_plot45(lang, start_date, end_date):
         (data_ru['index_0'].astype(int)).astype(str) + '-' + (data_ru['index_1'].astype(int)).astype(str),
         format='%Y-%m')
     my_df = my_df[(my_df['Date'] >= start_date) & (my_df['Date'] <= end_date)]
-    fig = go.Figure()
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[1]], name=my_names_list[1], mode='markers+lines',
-                             marker=dict(color=ueo_colors['ueo-blue'])))
+                             marker=dict(color=ueo_colors['ueo-blue'])), secondary_y=True)
+
+    fig.update_yaxes(range=[0, 180], secondary_y=True)
+    fig.update_yaxes(range=[0, 200], secondary_y=False)
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
         orientation="h",
@@ -2182,10 +2190,12 @@ def build_plot48(lang, start_date, end_date):
     my_df = my_df[(my_df['Date'] >= start_date) & (my_df['Date'] <= end_date)]
 
     fig = make_subplots(specs=[[{"secondary_y": True}]])
-    fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
+    fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[1]], name=my_names_list[1],
                          marker=dict(color=ueo_colors['ueo-navy'])))
-    fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[1]], name=my_names_list[1], mode='markers+lines',
+    fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0], mode='markers+lines',
                              marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
+    fig.update_yaxes(range=[310, 810], secondary_y=False)
+    fig.update_yaxes(range=[0, 25000], secondary_y=True)
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
         orientation="h",
@@ -2433,6 +2443,8 @@ def build_plot54(lang, start_date, end_date):
                              marker=dict(color=ueo_colors_0[i])),
                   secondary_y=True)
     fig.update_layout(barmode='stack')
+    fig.update_yaxes(range=[-100, 400], secondary_y=True)
+    fig.update_yaxes(range=[20, 140], secondary_y=False)
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
         orientation="h",
@@ -2787,13 +2799,24 @@ def build_plot7(lang, start_date, end_date):
     my_names_list = list(my_names.iloc[0])[1:-2]
     my_df['index_0'] = my_df['index_0'].astype(int)
     my_df = my_df[(my_df['index_0'] >= start_date) & (my_df['index_0'] <= end_date)]
-
+    summ_1 = my_df[my_names_list[0]].iloc[[-1]]
+    summ_2 = my_df[my_names_list[1]].iloc[[-1]]
     my_df.sort_values(by='index_0', inplace=True)
     fig = go.Figure()
     i = 0
     for col in my_names_list:
         fig.add_trace(go.Bar(x=my_df['index_0'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
+
+    fig.add_trace(go.Pie(
+        labels=my_names_list,  # Modify labels as needed
+        values=[summ_1.values[0], summ_2.values[0]],  # Modify values as needed
+        hole=0.5,  # Adjust the hole size to make it look like a donut chart
+        domain=dict(x=[0, 0.3], y=[0.7, 0.98]),
+        marker={'colors': ueo_colors_0}
+        # Position the pie chart in the top right corner
+    ))
+
     fig.update_layout(barmode='stack')
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
@@ -2879,16 +2902,22 @@ def build_plot60(lang, start_date, end_date):
         (data_ru['index_0'].astype(int)).astype(str) + '-' + (data_ru['index_1'].astype(int)).astype(str),
         format='%Y-%m')
     my_df = my_df[(my_df['Date'] >= start_date) & (my_df['Date'] <= end_date)]
-    fig = go.Figure()
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+    my_df[my_names_list[-2]] = my_df[my_names_list[-2]].apply(lambda x: x * 100)
     i = 0
-    for col in my_names_list[:-1]:
+    fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[-1]],
+                             name=my_names_list[-1], mode='lines',
+                             fill='tozeroy', marker=dict(color=ueo_colors['ueo-grey']),
+                             fillcolor="rgba(128, 128, 128, 0.25)"))
+
+    for col in my_names_list[:-2]:
         fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode='group')
-    fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[-1]],
-                         name=my_names_list[-1], mode='lines+markers',
-                         fill='tozeroy', marker=dict(color=ueo_colors['ueo-grey']),
-                         fillcolor="rgba(128, 128, 128, 0.5)"))
+    fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[-2]],
+                             name=my_names_list[-2], mode='lines+markers',
+                             marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
+
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
         orientation="h",
@@ -2978,15 +3007,17 @@ def build_plot62(lang, start_date, end_date):
     my_df = my_df[(my_df['Date'] >= start_date) & (my_df['Date'] <= end_date)]
 
     my_df[my_names_list[-1]] = my_df[my_names_list[-1]].apply(lambda x: x * 100)
-    fig = go.Figure()
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
     i = 0
     for col in my_names_list[:-1]:
         fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(barmode='group')
+    fig.update_layout(barmode='stack')
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[-1]],
                          name=my_names_list[-1], mode='lines+markers',
-                        marker=dict(color=ueo_colors['ueo-grey'])))
+                        marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
+    fig.update_yaxes(range=[-60, 60], secondary_y=True)
+
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
     fig.update_layout(legend=dict(
         orientation="h",
