@@ -212,7 +212,7 @@ def build_plot_2(lang, date):
         summ = data_ua['Всього'].values
 
         fig = px.pie(data_ua, values=data_ua_y,  names=ua_names_list[:-1],
-                     hover_data=[ua_names_list[:-1], data_ua_y],
+                     hover_data=[data_ua_y],
                      hole=0.5, color_discrete_sequence=ueo_colors_0)
         fig.add_annotation(
             text=str('%.2f' % summ),
@@ -221,9 +221,11 @@ def build_plot_2(lang, date):
             showarrow=False,
             font=dict(size=20, family='Montserrat'),
         )
-
+        fig.update_traces(textposition='inside', textfont_size=14, insidetextorientation='horizontal')
         fig.update_layout(width=800, height=600, font=dict(
-            family="Montserrat", size=14))
+            family="Montserrat", size=14), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+        fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+        fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
         return fig, ua_names['names'], ua_names['sources']
     if lang == 'ENG':
         eng_names_list = list(eng_names.iloc[0])[1:-2]
@@ -233,7 +235,7 @@ def build_plot_2(lang, date):
         summ = data_eng['Total'].values
 
         fig = px.pie(data_ua, values=data_eng_y,  names=eng_names_list[:-1],
-                     hover_data=[eng_names_list[:-1], data_eng_y],
+                     hover_data=[data_eng_y],
                      hole=0.5, color_discrete_sequence=ueo_colors_0)
         fig.add_annotation(
             text=str('%.2f' % summ),
@@ -242,9 +244,11 @@ def build_plot_2(lang, date):
             showarrow=False,
             font=dict(size=20, family='Montserrat'),
         )
-
+        fig.update_traces(textposition='inside', textfont_size=14, insidetextorientation='horizontal')
         fig.update_layout(width=800, height=600, font=dict(
-            family="Montserrat", size=14))
+            family="Montserrat", size=14), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+        fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+        fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
         return fig, eng_names['names'], eng_names['sources']
     if lang == 'RU':
         ru_names_list = list(ru_names.iloc[0])[1:-2]
@@ -254,7 +258,7 @@ def build_plot_2(lang, date):
         summ = data_ru['Всего'].values
 
         fig = px.pie(data_ru, values=data_ru_y, names=ru_names_list[:-1],
-                     hover_data=[ru_names_list[:-1], data_ru_y],
+                     hover_data=[data_ru_y],
                      hole=0.5, color_discrete_sequence=ueo_colors_0)
         fig.add_annotation(
             text=str('%.2f' % summ),
@@ -263,9 +267,11 @@ def build_plot_2(lang, date):
             showarrow=False,
             font=dict(size=20, family='Montserrat'),
         )
-
+        fig.update_traces(textposition='inside', textfont_size=14, insidetextorientation='horizontal')
         fig.update_layout(width=800, height=600, font=dict(
-            family="Montserrat", size=14))
+            family="Montserrat", size=14), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+        fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+        fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
         return fig, ru_names['names'][0], ru_names['sources'][0]
 
 
@@ -328,7 +334,9 @@ def build_plot_3(lang, start_date, end_date):
                             width=800,
                             barmode="group",
                             annotations=annotation,
-                            font=dict(family="Montserrat", size=14)
+                            font=dict(family="Montserrat", size=14),
+                            paper_bgcolor='rgba(0,0,0,0)',
+                            plot_bgcolor='rgba(0,0,0,0)'
                         ))
 
         fig.add_trace(go.Scatter(x=data_ua['Дата'], y=data_ua[ua_names_list[0]], name=ua_names_list[0],
@@ -336,6 +344,8 @@ def build_plot_3(lang, start_date, end_date):
         fig.add_scatter(x=data_ua['Дата'], y=data_ua[ua_names_list[0]], fill='tozeroy',
                         fillcolor="rgba(128, 128, 128, 0.5)",
                         mode='none', showlegend=False)
+        fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+        fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
         fig.update_layout(legend=dict(
             orientation="h",
             # tracegroupgap=20,
@@ -400,7 +410,9 @@ def build_plot_3(lang, start_date, end_date):
                             width=800,
                             barmode="group",
                             annotations=annotation,
-                            font=dict(family="Montserrat", size=14)
+                            font=dict(family="Montserrat", size=14),
+                            paper_bgcolor='rgba(0,0,0,0)',
+                            plot_bgcolor='rgba(0,0,0,0)'
                         ))
 
         fig.add_trace(go.Scatter(x=data_eng['Дата'], y=data_eng[eng_names_list[0]], name=eng_names_list[0],
@@ -408,6 +420,8 @@ def build_plot_3(lang, start_date, end_date):
         fig.add_scatter(x=data_eng['Дата'], y=data_eng[eng_names_list[0]], fill='tozeroy',
                         fillcolor="rgba(128, 128, 128, 0.5)",
                         mode='none', showlegend=False)
+        fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+        fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
         fig.update_layout(legend=dict(
             orientation="h",
             # tracegroupgap=20,
@@ -472,7 +486,9 @@ def build_plot_3(lang, start_date, end_date):
                             width=800,
                             barmode="group",
                             annotations=annotation,
-                            font=dict(family="Montserrat", size=14)
+                            font=dict(family="Montserrat", size=14),
+                            paper_bgcolor='rgba(0,0,0,0)',
+                            plot_bgcolor='rgba(0,0,0,0)'
                         ))
 
         fig.add_trace(go.Scatter(x=data_ru['Дата'], y=data_ru[ru_names_list[0]], name=ru_names_list[0],
@@ -480,6 +496,8 @@ def build_plot_3(lang, start_date, end_date):
         fig.add_scatter(x=data_ru['Дата'], y=data_ru[ru_names_list[0]], fill='tozeroy',
                         fillcolor="rgba(128, 128, 128, 0.5)",
                         mode='none', showlegend=False)
+        fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+        fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
         fig.update_layout(legend=dict(
             orientation="h",
             # tracegroupgap=20,
@@ -539,7 +557,10 @@ def build_plot_4(lang, year):
         )
         for trace in bar2.data:
             bar1.add_trace(trace)
-        bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+        bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                           paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+        bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+        bar1.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
         bar1.update_layout(legend=dict(
             orientation="h",
             # tracegroupgap=20,
@@ -584,7 +605,10 @@ def build_plot_4(lang, year):
         )
         for trace in bar2.data:
             bar1.add_trace(trace)
-        bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+        bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                           paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+        bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+        bar1.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
         bar1.update_layout(legend=dict(
             orientation="h",
             # tracegroupgap=20,
@@ -634,8 +658,10 @@ def build_plot_4(lang, year):
         )
         for trace in bar2.data:
             bar1.add_trace(trace)
-        bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
-
+        bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                           paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+        bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+        bar1.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
         bar1.add_annotation(
             text=str('%.2f' % summ),
             x=0.5,
@@ -693,7 +719,10 @@ def build_plot8(lang, start_date, end_date):
 
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[4]], name=my_names_list[4],
                              marker=dict(color=ueo_colors['ueo-navy'])))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -742,7 +771,10 @@ def build_plot9(lang, date):
 
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                              marker=dict(color=ueo_colors['ueo-red'])))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -777,7 +809,10 @@ def build_plot10(lang, min_year, max_year):
                          marker=dict(color=ueo_colors_0[1])), row=2, col=1)
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[2]], name=my_names_list[2],
                          marker=dict(color=ueo_colors_0[2])), row=3, col=1)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -813,7 +848,10 @@ def build_plot11(lang):
                              marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode='group')
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -844,7 +882,7 @@ def build_plot12(lang, year):
     data_y = my_df[my_names_list].values.flatten()
     summ = my_df[my_names_list].values.sum()
     fig = px.pie(data_ua, values=data_y, labels=my_names_list, names=my_names_list,
-                 hover_data=[my_names_list, data_y],
+                 hover_data=[data_y],
                  hole=0.5, color_discrete_sequence=ueo_colors_0)
     fig.add_annotation(
         text=str('%.2f' % summ),
@@ -853,8 +891,11 @@ def build_plot12(lang, year):
         showarrow=False,
         font=dict(size=20),
     )
-    fig.update_traces(textposition='inside', textinfo='percent+label')
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_traces(textposition='inside', textinfo='percent')
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -904,7 +945,10 @@ def build_plot13(lang, start_date, end_date):
                              fillcolor="rgba(128, 128, 128, 0.5)"))
     for bar in bar_list:
         fig.add_trace(bar)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -946,7 +990,10 @@ def build_plot14(lang, start_date, end_date):
         fig.update_yaxes(range=[-55000, 55000], secondary_y=True)
         i += 1
     fig.update_layout(barmode='group')
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="top",
@@ -989,7 +1036,10 @@ def build_plot15(lang, start_date, end_date):
     fig.update_layout(barmode='group')
     fig.update_yaxes(range=[24, 44], secondary_y=True)
     fig.update_yaxes(range=[-6000, 6000], secondary_y=False)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1023,7 +1073,10 @@ def build_plot17(lang, min_year, max_year):
                              marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
     fig.add_trace(go.Bar(x=my_df['index_0'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1062,7 +1115,10 @@ def build_plot18(lang, start_date, end_date):
     fig.update_yaxes(range=[-200, 100], secondary_y=True)
     fig.update_yaxes(range=[400, 1000], secondary_y=False)
 
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1096,7 +1152,11 @@ def build_plot19(lang, min_date, max_date):
                              marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
     fig.add_trace(go.Bar(x=my_df['index_0'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)'
+                      )
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1133,7 +1193,10 @@ def build_plot20(lang, start_date, end_date):
                   secondary_y=True)
     fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[my_names_list[0]], name=my_names_list[0],
                          marker=dict(color=ueo_colors['ueo-navy'])))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1169,7 +1232,10 @@ def build_plot21(lang):
                              marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode='group')
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1227,7 +1293,8 @@ def build_plot22(lang='UKR'):
     scatter = go.Scatter(x=my_df[my_names_list[0]], y=my_df[my_names_list[1]], text=my_df['index_1'],
                          textposition='top center', mode="markers+text", marker=dict(color=ueo_colors['ueo-navy']))
     fig.add_trace(scatter)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1260,7 +1327,10 @@ def build_plot23(lang, start_date, end_date):
     fig = go.Figure()
     line = go.Scatter(x=my_df['Date'], y=my_df['label_1'], mode='lines', marker=dict(color=ueo_colors['ueo-blue']))
     fig.add_trace(line)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1292,7 +1362,10 @@ def build_plot24(lang='ENG'):
                       marker=dict(color=ueo_colors['ueo-blue']),
                       text=my_df[my_names_list[1]].apply(lambda x: str(x) + '%'), textposition='top center')
     fig.add_trace(line)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1325,7 +1398,10 @@ def build_plot25(lang, start_date, end_date):
     fig = go.Figure()
     line = go.Scatter(x=my_df['Date'], y=my_df['label_1'], mode='lines', marker=dict(color=ueo_colors['ueo-navy']))
     fig.add_trace(line)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1362,7 +1438,10 @@ def build_plot26(lang, start_date, end_date):
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col].apply(lambda x: x * 100),
                               mode='lines', name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1400,7 +1479,10 @@ def build_plot27(lang, start_date, end_date):
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col].apply(lambda x: x * 100),
                               mode='lines', name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1441,7 +1523,10 @@ def build_plot28(lang, start_date, end_date):
     bar2 = go.Bar(x=my_df['Date'], y=my_df[my_names_list[2]], name=my_names_list[2],
                   marker=dict(color=ueo_colors['ueo-red']))
     fig.add_traces([scatter, bar1, bar2])
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1479,7 +1564,10 @@ def build_plot29(lang, start_date, end_date):
     bar2 = go.Bar(x=my_df['Date'], y=my_df[my_names_list[1]], name=my_names_list[1],
                   marker=dict(color=ueo_colors['ueo-navy']))
     fig.add_traces([bar1, bar2])
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1516,7 +1604,10 @@ def build_plot30(lang, start_date, end_date):
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col],
                               mode='lines', name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1553,7 +1644,10 @@ def build_plot31(lang, start_date, end_date):
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col],
                               mode='lines', name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1592,7 +1686,10 @@ def build_plot32(lang, start_date, end_date):
     bar2 = go.Bar(x=my_df['Date'], y=my_df[my_names_list[1]], name=my_names_list[1],
                   marker=dict(color=ueo_colors['ueo-navy']))
     fig.add_traces([bar1, bar2])
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1631,7 +1728,10 @@ def build_plot33(lang, start_date, end_date):
     bar2 = go.Bar(x=my_df['Date'], y=my_df[my_names_list[1]], name=my_names_list[1],
                   marker=dict(color=ueo_colors['ueo-green']))
     fig.add_traces([bar1, bar2])
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1672,7 +1772,10 @@ def build_plot34(lang, start_date, end_date):
                               mode='lines', name=col, marker=dict(color=ueo_colors_0[i]), legendgroup='group1',
                               showlegend=False))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14), title=my_names['label_3'].iloc[0])
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14), title=my_names['label_3'].iloc[0],
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1713,7 +1816,10 @@ def build_plot35(lang, start_date, end_date):
                               mode='lines', name=col, marker=dict(color=ueo_colors_0[i]), legendgroup='group1',
                               showlegend=False))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14), title=my_names['label_3'].iloc[0])
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14), title=my_names['label_3'].iloc[0],
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1752,7 +1858,10 @@ def build_plot36(lang, start_date, end_date):
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col],
                               mode='lines', name=col, marker=dict(color=ueo_colors_0[i]), legendgroup='group1'))
         i += 1
-    fig.update_layout(title=my_names['label_3'].iloc[0], width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(title=my_names['label_3'].iloc[0], width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1805,7 +1914,10 @@ def build_plot37(lang, start_date, end_date):
         fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[col],
                                  mode='markers', name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1853,7 +1965,10 @@ def build_plot38(lang, start_date, end_date):
     fig.update_yaxes(range=[0, 35], secondary_y=False)
     fig.update_yaxes(range=[15, 20], secondary_y=True)
     fig.update_layout(barmode='stack')
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1889,7 +2004,10 @@ def build_plot39(lang, start_date, end_date):
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df['label_1'],
                              mode='markers', name=my_names_list[2], marker=dict(color=ueo_colors['ueo-green'])))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1941,9 +2059,13 @@ def build_plot40(lang="ENG", date='2023-11-01 00:00:00'):
     my_df_y = my_df[my_names_list].values.flatten()
 
     fig = px.pie(my_df, values=my_df_y, labels=my_names_list, names=my_names_list,
-                 hover_data=[my_names_list, my_df_y],
+                 hover_data=[my_df_y],
                  hole=0.5, color_discrete_sequence=ueo_colors_0)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_traces(textposition='inside', textfont_size=14, insidetextorientation='horizontal')
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -1995,7 +2117,10 @@ def build_plot41(lang):
     bar_7 = go.Bar(x=[(convert_label_to_date_1(my_names_list[6])).strftime('%d %B %Y')],
                    y=[my_df[my_names_list[6]].iloc[0]], marker=dict(color=colors[0]))
     fig.add_trace(bar_7)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
                 orientation="h",
         yanchor="bottom",
@@ -2037,7 +2162,10 @@ def build_plot44(lang, min_year, max_year):
                              marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode="group")
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2075,7 +2203,10 @@ def build_plot45(lang, start_date, end_date):
 
     fig.update_yaxes(range=[0, 180], secondary_y=True)
     fig.update_yaxes(range=[0, 200], secondary_y=False)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2110,7 +2241,10 @@ def build_plot46(lang, start_date, end_date):
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df['label_1'], mode='markers+lines',
                              marker=dict(color=ueo_colors['ueo-grey'])))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2158,7 +2292,10 @@ def build_plot47(lang, start_date, end_date):
     fig.add_trace(go.Scatter(x=df2_1['Date'], y=df2_1['label_2_1'], name=my_names_list[1], mode='lines+markers',
                              marker=dict(color=ueo_colors['ueo-red']),
                              line = dict(dash='dash')))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2196,7 +2333,10 @@ def build_plot48(lang, start_date, end_date):
                              marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
     fig.update_yaxes(range=[310, 810], secondary_y=False)
     fig.update_yaxes(range=[0, 25000], secondary_y=True)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2257,7 +2397,10 @@ def build_plot49(lang, min_year, max_year):
 
     fig.add_trace(scatter1)
     fig.add_trace(scatter)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2318,7 +2461,10 @@ def build_plot50(lang, min_year, max_year):
 
     fig.add_trace(scatter1)
     fig.add_trace(scatter)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2358,7 +2504,10 @@ def build_plot51(lang, start_date, end_date):
                              marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode="group")
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2404,7 +2553,10 @@ def build_plot52(lang):
                              y=[my_df[col].iloc[0], my_df[col].iloc[1]], name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode="group")
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2445,7 +2597,10 @@ def build_plot54(lang, start_date, end_date):
     fig.update_layout(barmode='stack')
     fig.update_yaxes(range=[-100, 400], secondary_y=True)
     fig.update_yaxes(range=[20, 140], secondary_y=False)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2483,7 +2638,10 @@ def build_plot55(lang):
                              marker=dict(color=ueo_colors_0[i])))
         i += 1
     fig.update_layout(barmode='group')
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2539,7 +2697,6 @@ def build_plot56(lang, year):
         domain={'x': [0.15, 0.85], 'y': [0.15, 0.85]},
         values=inner_values,
         labels=my_names_list[:-1],
-        textinfo='label',
         textposition='inside',
         marker={'colors': ueo_colors_0,
             'line': {'color': 'white', 'width': 1}}
@@ -2551,7 +2708,6 @@ def build_plot56(lang, year):
         direction='clockwise',
         values=outer_values,
         labels=[my_names_list[-1], segment_name],
-        textinfo='label',
         textposition='outside',
         marker={'colors': ['rgba(173, 216, 230, 0.5)', 'rgba(128, 128, 128, 0.5)'],
                 'line': {'color': 'white', 'width': 1}}
@@ -2564,7 +2720,10 @@ def build_plot56(lang, year):
         y=0.5,
         showarrow=False,
         font=dict(size=20, family='Montserrat'))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2614,7 +2773,10 @@ def build_plot57(lang):
     fig.add_trace(go.Scatter(x=my_df['index'], y=my_df['Динамика'], name='Динамика', mode='markers+lines',
                              marker=dict(color=ueo_colors['ueo-red'])),
                   secondary_y=True)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2650,7 +2812,10 @@ def build_plot58(lang, start_date, end_date):
     for col in my_names_list:
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2696,7 +2861,10 @@ def build_plot5(lang, start_date, end_date):
                                  marker=dict(color=ueo_colors_0[i])),
                                  secondary_y=True)
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2771,7 +2939,10 @@ def build_plot6(lang, year):
     )
     for trace in bar2.data:
         bar1.add_trace(trace)
-    bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                       paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    bar1.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     bar1.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2813,12 +2984,16 @@ def build_plot7(lang, start_date, end_date):
         values=[summ_1.values[0], summ_2.values[0]],  # Modify values as needed
         hole=0.5,  # Adjust the hole size to make it look like a donut chart
         domain=dict(x=[0, 0.3], y=[0.7, 0.98]),
-        marker={'colors': ueo_colors_0}
+        marker={'colors': ueo_colors_0},
+        textposition='outside'
         # Position the pie chart in the top right corner
     ))
 
     fig.update_layout(barmode='stack')
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2872,7 +3047,10 @@ def build_plot59(lang):
         i += 1
     bar1.update_layout(barmode='relative')
 
-    bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                       paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    bar1.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     bar1.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2918,7 +3096,10 @@ def build_plot60(lang, start_date, end_date):
                              name=my_names_list[-2], mode='lines+markers',
                              marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
 
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -2957,8 +3138,7 @@ def build_plot61(lang):
         domain={'x': [0.15, 0.85], 'y': [0.15, 0.85]},
         values=inner_values,
         labels=my_names_list,
-        textinfo='label',
-        textposition='inside',
+        # textposition='inside',
         marker={'line': {'color': 'white', 'width': 1}}
     )
 
@@ -2968,14 +3148,16 @@ def build_plot61(lang):
         direction='clockwise',
         values=outer_values,
         labels=my_names_list,
-        textinfo='label',
         textposition='outside',
         marker={'colors': ueo_colors_0,
                 'line': {'color': 'white', 'width': 1}}
     )
 
     fig = go.FigureWidget(data=[trace1, trace2])
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3018,7 +3200,10 @@ def build_plot62(lang, start_date, end_date):
                         marker=dict(color=ueo_colors['ueo-red'])), secondary_y=True)
     fig.update_yaxes(range=[-60, 60], secondary_y=True)
 
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3063,7 +3248,10 @@ def build_plot63(lang, start_date, end_date):
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_df.columns.values[-2]],
                              name=new_col_list[-1], mode='lines+markers',
                              marker=dict(color=ueo_colors['ueo-grey'])), secondary_y=True)
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3107,7 +3295,10 @@ def build_plot64(lang, start_date, end_date):
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[-1]],
                          name=my_names_list[-1], mode='markers',
                          marker=dict(color=ueo_colors_0[i], size=12)))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3156,7 +3347,10 @@ def build_plot65(lang):
             tickmode='array',
             tickvals=my_df['Date'],
             ticktext=[str(year) for year in my_df['Date']]))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3206,7 +3400,10 @@ def build_plot66(lang):
             tickmode='array',
             tickvals=[2, 1],
             ticktext=[str(year) for year in my_df['Date']]))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3240,7 +3437,10 @@ def build_plot67(lang, start_date, end_date):
     fig = go.Figure()
     fig.add_trace(go.Line(x=my_df['Date'], y=my_df['label_1'],
                           marker=dict(color=ueo_colors_0[0])))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3294,7 +3494,10 @@ def build_plot68(lang):
             tickmode='array',
             tickvals=my_df['Date'],
             ticktext=[str(year) for year in my_df['Date']]))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3327,7 +3530,10 @@ def build_plot69(lang):
                              orientation='h'))
         i += 1
     fig.update_layout(barmode='stack')
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3385,7 +3591,10 @@ def build_plot70(lang, date):
             tickmode='array',
             tickvals=my_df['Date'],
             ticktext=[str(year) for year in my_df['Date']]))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3434,7 +3643,10 @@ def build_plot71(lang, start_date, end_date):
         fig.add_trace(go.Line(x=my_df_1['Date'], y=my_df_1[col], name=col, line=dict(dash='dash'),
                               marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3469,7 +3681,10 @@ def build_plot72(lang, start_date, end_date):
     for col in my_names_list:
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3521,7 +3736,10 @@ def build_plot73(lang, start_date, end_date):
                               marker=dict(color=ueo_colors_0[i]), opacity=0.4))
         i += 1
     fig.update_layout(barmode='stack')
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3573,7 +3791,10 @@ def build_plot74(lang):
             tickmode='array',
             tickvals=my_df['Date'],
             ticktext=[str(year) for year in my_df['Date']]))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3631,7 +3852,10 @@ def build_plot75(lang):
     )
     for trace in bar2.data:
         bar1.add_trace(trace)
-    bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                       paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    bar1.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     bar1.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3676,7 +3900,10 @@ def build_plot76(lang, start_date, end_date):
     for col in my_names_list:
         fig.add_trace(go.Line(x=my_df['Date'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3727,7 +3954,10 @@ def build_plot77(lang, start_date, end_date):
                               marker=dict(color=ueo_colors_0[i]), opacity=0.4))
         i += 1
     fig.update_layout(barmode='stack')
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3764,7 +3994,10 @@ def build_plot42(lang, start_date, end_date):
         fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[col], mode='lines', name=col,
                                  marker=dict(color=ueo_colors_0[i])))
         i += 1
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3817,7 +4050,10 @@ def build_plot43(lang='ENG'):
                            font=dict(color=ueo_colors_0[j]))
 
     fig.update_layout(xaxis=dict(type='category'))
-    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14))
+    fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
+                      paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
