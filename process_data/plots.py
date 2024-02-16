@@ -3001,6 +3001,11 @@ def build_plot6(lang, year):
 def build_plot7(lang, start_date, end_date):
     data = ProcessDataForPlot(const.TABLE_NAME_PLOT7, const.TABLE_NAME_NAMES_PLOT7, const.LANG_LABELS_PLOT_7)
     data_ua, ua_names, data_eng, eng_names, data_ru, ru_names = data.create_lang_df()
+    sub_data = ProcessDataForPlot(const.TABLE_NAME_PLOT49,
+                                  const.TABLE_NAME_NAMES_PLOT49, const.LANG_LABELS_PLOT_49)
+    sub_ua, sub_ua_names, sub_end, sub_eng_names, sub_ru, sub_ru_names = sub_data.create_lang_df(
+                                        const.DATA_TABLE_COLUMNS_PLOT49,
+                                        const.NAMES_TABLE_COLUMNS_PLOT49)
     my_df = None
     my_names = None
     if lang == "UKR":
@@ -3015,8 +3020,14 @@ def build_plot7(lang, start_date, end_date):
     my_names_list = list(my_names.iloc[0])[1:-2]
     my_df['index_0'] = my_df['index_0'].astype(int)
     my_df = my_df[(my_df['index_0'] >= start_date) & (my_df['index_0'] <= end_date)]
-    summ_1 = my_df[my_names_list[0]].iloc[[-1]]
-    summ_2 = my_df[my_names_list[1]].iloc[[-1]]
+    gdp = sub_ua[['index_0', 'label_1', 'label_2']]
+    for index, row in gdp.iterrows():
+        if row['label_1'] == 0:
+            gdp.at[index, 'label_1'] = row['label_2']
+    gdp_value = gdp[gdp['index_0'].astype(int) == max(my_df['index_0'].astype(int))]
+    gdp_value = gdp_value['label_1'].sum()
+    summ_1 = (my_df[my_names_list[0]].iloc[[-1]] / gdp_value) * 100
+    summ_2 = (my_df[my_names_list[1]].iloc[[-1]] / gdp_value) * 100
     my_df.sort_values(by='index_0', inplace=True)
     fig = go.Figure()
     i = 0
@@ -3026,11 +3037,14 @@ def build_plot7(lang, start_date, end_date):
 
     fig.add_trace(go.Pie(
         labels=my_names_list,  # Modify labels as needed
-        values=[summ_1.values[0], summ_2.values[0]],  # Modify values as needed
+        values=['%.0f' % summ_1.values[0], '%.0f' % summ_2.values[0]],
+        text=[f'{summ_1.values[0]:.0f}%', f'{summ_2.values[0]:.0f}%'],
+        textinfo='text',# Modify values as needed
         hole=0.5,  # Adjust the hole size to make it look like a donut chart
         domain=dict(x=[0, 0.3], y=[0.7, 0.98]),
         marker={'colors': ueo_colors_0},
-        textposition='outside'
+        textposition='outside',
+        showlegend=False
         # Position the pie chart in the top right corner
     ))
 
