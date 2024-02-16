@@ -226,11 +226,28 @@ def build_plot_2(lang, date):
             family="Montserrat", size=14), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
         fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
         fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
+        fig.update_layout(legend=dict(
+                x=0.5,  # Adjust the x position of the legend
+                y=1.15,  # Adjust the y position of the legend
+                # bgcolor='rgba(255, 255, 255, 0.5)',  # Set background color with transparency
+                # bordercolor='rgba(0, 0, 0, 0.5)',  # Set border color with transparency
+                # borderwidth=2,  # Set border width
+                traceorder='normal',  # Set legend trace order
+                # font=dict(
+                #     family='Arial, sans-serif',
+                #     size=12,
+                #     color='black'
+                # ),
+                itemsizing='constant',  # Keep the legend item size constant
+                itemwidth=100  # Set the width of each legend item
+
+        ))
         return fig, ua_names['names'], ua_names['sources']
     if lang == 'ENG':
         eng_names_list = list(eng_names.iloc[0])[1:-2]
         data_eng['Date'] = data_eng['index_0'].astype(int)
         data_eng = data_eng[data_eng['Date'] == date]
+        data_eng[eng_names_list[:-1]] = data_eng[eng_names_list[:-1]].apply(lambda x: '%1f' % x)
         data_eng_y = data_eng[eng_names_list[:-1]].values.flatten()
         summ = data_eng['Total'].values
 
@@ -249,6 +266,21 @@ def build_plot_2(lang, date):
             family="Montserrat", size=14), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
         fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
         fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
+        fig.update_layout(legend=dict(
+            # x=0.5,  # Adjust the x position of the legend
+            # y=1.15,  # Adjust the y position of the legend
+            # bgcolor='rgba(255, 255, 255, 0.5)',  # Set background color with transparency
+            # bordercolor='rgba(0, 0, 0, 0.5)',  # Set border color with transparency
+            # borderwidth=2,  # Set border width
+            # traceorder='normal',  # Set legend trace order
+            # font=dict(
+            #     family='Arial, sans-serif',
+            #     size=12,
+            #     color='black'
+            # ),
+            itemsizing='constant',  # Keep the legend item size constant
+            itemwidth=50
+        ))
         return fig, eng_names['names'], eng_names['sources']
     if lang == 'RU':
         ru_names_list = list(ru_names.iloc[0])[1:-2]
@@ -272,6 +304,14 @@ def build_plot_2(lang, date):
             family="Montserrat", size=14), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
         fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
         fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
+        fig.update_layout(legend=dict(
+            orientation="h",
+            # # tracegroupgap=20,
+            # yanchor="bottom",
+            # y=0.5,
+            # xanchor="right",
+            # x=0.5
+        ))
         return fig, ru_names['names'][0], ru_names['sources'][0]
 
 
@@ -3364,7 +3404,7 @@ def build_plot64(lang, start_date, end_date):
         fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i])
                              ))
         for index, value in enumerate(my_df[col]):
-            if value >= 0:
+            if value > 0:
                 fig.add_annotation(
                     x=my_df['Date'].iloc[index],
                     y=value,
@@ -3377,7 +3417,7 @@ def build_plot64(lang, start_date, end_date):
                     showarrow=False,
                     xanchor='center',
                     yanchor='bottom')
-            else:
+            elif value < 0:
                 fig.add_annotation(
                     x=my_df['Date'].iloc[index],
                     y=value,
@@ -3392,16 +3432,19 @@ def build_plot64(lang, start_date, end_date):
                     yanchor='top')
         # fig.update_traces(textfont_size=16)
         i += 1
-    fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[0]],
+
+    data_points = my_df[my_names_list[0]][my_df[my_names_list[0]] != 0]
+    fig.add_trace(go.Scatter(x=my_df['Date'], y=data_points,
                          name=my_names_list[0], mode='lines+markers',
                          fill='tozeroy', marker=dict(color=ueo_colors_0[i]),
                          fillcolor="rgba(128, 128, 128, 0.5)"))
 
     i += 1
-    fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[-1]],
+    data_points_1 = my_df[my_names_list[-1]][my_df[my_names_list[-1]] != 0]
+    fig.add_trace(go.Scatter(x=my_df['Date'], y=data_points_1,
                          name=my_names_list[-1], mode='markers',
                          marker=dict(color=ueo_colors_0[i], size=12)))
-    for index, value in enumerate(my_df[my_names_list[-1]]):
+    for index, value in enumerate(data_points_1):
         if value >= 0:
             fig.add_annotation(
                 x=my_df['Date'].iloc[index],

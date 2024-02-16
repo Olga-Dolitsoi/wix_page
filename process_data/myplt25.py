@@ -15,7 +15,11 @@ date = pl.convert_date(const.TABLE_NAME_PLOT30, const.TABLE_NAME_NAMES_PLOT30, c
                                   )
 languages = ['ENG', 'UKR', 'RU']
 
-app = dash.Dash(__name__)
+external_stylesheets = [
+    "https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700",
+    "https://fonts.googleapis.com/css?family=Open%20Sans"
+]
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),  # Add dcc.Location to capture URL

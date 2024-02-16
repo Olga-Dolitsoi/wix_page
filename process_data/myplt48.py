@@ -12,7 +12,11 @@ date_end = '2023-12-31'
 date = pl.convert_text_date_nan(const.TABLE_NAME_PLOT58, const.TABLE_NAME_NAMES_PLOT58, const.LANG_LABELS_PLOT_58)
 languages = ['ENG', 'UKR', 'RU']
 
-app = dash.Dash(__name__)
+external_stylesheets = [
+    "https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700",
+    "https://fonts.googleapis.com/css?family=Open%20Sans"
+]
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),  # Add dcc.Location to capture URL

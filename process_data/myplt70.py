@@ -13,7 +13,11 @@ date = pl.prepare_date_month_year(const.TABLE_NAME_PLOT77, const.TABLE_NAME_NAME
                                   const.DATA_TABLE_COLUMNS_PLOT77, const.NAMES_TABLE_COLUMNS_PLOT77)
 languages = ['ENG', 'UKR', 'RU']
 
-app = dash.Dash(__name__)
+external_stylesheets = [
+    "https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700",
+    "https://fonts.googleapis.com/css?family=Open%20Sans"
+]
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),  # Add dcc.Location to capture URL
