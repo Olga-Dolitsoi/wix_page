@@ -103,7 +103,7 @@ def build_plot_1(lang, start_date, end_date):
         data_ua['summ'] = data_ua[list(ua_names.iloc[0])[1:-2]].sum(axis=1)
         ua_names_list = list(ua_names.iloc[0])[1:-2]
         fig = go.Figure()
-        data_ua['summ'] = data_ua['summ'].apply(lambda x: '%.2f' % x)
+        data_ua['summ'] = data_ua['summ'].apply(lambda x: '%.0f' % x)
         count = 0
         for col in ua_names_list:
             count += 1
@@ -138,7 +138,7 @@ def build_plot_1(lang, start_date, end_date):
         data_eng['summ'] = data_eng[list(eng_names.iloc[0])[1:-2]].sum(axis=1)
         eng_names_list = list(eng_names.iloc[0])[1:-2]
         fig = go.Figure()
-        data_eng['summ'] = data_eng['summ'].apply(lambda x: '%.2f' % x)
+        data_eng['summ'] = data_eng['summ'].apply(lambda x: '%.0f' % x)
         count = 0
         for col in eng_names_list:
             count += 1
@@ -172,7 +172,7 @@ def build_plot_1(lang, start_date, end_date):
         data_ru['summ'] = data_ru[list(ru_names.iloc[0])[1:-2]].sum(axis=1)
         ru_names_list = list(ru_names.iloc[0])[1:-2]
         fig = go.Figure()
-        data_ru['summ'] = data_ru['summ'].apply(lambda x: '%.2f' % x)
+        data_ru['summ'] = data_ru['summ'].apply(lambda x: '%.0f' % x)
         count = 0
         for col in ru_names_list:
             count += 1
@@ -215,7 +215,7 @@ def build_plot_2(lang, date):
                      hover_data=[data_ua_y],
                      hole=0.5, color_discrete_sequence=ueo_colors_0)
         fig.add_annotation(
-            text=str('%.2f' % summ),
+            text=str('%.0f' % summ),
             x=0.5,
             y=0.5,
             showarrow=False,
@@ -238,7 +238,7 @@ def build_plot_2(lang, date):
                      hover_data=[data_eng_y],
                      hole=0.5, color_discrete_sequence=ueo_colors_0)
         fig.add_annotation(
-            text=str('%.2f' % summ),
+            text=str('%.0f' % summ),
             x=0.5,
             y=0.5,
             showarrow=False,
@@ -261,7 +261,7 @@ def build_plot_2(lang, date):
                      hover_data=[data_ru_y],
                      hole=0.5, color_discrete_sequence=ueo_colors_0)
         fig.add_annotation(
-            text=str('%.2f' % summ),
+            text=str('%.0f' % summ),
             x=0.5,
             y=0.5,
             showarrow=False,
@@ -288,9 +288,9 @@ def build_plot_3(lang, start_date, end_date):
         bar_list = []
         count = 0
         data_ua['sum_profit'] = data_ua[ua_names_list[3:]].sum(axis=1)
-        data_ua['sum_profit'] = data_ua['sum_profit'].apply(lambda x: '%.2f' % x)
+        data_ua['sum_profit'] = data_ua['sum_profit'].apply(lambda x: '%.0f' % x)
         data_ua['sum_loss'] = data_ua[ua_names_list[1:3]].sum(axis=1)
-        data_ua['sum_loss'] = data_ua['sum_loss'].apply(lambda x: '%.2f' % x)
+        data_ua['sum_loss'] = data_ua['sum_loss'].apply(lambda x: '%.0f' % x)
         annotations1 = [dict(
             x=xi,
             y=yi,
@@ -364,9 +364,9 @@ def build_plot_3(lang, start_date, end_date):
         i = 0
         count = 0
         data_eng['sum_profit'] = data_eng[eng_names_list[3:]].sum(axis=1)
-        data_eng['sum_profit'] = data_eng['sum_profit'].apply(lambda x: '%.2f' % x)
+        data_eng['sum_profit'] = data_eng['sum_profit'].apply(lambda x: '%.0f' % x)
         data_eng['sum_loss'] = data_eng[eng_names_list[1:3]].sum(axis=1)
-        data_eng['sum_loss'] = data_eng['sum_loss'].apply(lambda x: '%.2f' % x)
+        data_eng['sum_loss'] = data_eng['sum_loss'].apply(lambda x: '%.0f' % x)
         annotations1 = [dict(
             x=xi,
             y=yi,
@@ -440,9 +440,9 @@ def build_plot_3(lang, start_date, end_date):
         i = 0
         count = 0
         data_ru['sum_profit'] = data_ru[ru_names_list[3:]].sum(axis=1)
-        data_ru['sum_profit'] = data_ru['sum_profit'].apply(lambda x: '%.2f' % x)
+        data_ru['sum_profit'] = data_ru['sum_profit'].apply(lambda x: '%.0f' % x)
         data_ru['sum_loss'] = data_ru[ru_names_list[1:3]].sum(axis=1)
-        data_ru['sum_loss'] = data_ru['sum_loss'].apply(lambda x: '%.2f' % x)
+        data_ru['sum_loss'] = data_ru['sum_loss'].apply(lambda x: '%.0f' % x)
         annotations1 = [dict(
             x=xi,
             y=yi,
@@ -534,14 +534,14 @@ def build_plot_4(lang, year):
         for col in ua_names_list:
             if i <= 7:
                 bar1 = bar1.add_trace(
-                    go.Bar(x=[label1_ukr], y=data_ua[col], name=col, text=data_ua[col].apply(lambda x: '%.2f' % x),
+                    go.Bar(x=[label1_ukr], y=data_ua[col], name=col, text=data_ua[col].apply(lambda x: '%.0f' % x),
                            legendgroup="group1", legendgrouptitle_text=label1_ukr,
                            marker=dict(color=income_colors[i])))
                 bar1.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
 
             else:
                 bar2 = bar2.add_trace(
-                    go.Bar(x=[label2_ukr], y=data_ua[col], name=col, text=data_ua[col].apply(lambda x: '%.2f' % x),
+                    go.Bar(x=[label2_ukr], y=data_ua[col], name=col, text=data_ua[col].apply(lambda x: '%.0f' % x),
                            legendgroup="group2", legendgrouptitle_text=label2_ukr,
                            marker=dict(color=expenses_colors[i - 8])))
                 bar2.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
@@ -561,6 +561,7 @@ def build_plot_4(lang, year):
                            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
         bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
         bar1.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
+        bar1.update_traces(width=0.3)
         bar1.update_layout(legend=dict(
             orientation="h",
             # tracegroupgap=20,
@@ -582,14 +583,14 @@ def build_plot_4(lang, year):
         for col in eng_names_list:
             if i <= 7:
                 bar1 = bar1.add_trace(
-                    go.Bar(x=[label1_eng], y=data_eng[col], name=col, text=data_eng[col].apply(lambda x: '%.2f' % x),
+                    go.Bar(x=[label1_eng], y=data_eng[col], name=col, text=data_eng[col].apply(lambda x: '%.0f' % x),
                            legendgroup="group1", legendgrouptitle_text=label1_eng,
                            marker=dict(color=income_colors[i])))
                 bar1.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
 
             else:
                 bar2 = bar2.add_trace(
-                    go.Bar(x=[label2_eng], y=data_eng[col], name=col, text=data_eng[col].apply(lambda x: '%.2f' % x),
+                    go.Bar(x=[label2_eng], y=data_eng[col], name=col, text=data_eng[col].apply(lambda x: '%.0f' % x),
                            legendgroup="group2", legendgrouptitle_text=label2_eng,
                            marker=dict(color=expenses_colors[i - 8])))
                 bar2.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
@@ -609,6 +610,8 @@ def build_plot_4(lang, year):
                            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
         bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
         bar1.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
+        bar1.update_traces(width=0.3)
+
         bar1.update_layout(legend=dict(
             orientation="h",
             # tracegroupgap=20,
@@ -636,14 +639,14 @@ def build_plot_4(lang, year):
         for col in ru_names_list:
             if i <= 7:
                 bar1 = bar1.add_trace(
-                    go.Bar(x=[label1_ru], y=data_ru[col], name=col, text=data_ru[col].apply(lambda x: '%.2f' % x),
+                    go.Bar(x=[label1_ru], y=data_ru[col], name=col, text=data_ru[col].apply(lambda x: '%.0f' % x),
                            legendgroup="group1", legendgrouptitle_text=label1_ru,
                            marker=dict(color=income_colors[i])))
                 bar1.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
 
             else:
                 bar2 = bar2.add_trace(
-                    go.Bar(x=[label2_ru], y=data_ru[col], name=col, text=data_ru[col].apply(lambda x: '%.2f' % x),
+                    go.Bar(x=[label2_ru], y=data_ru[col], name=col, text=data_ru[col].apply(lambda x: '%.0f' % x),
                            legendgroup="group2", legendgrouptitle_text=label2_ru,
                            marker=dict(color=expenses_colors[i - 8])))
                 bar2.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
@@ -662,8 +665,10 @@ def build_plot_4(lang, year):
                            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
         bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
         bar1.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
+        bar1.update_traces(width=0.3)
+
         bar1.add_annotation(
-            text=str('%.2f' % summ),
+            text=str('%.0f' % summ),
             x=0.5,
             y=0.5,
             showarrow=False,
@@ -885,7 +890,7 @@ def build_plot12(lang, year):
                  hover_data=[data_y],
                  hole=0.5, color_discrete_sequence=ueo_colors_0)
     fig.add_annotation(
-        text=str('%.2f' % summ),
+        text=str('%.0f' % summ),
         x=0.5,
         y=0.5,
         showarrow=False,
@@ -2916,14 +2921,14 @@ def build_plot6(lang, year):
     for col in my_names_list:
         if i <= 3:
             bar1 = bar1.add_trace(
-                go.Bar(x=[meta_labels['label_1'][lang]], y=my_df[col], name=col, text=my_df[col].apply(lambda x: '%.2f' % x),
+                go.Bar(x=[meta_labels['label_1'][lang]], y=my_df[col], name=col, text=my_df[col].apply(lambda x: '%.0f' % x),
                        legendgroup="group1", legendgrouptitle_text=meta_labels['label_1'][lang],
                        marker=dict(color=income_colors[i])))
             bar1.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
 
         else:
             bar2 = bar2.add_trace(
-                go.Bar(x=[meta_labels['label_2'][lang]], y=my_df[col], name=col, text=my_df[col].apply(lambda x: '%.2f' % x),
+                go.Bar(x=[meta_labels['label_2'][lang]], y=my_df[col], name=col, text=my_df[col].apply(lambda x: '%.0f' % x),
                        legendgroup="group2", legendgrouptitle_text=meta_labels['label_2'][lang],
                        marker=dict(color=expenses_colors[i - 4])))
             bar2.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
@@ -3034,22 +3039,91 @@ def build_plot59(lang):
     # df_label1 = my_df[my_df['index_0'] == 1]
     # df_label2 = my_df[my_df['index_0'] == 2]
     i = 0
+    summ = 0
+    summ_1 = 0
     bar1 = go.Figure()
-    for col in my_names_list:
+    annotations = []
 
-        bar1 = bar1.add_trace(
-            go.Bar(x=[meta_labels['label_1'][lang], meta_labels['label_2'][lang]], y=my_df[col], name=col,
-                   text=my_df[col].apply(lambda x: '%.2f' % x),
-                   marker=dict(color=income_colors[i])))
+    for col in my_names_list:
+        if my_df[col].values[0] != 0 and my_df[col].values[1] != 0:
+            if i == 4:
+                bar1 = bar1.add_trace(
+                    go.Bar(x=[meta_labels['label_1'][lang], meta_labels['label_2'][lang]], y=my_df[col], name=col,
+                           marker=dict(color=ueo_colors['ueo-red']),
+                           text=my_df[col].apply(lambda x: '%.2f' % x)))
+                text = (my_df[col].values[1] / my_df[col].values[0]) * 100
+                text = '%.0f' % text
+                annotations.append(
+                    dict(x=0.85,
+                         y=my_df[col].values[1],
+                         xref="x", yref="y",
+                         align='center',
+                         showarrow=True,
+                         axref="x", ayref='y',
+                         ax=0.15,
+                         ay=my_df[col].values[0],
+                         arrowhead=3,
+                         arrowwidth=1,
+                         arrowcolor=ueo_colors['ueo-red']))
+
+                annotations.append(
+                    dict(x=0.6,
+                         y=float((my_df[col].values[0] + my_df[col].values[1]) / 2) + (1 / 16),
+                         xref="x", yref="y",
+                         xanchor='right',
+                         text=f'<b>{text}%</b>',
+                         showarrow=False,
+                         font=dict(
+                             color=ueo_colors['ueo-red'],
+                             size=14,
+                         )
+                         ))
+
+            else:
+                bar1 = bar1.add_trace(
+                go.Bar(x=[meta_labels['label_1'][lang], meta_labels['label_2'][lang]], y=my_df[col], name=col,
+                       marker=dict(color=income_colors[i]),
+                       text=my_df[col].apply(lambda x: '%.2f' % x)))
+                summ += my_df[col].iloc[0]
+                summ_1 += my_df[col].iloc[1]
+                text = (my_df[col].values[1] / my_df[col].values[0]) * 100
+                text = '%.0f' % text
+                annotations.append(
+                    dict(x=0.85,
+                         y=summ_1,
+                         xref="x", yref="y",
+                         align='center',
+                         showarrow=True,
+                         ax=0.15,
+                         ay=summ,
+                         axref="x", ayref='y',
+                         arrowhead=3,
+                         arrowwidth=1,
+                         arrowcolor=income_colors[i]))
+                annotations.append(
+                    dict(x=0.6,
+                         y=float((summ_1 + summ) / 2) + (1 / 16),
+                         xref="x", yref="y",
+                         xanchor='right',
+                         text=f'<b>{text}%</b>',
+                         showarrow=False,
+                         font=dict(
+                             color=income_colors[i],
+                             size=14,
+                         )
+                         ))
+
 
         bar1.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
 
         i += 1
     bar1.update_layout(barmode='relative')
-
+    bar1.update_traces(width=0.3)
+    bar1.update_layout(annotations=annotations)
     bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
                        paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-    bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
+    bar1.update_yaxes(zeroline=True, zerolinewidth=1, zerolinecolor='lightgrey',
+                      showgrid=True, gridwidth=1, gridcolor='lightgrey')
     bar1.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
     bar1.update_layout(legend=dict(
         orientation="h",
@@ -3285,16 +3359,82 @@ def build_plot64(lang, start_date, end_date):
     fig = go.Figure()
     i = 0
     for col in my_names_list[1:3]:
-        fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i])))
+        text = my_df[col].apply(lambda x: '%.2f' % x)
+        text = text.values[0]
+        fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i])
+                             ))
+        for index, value in enumerate(my_df[col]):
+            if value >= 0:
+                fig.add_annotation(
+                    x=my_df['Date'].iloc[index],
+                    y=value,
+                    text=f'<b>{value:.2f}</b>',
+                    font=dict(
+                        family="Montserrat",
+                        size=16,
+                        color=ueo_colors_0[i]
+                    ),
+                    showarrow=False,
+                    xanchor='center',
+                    yanchor='bottom')
+            else:
+                fig.add_annotation(
+                    x=my_df['Date'].iloc[index],
+                    y=value,
+                    text=f'<b>{value:.2f}</b>',
+                    font=dict(
+                        family="Montserrat",
+                        size=16,
+                        color=ueo_colors_0[i]
+                    ),
+                    showarrow=False,
+                    xanchor='center',
+                    yanchor='top')
+        # fig.update_traces(textfont_size=16)
         i += 1
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[0]],
                          name=my_names_list[0], mode='lines+markers',
                          fill='tozeroy', marker=dict(color=ueo_colors_0[i]),
                          fillcolor="rgba(128, 128, 128, 0.5)"))
+
     i += 1
     fig.add_trace(go.Scatter(x=my_df['Date'], y=my_df[my_names_list[-1]],
                          name=my_names_list[-1], mode='markers',
                          marker=dict(color=ueo_colors_0[i], size=12)))
+    for index, value in enumerate(my_df[my_names_list[-1]]):
+        if value >= 0:
+            fig.add_annotation(
+                x=my_df['Date'].iloc[index],
+                y=float(value)+0.7,
+                text=f'<b>{value:.2f}</b>',
+                font=dict(
+                    family="Montserrat",
+                    size=16,
+                    color=ueo_colors_0[i]
+                ),
+                showarrow=False,
+                xanchor='center',
+                yanchor='bottom',
+                bgcolor="white",
+                opacity=0.6
+            )
+        else:
+            fig.add_annotation(
+                x=my_df['Date'].iloc[index],
+                y=float(value)-0.7,
+                text=f'<b>{value:.2f}</b>',
+                font=dict(
+                    family="Montserrat",
+                    size=16,
+                    color=ueo_colors_0[i]
+                ),
+                showarrow=False,
+                xanchor='center',
+                yanchor='top',
+                bgcolor="white",
+                opacity=0.6
+            )
+    fig.update_traces(textfont_size=16)
     fig.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
                       paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
     fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
@@ -3337,7 +3477,7 @@ def build_plot65(lang):
                     y=ypos + 200,
                     xref='x',
                     yref='y',
-                    text=str('%.2f' % ypos),
+                    text=str('%.0f' % ypos),
                     showarrow=False,
                     arrowhead=7
                 ) for xpos, ypos in zip(my_df['Date'], my_df[my_names_list[-1]])
@@ -3390,7 +3530,7 @@ def build_plot66(lang):
             y=ypos + 1,
             xref='x',
             yref='y',
-            text=str('%.2f' % ypos),
+            text=str('%.0f' % ypos),
             showarrow=False,
             arrowhead=7
         ) for xpos, ypos in zip([2, 1], my_df[my_names_list[-1]])
@@ -3404,6 +3544,7 @@ def build_plot66(lang):
                       paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
     fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
     fig.update_xaxes(showline=True, linewidth=1, linecolor='lightgrey')
+    fig.update_traces(width=0.3)
     fig.update_layout(legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -3483,7 +3624,7 @@ def build_plot68(lang):
             y=ypos + 1,
             xref='x',
             yref='y',
-            text=str('%.2f' % ypos),
+            text=str('%.0f' % ypos),
             showarrow=False,
             arrowhead=7
         ) for xpos, ypos in zip(my_df['Date'], my_df[my_names_list[-1]])
@@ -3571,7 +3712,7 @@ def build_plot70(lang, date):
     i = 0
     for col in my_names_list[:-1]:
         fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i]),
-                             text=my_df[col].apply(lambda x: '%.2f' % x), textposition='inside'))
+                             text=my_df[col].apply(lambda x: '%.0f' % x), textposition='inside'))
         i += 1
     fig.update_layout(barmode='stack')
     fig.update_layout(annotations=[
@@ -3580,7 +3721,7 @@ def build_plot70(lang, date):
             y=ypos + 50,
             xref='x',
             yref='y',
-            text=str('%.2f' % text),
+            text=str('%.0f' % text),
             showarrow=False,
             arrowhead=7
         ) for xpos, ypos, text in zip(my_df['Date'], my_df['summ'], my_df[my_names_list[-1]])
@@ -3771,7 +3912,7 @@ def build_plot74(lang):
     i = 0
     for col in my_names_list:
         fig.add_trace(go.Bar(x=my_df['Date'], y=my_df[col], name=col, marker=dict(color=ueo_colors_0[i]),
-                             text=my_df[col].apply(lambda x: '%.2f' % x), textposition='inside'))
+                             text=my_df[col].apply(lambda x: '%.0f' % x), textposition='inside'))
         i += 1
     fig.update_layout(barmode='stack')
     fig.update_layout(annotations=[
@@ -3780,7 +3921,7 @@ def build_plot74(lang):
             y=ypos + 0.1,
             xref='x',
             yref='y',
-            text=str('%.2f' % ypos),
+            text=str('%.0f' % ypos),
             showarrow=False,
             arrowhead=7
         ) for xpos, ypos in zip(my_df['Date'], my_df['summ'])
@@ -3829,7 +3970,7 @@ def build_plot75(lang):
         if i <= 3:
             bar1 = bar1.add_trace(
                 go.Bar(x=[meta_labels['label_1'][lang]], y=my_df[col], name=col,
-                       text=my_df[col].apply(lambda x: '%.2f' % x),
+                       text=my_df[col].apply(lambda x: '%.0f' % x),
                        legendgroup="group1", legendgrouptitle_text=meta_labels['label_1'][lang],
                        marker=dict(color=income_colors[i])))
             bar1.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
@@ -3837,7 +3978,7 @@ def build_plot75(lang):
         else:
             bar2 = bar2.add_trace(
                 go.Bar(x=[meta_labels['label_2'][lang]], y=my_df[col], name=col,
-                       text=my_df[col].apply(lambda x: '%.2f' % x),
+                       text=my_df[col].apply(lambda x: '%.0f' % x),
                        legendgroup="group2", legendgrouptitle_text=meta_labels['label_2'][lang],
                        marker=dict(color=expenses_colors[i - 4])))
             bar2.update_traces(textposition='inside', textfont=dict(family='Montserrat'))
@@ -3852,6 +3993,8 @@ def build_plot75(lang):
     )
     for trace in bar2.data:
         bar1.add_trace(trace)
+    bar1.update_traces(width=0.3)
+
     bar1.update_layout(width=800, height=600, font=dict(family="Montserrat", size=14),
                        paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
     bar1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgrey')
