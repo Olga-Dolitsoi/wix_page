@@ -350,8 +350,8 @@ def build_plot_3(lang, start_date, end_date):
             font=dict(size=14, family='Montserrat')
         ) for xi, yi in zip(data_ua['Дата'], data_ua['sum_profit'])]
         annotation = annotations1 + annotations2
-        fig1 = go.Figure(layout=go.Layout(barmode='relative'))
-        fig2 = go.Figure(layout=go.Layout(barmode='relative'))
+        fig1 = go.Figure(layout=go.Layout(barmode='stack'))
+        fig2 = go.Figure(layout=go.Layout(barmode='stack'))
         for col in ua_names_list[1:]:
             count += 1
             if i <= 1:
