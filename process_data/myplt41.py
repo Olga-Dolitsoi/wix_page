@@ -17,7 +17,7 @@ date = pl.prepare_date_year_select_one_str(const.TABLE_NAME_PLOT50, const.TABLE_
 languages = ['ENG', 'UKR', 'RU']
 
 external_stylesheets = [
-    "https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700",
+"https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700&display=swap"
     "https://fonts.googleapis.com/css?family=Open%20Sans"
 ]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)

@@ -16,7 +16,7 @@ date = pl.convert_date(const.TABLE_NAME_PLOT32, const.TABLE_NAME_NAMES_PLOT32, c
 languages = ['ENG', 'UKR', 'RU']
 
 external_stylesheets = [
-    "https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700",
+"https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700&display=swap"
     "https://fonts.googleapis.com/css?family=Open%20Sans"
 ]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
